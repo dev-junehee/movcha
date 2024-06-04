@@ -14,6 +14,14 @@ struct Text {
         static let signUp = "회원가입"
     }
     
+    struct Home {
+        
+    }
+    
+    struct SignUp {
+        static let title = "MOVCHA"
+    }
+    
 }
 
 // MARK: Image 이미지
