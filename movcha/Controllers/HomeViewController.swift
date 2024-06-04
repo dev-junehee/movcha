@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  movcha
 //
 //  Created by junehee on 6/4/24.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        print("홈 화면 진입")
     }
+    
 
 
 }
-

@@ -13,6 +13,13 @@
 		C46197092C0F2011007D3B6B /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C46197082C0F2011007D3B6B /* Base */; };
 		C461970B2C0F2012007D3B6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C461970A2C0F2012007D3B6B /* Assets.xcassets */; };
 		C461970E2C0F2012007D3B6B /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C461970D2C0F2012007D3B6B /* Base */; };
+		C461971B2C0F21FB007D3B6B /* ReuseableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461971A2C0F21FB007D3B6B /* ReuseableProtocol.swift */; };
+		C461971D2C0F22DE007D3B6B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461971C2C0F22DE007D3B6B /* HomeViewController.swift */; };
+		C461971F2C0F2352007D3B6B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461971E2C0F2352007D3B6B /* SignUpViewController.swift */; };
+		C46197212C0F23B0007D3B6B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197202C0F23B0007D3B6B /* UIView+Extension.swift */; };
+		C46197242C0F27BA007D3B6B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C46197232C0F27BA007D3B6B /* SnapKit */; };
+		C46197272C0F29B4007D3B6B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197262C0F29B4007D3B6B /* Common.swift */; };
+		C46197292C0F2AE3007D3B6B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197282C0F2AE3007D3B6B /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +32,12 @@
 		C461970D2C0F2012007D3B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C461970F2C0F2012007D3B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C46197152C0F2032007D3B6B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C461971A2C0F21FB007D3B6B /* ReuseableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseableProtocol.swift; sourceTree = "<group>"; };
+		C461971C2C0F22DE007D3B6B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C461971E2C0F2352007D3B6B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C46197202C0F23B0007D3B6B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		C46197262C0F29B4007D3B6B /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		C46197282C0F2AE3007D3B6B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C46197242C0F27BA007D3B6B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,15 +72,61 @@
 		C46197002C0F2011007D3B6B /* movcha */ = {
 			isa = PBXGroup;
 			children = (
+				C46197252C0F2997007D3B6B /* Constants */,
+				C46197182C0F2193007D3B6B /* Protocol */,
+				C46197192C0F2198007D3B6B /* Extension */,
+				C46197172C0F2133007D3B6B /* Controllers */,
+				C46197162C0F212E007D3B6B /* Model */,
 				C46197012C0F2011007D3B6B /* AppDelegate.swift */,
 				C46197032C0F2011007D3B6B /* SceneDelegate.swift */,
-				C46197052C0F2011007D3B6B /* ViewController.swift */,
 				C46197072C0F2011007D3B6B /* Main.storyboard */,
-				C461970A2C0F2012007D3B6B /* Assets.xcassets */,
 				C461970C2C0F2012007D3B6B /* LaunchScreen.storyboard */,
+				C461970A2C0F2012007D3B6B /* Assets.xcassets */,
 				C461970F2C0F2012007D3B6B /* Info.plist */,
 			);
 			path = movcha;
+			sourceTree = "<group>";
+		};
+		C46197162C0F212E007D3B6B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C46197172C0F2133007D3B6B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C46197052C0F2011007D3B6B /* ViewController.swift */,
+				C461971C2C0F22DE007D3B6B /* HomeViewController.swift */,
+				C461971E2C0F2352007D3B6B /* SignUpViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C46197182C0F2193007D3B6B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C461971A2C0F21FB007D3B6B /* ReuseableProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		C46197192C0F2198007D3B6B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C46197202C0F23B0007D3B6B /* UIView+Extension.swift */,
+				C46197282C0F2AE3007D3B6B /* UIViewController+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C46197252C0F2997007D3B6B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C46197262C0F29B4007D3B6B /* Common.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +145,9 @@
 			dependencies = (
 			);
 			name = movcha;
+			packageProductDependencies = (
+				C46197232C0F27BA007D3B6B /* SnapKit */,
+			);
 			productName = movcha;
 			productReference = C46196FE2C0F2011007D3B6B /* movcha.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +176,9 @@
 				Base,
 			);
 			mainGroup = C46196F52C0F2011007D3B6B;
+			packageReferences = (
+				C46197222C0F27BA007D3B6B /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = C46196FF2C0F2011007D3B6B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -140,7 +206,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C46197292C0F2AE3007D3B6B /* UIViewController+Extension.swift in Sources */,
+				C461971F2C0F2352007D3B6B /* SignUpViewController.swift in Sources */,
+				C461971D2C0F22DE007D3B6B /* HomeViewController.swift in Sources */,
+				C461971B2C0F21FB007D3B6B /* ReuseableProtocol.swift in Sources */,
 				C46197062C0F2011007D3B6B /* ViewController.swift in Sources */,
+				C46197212C0F23B0007D3B6B /* UIView+Extension.swift in Sources */,
+				C46197272C0F29B4007D3B6B /* Common.swift in Sources */,
 				C46197022C0F2011007D3B6B /* AppDelegate.swift in Sources */,
 				C46197042C0F2011007D3B6B /* SceneDelegate.swift in Sources */,
 			);
@@ -377,6 +449,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C46197222C0F27BA007D3B6B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C46197232C0F27BA007D3B6B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C46197222C0F27BA007D3B6B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C46196F62C0F2011007D3B6B /* Project object */;
 }
