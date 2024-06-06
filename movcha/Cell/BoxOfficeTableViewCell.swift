@@ -102,7 +102,7 @@ class BoxOfficeTableViewCell: UITableViewCell {
     func configureCellData(data: BoxOfficeList) {
         rankLabel.text = data.rank
         nameLabel.text = data.movieNm
-        audiAccLabel.text = "누적관객수: \(data.audiAcc)"
+        audiAccLabel.text = "누적관객수: \(Int(data.audiAcc)?.formatted() ?? "0")명"
         openDateLabel.text = "\(data.openDt) 개봉"
     }
 }

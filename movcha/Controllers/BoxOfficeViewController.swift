@@ -51,6 +51,7 @@ class BoxOfficeViewController: UIViewController {
     let boxOfficeTableView = UITableView()
     
     var boxOfficeList: [BoxOfficeList] = []
+    
     var searchDate = "20240605"
     
     override func viewDidLoad() {
@@ -157,6 +158,17 @@ class BoxOfficeViewController: UIViewController {
     }
     
     @objc func searchButtonClicked() {
+        // 유효성 검사
+        guard dateTextField.validationText() else {
+            print("유효성검사 실패")
+            return
+        }
+        searchDate = dateTextField.text ?? "20240606"
+        // 유효성 검사 통과 시 다시 callRequest
+        callRequest()
+        
+        // textField 클리어 & 키보드 내리기
+        dateTextField.text = ""
         view.endEditing(true)
     }
 }
