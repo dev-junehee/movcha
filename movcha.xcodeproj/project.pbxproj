@@ -21,6 +21,7 @@
 		C46197272C0F29B4007D3B6B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197262C0F29B4007D3B6B /* Common.swift */; };
 		C46197292C0F2AE3007D3B6B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197282C0F2AE3007D3B6B /* UIViewController+Extension.swift */; };
 		C46197612C11ACE1007D3B6B /* BoxOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197602C11ACE1007D3B6B /* BoxOfficeViewController.swift */; };
+		C46197632C11AF3C007D3B6B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C46197622C11AF3C007D3B6B /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C46197262C0F29B4007D3B6B /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		C46197282C0F2AE3007D3B6B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		C46197602C11ACE1007D3B6B /* BoxOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeViewController.swift; sourceTree = "<group>"; };
+		C46197622C11AF3C007D3B6B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		C46196F52C0F2011007D3B6B = {
 			isa = PBXGroup;
 			children = (
+				C46197622C11AF3C007D3B6B /* .gitignore */,
 				C46197152C0F2032007D3B6B /* README.md */,
 				C46197002C0F2011007D3B6B /* movcha */,
 				C46196FF2C0F2011007D3B6B /* Products */,
@@ -196,6 +199,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C46197632C11AF3C007D3B6B /* .gitignore in Resources */,
 				C461970B2C0F2012007D3B6B /* Assets.xcassets in Resources */,
 				C461970E2C0F2012007D3B6B /* Base in Resources */,
 				C46197092C0F2011007D3B6B /* Base in Resources */,
