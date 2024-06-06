@@ -55,14 +55,12 @@ class BoxOfficeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("박스 오피스 화면 진입")
         
         configureHierarchy()
         configureLayout()
         configureUI()
         configureData()
-        
-//        callRequest()
+        callRequest()
     }
     
     func configureHierarchy() {
@@ -108,7 +106,7 @@ class BoxOfficeViewController: UIViewController {
         }
         
         boxOfficeTableView.snp.makeConstraints { make in
-            make.top.equalTo(searchAreaStack.snp.bottom).offset(8)
+            make.top.equalTo(searchAreaStack.snp.bottom).offset(12)
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
@@ -128,6 +126,7 @@ class BoxOfficeViewController: UIViewController {
         
         searchButton.backgroundColor = Color.Primary.pink
         searchButton.layer.cornerRadius = 10
+        searchButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
     }
     
     func configureData() {
@@ -142,7 +141,6 @@ class BoxOfficeViewController: UIViewController {
             switch res.result {
             case .success(let data):
                 print("영진위 데이터 불러오기 성공")
-                print(data)
                 self.boxOfficeList = data.boxOfficeResult.dailyBoxOfficeList
                 self.boxOfficeTableView.reloadData()
             case .failure(let error):
@@ -155,15 +153,21 @@ class BoxOfficeViewController: UIViewController {
 
 extension BoxOfficeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return boxOfficeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = boxOfficeTableView.dequeueReusableCell(withIdentifier: BoxOfficeTableViewCell.id, for: indexPath) as! BoxOfficeTableViewCell
         
+        let idx = indexPath.row
+        let boxOffice = boxOfficeList[idx]
+        
+        cell.selectionStyle = .none
+        
         cell.configureCellHierarchy()
         cell.configureCellLayout()
         cell.configureCellUI()
+        cell.configureCellData(data: boxOffice)
         
         return cell
     }

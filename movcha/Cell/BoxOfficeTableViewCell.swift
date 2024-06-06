@@ -32,7 +32,7 @@ class BoxOfficeTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
     }
     
     func configureCellHierarchy() {
@@ -61,7 +61,7 @@ class BoxOfficeTableViewCell: UITableViewCell {
         mvNameAudiStack.axis = .vertical
         mvNameAudiStack.alignment = .fill
         mvNameAudiStack.distribution = .fill
-        mvNameAudiStack.spacing = 8
+        mvNameAudiStack.spacing = 4
         
         nameLabel.snp.makeConstraints { make in
             make.height.equalTo(22)
@@ -90,24 +90,21 @@ class BoxOfficeTableViewCell: UITableViewCell {
         rankLabel.layer.cornerRadius = rankLabel.frame.width / 2
         rankLabel.layer.borderColor = Color.Primary.pink.cgColor
     
-        nameLabel.font = .systemFont(ofSize: 22, weight: .heavy)
-//        nameLabel.backgroundColor = .blue
+        nameLabel.font = .systemFont(ofSize: 18, weight: .heavy)
         
         audiAccLabel.font = .systemFont(ofSize: 12)
-//        audiAccLabel.backgroundColor = .yellow
         
         openDateLabel.textAlignment = .right
         openDateLabel.font = .systemFont(ofSize: 12)
         openDateLabel.textColor = .gray
-        
-        // 임시 데이터
-        rankLabel.text = "1"
-        nameLabel.text = "서울의 봄"
-        audiAccLabel.text = "누적관객수: 126,456,789"
-        openDateLabel.text = "00.00.00 개봉"
     }
     
-
+    func configureCellData(data: BoxOfficeList) {
+        rankLabel.text = data.rank
+        nameLabel.text = data.movieNm
+        audiAccLabel.text = "누적관객수: \(data.audiAcc)"
+        openDateLabel.text = "\(data.openDt) 개봉"
+    }
 }
 
 
