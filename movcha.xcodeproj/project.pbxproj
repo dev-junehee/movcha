@@ -22,6 +22,8 @@
 		C46197292C0F2AE3007D3B6B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197282C0F2AE3007D3B6B /* UIViewController+Extension.swift */; };
 		C46197612C11ACE1007D3B6B /* BoxOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197602C11ACE1007D3B6B /* BoxOfficeViewController.swift */; };
 		C46197632C11AF3C007D3B6B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C46197622C11AF3C007D3B6B /* .gitignore */; };
+		C46197672C11B10B007D3B6B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197662C11B10B007D3B6B /* API.swift */; };
+		C461976A2C11B37E007D3B6B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C46197692C11B37E007D3B6B /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,7 @@
 		C46197282C0F2AE3007D3B6B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		C46197602C11ACE1007D3B6B /* BoxOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeViewController.swift; sourceTree = "<group>"; };
 		C46197622C11AF3C007D3B6B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		C46197662C11B10B007D3B6B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +53,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C46197242C0F27BA007D3B6B /* SnapKit in Frameworks */,
+				C461976A2C11B37E007D3B6B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +92,7 @@
 				C461970C2C0F2012007D3B6B /* LaunchScreen.storyboard */,
 				C461970A2C0F2012007D3B6B /* Assets.xcassets */,
 				C461970F2C0F2012007D3B6B /* Info.plist */,
+				C46197662C11B10B007D3B6B /* API.swift */,
 			);
 			path = movcha;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			name = movcha;
 			packageProductDependencies = (
 				C46197232C0F27BA007D3B6B /* SnapKit */,
+				C46197692C11B37E007D3B6B /* Alamofire */,
 			);
 			productName = movcha;
 			productReference = C46196FE2C0F2011007D3B6B /* movcha.app */;
@@ -184,6 +190,7 @@
 			mainGroup = C46196F52C0F2011007D3B6B;
 			packageReferences = (
 				C46197222C0F27BA007D3B6B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C46197682C11B37E007D3B6B /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = C46196FF2C0F2011007D3B6B /* Products */;
 			projectDirPath = "";
@@ -213,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C46197672C11B10B007D3B6B /* API.swift in Sources */,
 				C46197292C0F2AE3007D3B6B /* UIViewController+Extension.swift in Sources */,
 				C461971F2C0F2352007D3B6B /* SignUpViewController.swift in Sources */,
 				C461971D2C0F22DE007D3B6B /* HomeViewController.swift in Sources */,
@@ -467,6 +475,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		C46197682C11B37E007D3B6B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -474,6 +490,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C46197222C0F27BA007D3B6B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		C46197692C11B37E007D3B6B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C46197682C11B37E007D3B6B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
