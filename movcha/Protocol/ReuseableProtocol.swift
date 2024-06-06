@@ -5,8 +5,20 @@
 //  Created by junehee on 6/4/24.
 //
 
-import Foundation
+import UIKit
 
 protocol ReuseableProtocol: AnyObject {
-    static var identifier: String { get }
+    static var id: String { get }
+}
+
+extension UIViewController: ReuseableProtocol {
+    static var id: String {
+        return String(describing: self)
+    }
+}
+
+extension UITableViewCell: ReuseableProtocol {
+    static var id: String {
+        return String(describing: self)
+    }
 }

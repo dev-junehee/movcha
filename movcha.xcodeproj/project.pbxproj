@@ -24,6 +24,8 @@
 		C46197632C11AF3C007D3B6B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C46197622C11AF3C007D3B6B /* .gitignore */; };
 		C46197672C11B10B007D3B6B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197662C11B10B007D3B6B /* API.swift */; };
 		C461976A2C11B37E007D3B6B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C46197692C11B37E007D3B6B /* Alamofire */; };
+		C461976E2C11F706007D3B6B /* BoxOfficeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461976D2C11F706007D3B6B /* BoxOfficeTableViewCell.swift */; };
+		C46197702C121714007D3B6B /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461976F2C121714007D3B6B /* UITextField+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		C46197602C11ACE1007D3B6B /* BoxOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeViewController.swift; sourceTree = "<group>"; };
 		C46197622C11AF3C007D3B6B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C46197662C11B10B007D3B6B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C461976D2C11F706007D3B6B /* BoxOfficeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeTableViewCell.swift; sourceTree = "<group>"; };
+		C461976F2C121714007D3B6B /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 				C46197182C0F2193007D3B6B /* Protocol */,
 				C46197192C0F2198007D3B6B /* Extension */,
 				C46197172C0F2133007D3B6B /* Controllers */,
+				C461976B2C11F6A7007D3B6B /* Cell */,
 				C46197162C0F212E007D3B6B /* Model */,
 				C46197012C0F2011007D3B6B /* AppDelegate.swift */,
 				C46197032C0F2011007D3B6B /* SceneDelegate.swift */,
@@ -128,6 +133,7 @@
 			children = (
 				C46197202C0F23B0007D3B6B /* UIView+Extension.swift */,
 				C46197282C0F2AE3007D3B6B /* UIViewController+Extension.swift */,
+				C461976F2C121714007D3B6B /* UITextField+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -138,6 +144,14 @@
 				C46197262C0F29B4007D3B6B /* Common.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		C461976B2C11F6A7007D3B6B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C461976D2C11F706007D3B6B /* BoxOfficeTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,12 +237,14 @@
 				C46197672C11B10B007D3B6B /* API.swift in Sources */,
 				C46197292C0F2AE3007D3B6B /* UIViewController+Extension.swift in Sources */,
 				C461971F2C0F2352007D3B6B /* SignUpViewController.swift in Sources */,
+				C461976E2C11F706007D3B6B /* BoxOfficeTableViewCell.swift in Sources */,
 				C461971D2C0F22DE007D3B6B /* HomeViewController.swift in Sources */,
 				C461971B2C0F21FB007D3B6B /* ReuseableProtocol.swift in Sources */,
 				C46197062C0F2011007D3B6B /* ViewController.swift in Sources */,
 				C46197212C0F23B0007D3B6B /* UIView+Extension.swift in Sources */,
 				C46197272C0F29B4007D3B6B /* Common.swift in Sources */,
 				C46197022C0F2011007D3B6B /* AppDelegate.swift in Sources */,
+				C46197702C121714007D3B6B /* UITextField+Extension.swift in Sources */,
 				C46197612C11ACE1007D3B6B /* BoxOfficeViewController.swift in Sources */,
 				C46197042C0F2011007D3B6B /* SceneDelegate.swift in Sources */,
 			);

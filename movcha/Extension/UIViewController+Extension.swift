@@ -8,5 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    
+//    func setMainTitle(_ title: String) {
+//        
+//    }
 }
