@@ -60,6 +60,7 @@ class BoxOfficeViewController: UIViewController {
         configureLayout()
         configureUI()
         configureData()
+        configureHandler()
         callRequest()
     }
     
@@ -78,6 +79,7 @@ class BoxOfficeViewController: UIViewController {
         boxOfficeTableView.dataSource = self
         boxOfficeTableView.register(BoxOfficeTableViewCell.self, forCellReuseIdentifier: BoxOfficeTableViewCell.id)
         boxOfficeTableView.separatorStyle = .none
+        boxOfficeTableView.keyboardDismissMode = .onDrag
     }
     
     func configureLayout() {
@@ -135,6 +137,10 @@ class BoxOfficeViewController: UIViewController {
         searchButton.setTitle("검색", for: .normal)
     }
     
+    func configureHandler() {
+        searchButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
+    }
+    
     func callRequest() {
         let URL = "\(API.URL.boxOffice)?key=\(API.KEY.movie)&targetDt=\(searchDate)"
         AF.request(URL).responseDecodable(of: BoxOfficeResponse.self) { res in
@@ -149,8 +155,14 @@ class BoxOfficeViewController: UIViewController {
             }
         }
     }
+    
+    @objc func searchButtonClicked() {
+        view.endEditing(true)
+    }
 }
 
+
+// MARK: BoxOfficeViewController Extension
 extension BoxOfficeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return boxOfficeList.count
