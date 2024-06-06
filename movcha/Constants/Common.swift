@@ -12,6 +12,7 @@ struct Text {
     struct TabBar {
         static let home = "홈"
         static let signUp = "회원가입"
+        static let boxOffice = "박스오피스"
     }
     
     struct Home {
@@ -22,13 +23,18 @@ struct Text {
         static let title = "MOVCHA"
     }
     
+    struct BoxOffice {
+        
+    }
+    
 }
 
 // MARK: Image 이미지
 // 시스템 이미지
 struct SystemImage {
-    static let home = "house.fill"
-    static let signUp = "person.crop.circle.fill.badge.plus"
+    static let home = UIImage(systemName: "house.fill")
+    static let signUp = UIImage(systemName: "person.crop.circle.fill.badge.plus")
+    static let boxOffice = UIImage(systemName: "movieclapper.fill")
 }
 
 // MARK: Color 컬러

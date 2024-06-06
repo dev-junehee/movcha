@@ -20,19 +20,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // MARK: TabBar Controller 탭 바 컨트롤러
         let homeViewController = UINavigationController(rootViewController: HomeViewController())
+        let boxOfficeController = UINavigationController(rootViewController: BoxOfficeViewController())
         let signUpViewController = UINavigationController(rootViewController: SignUpViewController())
         
-        let controllers = [homeViewController, signUpViewController]
+        let controllers = [homeViewController, boxOfficeController, signUpViewController]
         
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers(controllers, animated: true)
         
         if let items = tabBarController.tabBar.items {
             items[0].title = Text.TabBar.home
-            items[0].image = UIImage(systemName: SystemImage.home)
+            items[0].image = SystemImage.home
             
-            items[1].title = Text.TabBar.signUp
-            items[1].image = UIImage(systemName: SystemImage.signUp)
+            items[1].title = Text.TabBar.boxOffice
+            items[1].image = SystemImage.boxOffice
+            
+            items[2].title = Text.TabBar.signUp
+            items[2].image = SystemImage.signUp
         }
         
         tabBarController.view.backgroundColor = .systemBackground

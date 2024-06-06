@@ -20,6 +20,7 @@
 		C46197242C0F27BA007D3B6B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C46197232C0F27BA007D3B6B /* SnapKit */; };
 		C46197272C0F29B4007D3B6B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197262C0F29B4007D3B6B /* Common.swift */; };
 		C46197292C0F2AE3007D3B6B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197282C0F2AE3007D3B6B /* UIViewController+Extension.swift */; };
+		C46197612C11ACE1007D3B6B /* BoxOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197602C11ACE1007D3B6B /* BoxOfficeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		C46197202C0F23B0007D3B6B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C46197262C0F29B4007D3B6B /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		C46197282C0F2AE3007D3B6B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		C46197602C11ACE1007D3B6B /* BoxOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				C46197052C0F2011007D3B6B /* ViewController.swift */,
 				C461971C2C0F22DE007D3B6B /* HomeViewController.swift */,
 				C461971E2C0F2352007D3B6B /* SignUpViewController.swift */,
+				C46197602C11ACE1007D3B6B /* BoxOfficeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				C46197212C0F23B0007D3B6B /* UIView+Extension.swift in Sources */,
 				C46197272C0F29B4007D3B6B /* Common.swift in Sources */,
 				C46197022C0F2011007D3B6B /* AppDelegate.swift in Sources */,
+				C46197612C11ACE1007D3B6B /* BoxOfficeViewController.swift in Sources */,
 				C46197042C0F2011007D3B6B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
