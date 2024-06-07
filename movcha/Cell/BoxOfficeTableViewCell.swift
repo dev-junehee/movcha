@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+import SkeletonView
 import SnapKit
 
 class BoxOfficeTableViewCell: UITableViewCell {
@@ -20,6 +22,9 @@ class BoxOfficeTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.isSkeletonable = true
+        self.contentView.isSkeletonable = true
         
         configureCellHierarchy()
         configureCellLayout()
@@ -44,6 +49,10 @@ class BoxOfficeTableViewCell: UITableViewCell {
         let subViews = [rankLabel, mvNameAudiStack, openDateLabel]
         subViews.forEach {
             contentView.addSubview($0)
+        }
+        
+        subViews.forEach {
+            $0.isSkeletonable = true
         }
     }
     

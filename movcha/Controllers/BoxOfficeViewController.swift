@@ -6,7 +6,9 @@
 //
 
 import UIKit
+
 import Alamofire
+import SkeletonView
 import SnapKit
 
 struct BoxOfficeResponse: Decodable {
@@ -54,9 +56,19 @@ class BoxOfficeViewController: UIViewController {
     
     var searchDate = "20240605"
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        boxOfficeTableView.isSkeletonable = true
+        boxOfficeTableView.showGradientSkeleton()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+          self.view.hideSkeleton()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         configureHierarchy()
         configureLayout()
         configureUI()
@@ -79,6 +91,7 @@ class BoxOfficeViewController: UIViewController {
         boxOfficeTableView.delegate = self
         boxOfficeTableView.dataSource = self
         boxOfficeTableView.register(BoxOfficeTableViewCell.self, forCellReuseIdentifier: BoxOfficeTableViewCell.id)
+        
         boxOfficeTableView.separatorStyle = .none
         boxOfficeTableView.keyboardDismissMode = .onDrag
     }
@@ -149,7 +162,7 @@ class BoxOfficeViewController: UIViewController {
             case .success(let data):
                 print("영진위 데이터 불러오기 성공")
                 self.boxOfficeList = data.boxOfficeResult.dailyBoxOfficeList
-                self.boxOfficeTableView.reloadData()
+                self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
             case .failure(let error):
                 print("영진위 API 통신 실패")
                 print(error)
@@ -179,7 +192,9 @@ class BoxOfficeViewController: UIViewController {
 
 
 // MARK: BoxOfficeViewController Extension
-extension BoxOfficeViewController: UITableViewDelegate, UITableViewDataSource {
+
+extension BoxOfficeViewController: UITableViewDelegate, UITableViewDataSource, SkeletonTableViewDataSource {
+    // Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return boxOfficeList.count
     }
@@ -203,4 +218,19 @@ extension BoxOfficeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
+    
+    // Skeleton View
+    func numSections(in collectionSkeletonView: UITableView) -> Int {
+        return 1
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return boxOfficeList.count
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+        return BoxOfficeTableViewCell.id
+    }
+    
 }

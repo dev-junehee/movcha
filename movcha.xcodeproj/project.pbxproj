@@ -26,6 +26,8 @@
 		C461976A2C11B37E007D3B6B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C46197692C11B37E007D3B6B /* Alamofire */; };
 		C461976E2C11F706007D3B6B /* BoxOfficeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461976D2C11F706007D3B6B /* BoxOfficeTableViewCell.swift */; };
 		C46197702C121714007D3B6B /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461976F2C121714007D3B6B /* UITextField+Extension.swift */; };
+		C46197752C12EF1D007D3B6B /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = C46197742C12EF1D007D3B6B /* SkeletonView */; };
+		C46197772C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197762C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,7 @@
 		C46197662C11B10B007D3B6B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C461976D2C11F706007D3B6B /* BoxOfficeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeTableViewCell.swift; sourceTree = "<group>"; };
 		C461976F2C121714007D3B6B /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		C46197762C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonTableViewProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C46197242C0F27BA007D3B6B /* SnapKit in Frameworks */,
+				C46197752C12EF1D007D3B6B /* SkeletonView in Frameworks */,
 				C461976A2C11B37E007D3B6B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				C461971A2C0F21FB007D3B6B /* ReuseableProtocol.swift */,
+				C46197762C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 			packageProductDependencies = (
 				C46197232C0F27BA007D3B6B /* SnapKit */,
 				C46197692C11B37E007D3B6B /* Alamofire */,
+				C46197742C12EF1D007D3B6B /* SkeletonView */,
 			);
 			productName = movcha;
 			productReference = C46196FE2C0F2011007D3B6B /* movcha.app */;
@@ -205,6 +211,7 @@
 			packageReferences = (
 				C46197222C0F27BA007D3B6B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				C46197682C11B37E007D3B6B /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C46197732C12EF1D007D3B6B /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = C46196FF2C0F2011007D3B6B /* Products */;
 			projectDirPath = "";
@@ -238,6 +245,7 @@
 				C46197292C0F2AE3007D3B6B /* UIViewController+Extension.swift in Sources */,
 				C461971F2C0F2352007D3B6B /* SignUpViewController.swift in Sources */,
 				C461976E2C11F706007D3B6B /* BoxOfficeTableViewCell.swift in Sources */,
+				C46197772C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift in Sources */,
 				C461971D2C0F22DE007D3B6B /* HomeViewController.swift in Sources */,
 				C461971B2C0F21FB007D3B6B /* ReuseableProtocol.swift in Sources */,
 				C46197062C0F2011007D3B6B /* ViewController.swift in Sources */,
@@ -499,6 +507,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		C46197732C12EF1D007D3B6B /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -511,6 +527,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C46197682C11B37E007D3B6B /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		C46197742C12EF1D007D3B6B /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C46197732C12EF1D007D3B6B /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
