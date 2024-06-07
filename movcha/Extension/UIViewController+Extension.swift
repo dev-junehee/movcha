@@ -40,4 +40,16 @@ extension UIViewController {
             navigationItem.rightBarButtonItem = barButton
         }
     }
+    
+    // MARK: Alert 얼럿
+    func showAlert(_ title: String, message: String?) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert)
+        
+        let warning = UIAlertAction(title: Text.Button.ok, style: .default)
+        alert.addAction(warning)
+        present(alert, animated: true)
+    }
 }

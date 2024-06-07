@@ -61,7 +61,7 @@ class SignUpViewController: UIViewController {
         }
         
         emailField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(80)
+            make.top.equalTo(titleLabel.snp.bottom).offset(48)
             make.centerX.equalTo(view)
             make.size.equalTo(CGSize(width: 300, height: 40))
         }
@@ -179,7 +179,7 @@ extension SignUpViewController {
     // 회원가입 텍스트 필드 UI 세팅
     func setSignUpTextFieldUI(_ textField: UITextField) {
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = Color.Primary.gray2.cgColor
+        textField.layer.borderColor = Color.Primary.gray6.cgColor
         textField.layer.cornerRadius = 8
         textField.font = .systemFont(ofSize: 12)
         textField.addPadding(type: .left, amount: 12)

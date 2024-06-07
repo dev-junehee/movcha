@@ -159,12 +159,16 @@ class BoxOfficeViewController: UIViewController {
     
     @objc func searchButtonClicked() {
         // 유효성 검사
-        guard dateTextField.validationText() else {
-            print("유효성검사 실패")
+        let res = dateTextField.validationText()
+
+        if !(res[0] as! Bool) {
+            let title = res[1] as! String
+            showAlert(title, message: nil)
             return
         }
-        searchDate = dateTextField.text ?? "20240606"
+        
         // 유효성 검사 통과 시 다시 callRequest
+        searchDate = dateTextField.text ?? searchDate
         callRequest()
         
         // textField 클리어 & 키보드 내리기

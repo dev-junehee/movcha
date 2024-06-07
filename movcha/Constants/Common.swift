@@ -38,8 +38,10 @@ struct Text {
     
     struct Button {
         static let search = "검색"
+        static let ok = "확인"
     }
 }
+
 
 // MARK: Image 이미지
 // 시스템 이미지
@@ -49,6 +51,7 @@ struct SystemImage {
     static let boxOffice = UIImage(systemName: "movieclapper.fill")
     static let back = UIImage(systemName: "chevron.backward")
 }
+
 
 // MARK: Color 컬러
 struct Color {

@@ -30,33 +30,30 @@ extension UITextField {
         attributedPlaceholder = NSAttributedString(string: string, attributes: [.foregroundColor: color])
     }
     
-    // 텍스트 필드 유효성 검사
-    /** 
+    /**
      길이가 8자리일때 / 8자리 아닐 때
      숫자만 있을 때 / 숫자 외
      앞 뒤 공백 자르기
      공백만 있을 때
     */
-    func validationText() -> Bool {
+    // 텍스트 필드 유효성 검사
+    func validationText() -> [Any] {
         guard let text = self.text else {
-            return false
+            return [false]
         }
         
         if text.isEmpty {
-            print("공백입니다. 원하는 날짜를 입력해 주세요.")
-            return false
+            return [false, "공백입니다.\n날짜를 입력해 주세요!"]
         }
         
         if Int(text) == nil {
-            print("8자리 숫자만 입력해 주세요")
-            return false
+            return [false, "8자리 숫자만 입력해 주세요!"]
         }
         
         if text.count != 8 {
-            print("8자리를 입력해 주세요")
-            return false
+            return [false, "8자리를 입력해 주세요!"]
         }
         
-        return true
+        return [true]
     }
 }
