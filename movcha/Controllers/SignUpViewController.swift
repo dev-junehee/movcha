@@ -18,11 +18,13 @@ class SignUpViewController: UIViewController {
     let locationField = UITextField()
     let recommendField = UITextField()
     
+    var signUpTextFields: [UITextField] = []
+    
     let signUpButton = UIButton()
     
     let addInfoLabel = UILabel()
     let addInfoSwitch = UISwitch()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,9 +47,9 @@ class SignUpViewController: UIViewController {
         }
         
         // 텍스트 필드 Delegate
-        let textFields = [emailField, passwordField, nicknameField, locationField, recommendField]
+        signUpTextFields = [emailField, passwordField, nicknameField, locationField, recommendField]
         
-        textFields.forEach {
+        signUpTextFields.forEach {
             $0.delegate = self
         }
     }
@@ -109,40 +111,9 @@ class SignUpViewController: UIViewController {
         titleLabel.font = .systemFont(ofSize: 44, weight: .black)
         titleLabel.textColor = Color.Primary.pink
         
-        emailField.backgroundColor = Color.Primary.gray6
-        emailField.layer.borderWidth = 1
-        emailField.layer.borderColor = Color.Primary.gray4.cgColor
-        emailField.layer.cornerRadius = 8
-        emailField.font = .systemFont(ofSize: 12)
-        emailField.addPadding(type: .left, amount: 12)
-        
-        passwordField.backgroundColor = Color.Primary.gray6
-        passwordField.layer.borderWidth = 1
-        passwordField.layer.borderColor = Color.Primary.gray4.cgColor
-        passwordField.layer.cornerRadius = 8
-        passwordField.font = .systemFont(ofSize: 12)
-        passwordField.addPadding(type: .left, amount: 12)
-        
-        nicknameField.backgroundColor = Color.Primary.gray6
-        nicknameField.layer.borderWidth = 1
-        nicknameField.layer.borderColor = Color.Primary.gray4.cgColor
-        nicknameField.layer.cornerRadius = 8
-        nicknameField.font = .systemFont(ofSize: 12)
-        nicknameField.addPadding(type: .left, amount: 12)
-        
-        locationField.backgroundColor = Color.Primary.gray6
-        locationField.layer.borderWidth = 1
-        locationField.layer.borderColor = Color.Primary.gray4.cgColor
-        locationField.layer.cornerRadius = 8
-        locationField.font = .systemFont(ofSize: 12)
-        locationField.addPadding(type: .left, amount: 12)
-
-        recommendField.backgroundColor = Color.Primary.gray6
-        recommendField.layer.borderWidth = 1
-        recommendField.layer.borderColor = Color.Primary.gray4.cgColor
-        recommendField.layer.cornerRadius = 8
-        recommendField.font = .systemFont(ofSize: 12)
-        recommendField.addPadding(type: .left, amount: 12)
+        signUpTextFields.forEach {
+            setSignUpTextFieldUI($0)
+        }
         
         addInfoLabel.textColor = Color.Primary.gray2
         addInfoLabel.font = .systemFont(ofSize: 14)
@@ -157,12 +128,17 @@ class SignUpViewController: UIViewController {
 
     func configureData() {
         titleLabel.text = Text.Title.movcha
-        
-        emailField.setPlaceholder(string: Text.SignUp.Placeholder.email, color: .lightGray)
-        passwordField.setPlaceholder(string: Text.SignUp.Placeholder.password, color: .lightGray)
-        nicknameField.setPlaceholder(string: Text.SignUp.Placeholder.nickname, color: .lightGray)
-        locationField.setPlaceholder(string: Text.SignUp.Placeholder.location, color: .lightGray)
-        recommendField.setPlaceholder(string: Text.SignUp.Placeholder.recommend, color: .lightGray)
+
+        let placeholders = [
+            Text.SignUp.Placeholder.email,
+            Text.SignUp.Placeholder.password,
+            Text.SignUp.Placeholder.nickname,
+            Text.SignUp.Placeholder.location,
+            Text.SignUp.Placeholder.recommend
+        ]
+        signUpTextFields.enumerated().forEach {
+            $0.element.setPlaceholder(string: placeholders[$0.offset], color: Color.Primary.gray2)
+        }
         
         signUpButton.setTitle(Text.Title.signUp, for: .normal)
         addInfoLabel.text = Text.SignUp.addInfo
@@ -196,7 +172,20 @@ class SignUpViewController: UIViewController {
     
 }
 
+
 // MARK: 회원가입 컨트롤러 익스텐션
+
+extension SignUpViewController {
+    // 회원가입 텍스트 필드 UI 세팅
+    func setSignUpTextFieldUI(_ textField: UITextField) {
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = Color.Primary.gray2.cgColor
+        textField.layer.cornerRadius = 8
+        textField.font = .systemFont(ofSize: 12)
+        textField.addPadding(type: .left, amount: 12)
+    }
+}
+
 extension SignUpViewController: UITextFieldDelegate {
     // 리턴 키 눌렀을 때 다음 텍스트 필드로 이동
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
