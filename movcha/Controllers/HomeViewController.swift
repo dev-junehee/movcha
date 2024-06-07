@@ -11,9 +11,15 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("홈 화면 진입")
+        
+        configureBarBtn()
     }
     
-
-
+    func configureBarBtn() {
+        addImgBarBtn(title: nil, image: SystemImage.signUp!, target: self, action: #selector(signUpBarButtonClicked), type: .right, color: Color.Primary.pink)
+    }
+    
+    @objc func signUpBarButtonClicked() {
+        navigationController?.pushViewController(SignUpViewController(), animated: true)
+    }
 }

@@ -35,6 +35,7 @@ struct SystemImage {
     static let home = UIImage(systemName: "house.fill")
     static let signUp = UIImage(systemName: "person.crop.circle.fill.badge.plus")
     static let boxOffice = UIImage(systemName: "movieclapper.fill")
+    static let back = UIImage(systemName: "chevron.backward")
 }
 
 // MARK: Color 컬러

@@ -25,15 +25,17 @@ class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("회원가입 화면 진입")
-        
+
         configureHierarchy()
         configureLayout()
         configureUI()
         configureData()
+        configureBarBtn()
     }
     
     func configureHierarchy() {
+        view.backgroundColor = .systemBackground
+        
         let subViews: [UIView] = [titleLabel, emailField, passwordField, nicknameField, locationField, recommendField, signUpButton, addInfoLabel, addInfoSwitch]
         
         for subview in subViews {
@@ -141,5 +143,13 @@ class SignUpViewController: UIViewController {
         recommendField.placeholder = "추천 코드"
         signUpButton.setTitle("회원가입", for: .normal)
         addInfoLabel.text = "추가 정보 입력"
+    }
+    
+    func configureBarBtn() {
+        addImgBarBtn(title: nil, image: SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Color.Primary.pink)
+    }
+    
+    @objc func backBarBtnClicked() {
+        navigationController?.popViewController(animated: true)
     }
 }
