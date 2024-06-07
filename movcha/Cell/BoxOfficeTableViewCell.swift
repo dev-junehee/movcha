@@ -81,7 +81,7 @@ class BoxOfficeTableViewCell: UITableViewCell {
     }
 
     func configureCellUI() {
-        contentView.backgroundColor = Color.Primary.gray
+        contentView.backgroundColor = Color.Primary.gray6
         contentView.layer.cornerRadius = 10
         
         rankLabel.font = .systemFont(ofSize: 16, weight: .semibold)

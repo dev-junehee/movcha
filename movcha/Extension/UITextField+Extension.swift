@@ -20,7 +20,7 @@ extension UITextField {
             self.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: amount, height: 0.0))
             self.leftViewMode = .always
         case .right:
-            self.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
+            self.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: amount, height: 0.0))
             self.rightViewMode = .always
         }
     }

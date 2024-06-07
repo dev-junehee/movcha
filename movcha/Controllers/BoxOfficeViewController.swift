@@ -122,7 +122,7 @@ class BoxOfficeViewController: UIViewController {
         dateTextField.borderStyle = .none
         dateTextField.layer.borderWidth = 1
         dateTextField.layer.cornerRadius = 10
-        dateTextField.layer.borderColor = Color.Primary.gray.cgColor
+        dateTextField.layer.borderColor = Color.Primary.gray6.cgColor
         dateTextField.font = .systemFont(ofSize: 12)
         dateTextField.keyboardType = .numberPad
         dateTextField.addPadding(type: .left, amount: 12)
@@ -133,9 +133,9 @@ class BoxOfficeViewController: UIViewController {
     }
     
     func configureData() {
-        mainTitle.text = "박스오피스"
-        dateTextField.setPlaceholder(string: "원하는 날짜를 입력해 주세요! (e.g. 20231206)", color: .gray)
-        searchButton.setTitle("검색", for: .normal)
+        mainTitle.text = Text.Title.boxOffice
+        dateTextField.setPlaceholder(string: Text.BoxOffice.placeholder, color: Color.Primary.gray2)
+        searchButton.setTitle(Text.Button.search, for: .normal)
     }
     
     func configureHandler() {
