@@ -49,10 +49,8 @@ class BoxOfficeTableViewCell: UITableViewCell {
         let subViews = [rankLabel, mvNameAudiStack, openDateLabel]
         subViews.forEach {
             contentView.addSubview($0)
-        }
-        
-        subViews.forEach {
             $0.isSkeletonable = true
+            $0.showAnimatedSkeleton()
         }
     }
     

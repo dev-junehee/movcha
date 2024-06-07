@@ -61,7 +61,7 @@ class BoxOfficeViewController: UIViewController {
         boxOfficeTableView.isSkeletonable = true
         boxOfficeTableView.showGradientSkeleton()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
           self.view.hideSkeleton()
         }
     }
@@ -161,8 +161,11 @@ class BoxOfficeViewController: UIViewController {
             switch res.result {
             case .success(let data):
                 print("영진위 데이터 불러오기 성공")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                  self.view.hideSkeleton()
+                }
                 self.boxOfficeList = data.boxOfficeResult.dailyBoxOfficeList
-                self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
+                self.boxOfficeTableView.reloadData()
             case .failure(let error):
                 print("영진위 API 통신 실패")
                 print(error)
