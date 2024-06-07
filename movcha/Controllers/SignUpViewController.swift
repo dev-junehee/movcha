@@ -31,15 +31,24 @@ class SignUpViewController: UIViewController {
         configureUI()
         configureData()
         configureBarBtn()
+        configureHandler()
     }
     
     func configureHierarchy() {
         view.backgroundColor = .systemBackground
         
+        // 서브 뷰 추가
         let subViews: [UIView] = [titleLabel, emailField, passwordField, nicknameField, locationField, recommendField, signUpButton, addInfoLabel, addInfoSwitch]
         
         for subview in subViews {
             view.addSubview(subview)
+        }
+        
+        // 텍스트 필드 Delegate
+        let textFields = [emailField, passwordField, nicknameField, locationField, recommendField]
+        
+        textFields.forEach {
+            $0.delegate = self
         }
     }
 
@@ -140,8 +149,6 @@ class SignUpViewController: UIViewController {
         
         signUpButton.backgroundColor = Color.Primary.pink
         signUpButton.setTitleColor(.white, for: .normal)
-        signUpButton.layer.borderWidth = 1
-        signUpButton.layer.borderColor = Color.Primary.gray4.cgColor
         signUpButton.layer.cornerRadius = 10
         signUpButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
         
@@ -165,7 +172,54 @@ class SignUpViewController: UIViewController {
         addImgBarBtn(title: nil, image: SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Color.Primary.pink)
     }
     
+    func configureHandler() {
+        // 탭 제스쳐
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        view.addGestureRecognizer(tapGesture)
+        
+        // 회원가입 버튼
+        signUpButton.addTarget(self, action: #selector(signUpBtnClicked), for: .touchUpInside)
+    }
+    
+    // MARK: 이벤트 핸들러
+    @objc func viewTapped() {
+        view.endEditing(true)
+    }
+    
     @objc func backBarBtnClicked() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func signUpBtnClicked() {
+        view.endEditing(true)
+    }
+    
+}
+
+// MARK: 회원가입 컨트롤러 익스텐션
+extension SignUpViewController: UITextFieldDelegate {
+    // 리턴 키 눌렀을 때 다음 텍스트 필드로 이동
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case self.emailField:
+            self.passwordField.becomeFirstResponder()
+            break
+        case self.passwordField:
+            self.nicknameField.becomeFirstResponder()
+            break
+        case self.nicknameField:
+            self.locationField.becomeFirstResponder()
+            break
+        case self.locationField:
+            self.recommendField.becomeFirstResponder()
+            break
+        case self.recommendField:
+            textField.resignFirstResponder()
+            break
+        default:
+            textField.resignFirstResponder()
+        }
+        
+        return true
     }
 }
