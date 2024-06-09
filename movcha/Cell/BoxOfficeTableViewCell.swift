@@ -37,6 +37,7 @@ class BoxOfficeTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        // 셀 간격 조정
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
     }
     
@@ -56,14 +57,15 @@ class BoxOfficeTableViewCell: UITableViewCell {
     
     func configureCellLayout() {
         rankLabel.snp.makeConstraints { make in
-            make.leading.equalTo(contentView).offset(10)
-            make.size.equalTo(40)
+            make.leading.equalTo(contentView)
             make.centerY.equalTo(contentView)
+            make.width.height.equalTo(50)
         }
         
         mvNameAudiStack.snp.makeConstraints { make in
             make.top.equalTo(contentView).offset(14)
             make.leading.equalTo(rankLabel.snp.trailing).offset(16)
+            make.width.equalTo(150)
         }
         mvNameAudiStack.axis = .vertical
         mvNameAudiStack.alignment = .fill
@@ -82,7 +84,7 @@ class BoxOfficeTableViewCell: UITableViewCell {
             make.trailing.equalTo(contentView).inset(8)
             make.bottom.equalTo(contentView).inset(4)
             make.leading.equalTo(mvNameAudiStack.snp.trailing).offset(16)
-            make.width.equalTo(100)
+            make.width.equalTo(160)
         }
 
     }
@@ -94,16 +96,20 @@ class BoxOfficeTableViewCell: UITableViewCell {
         rankLabel.font = .systemFont(ofSize: 16, weight: .semibold)
         rankLabel.textColor = Color.Primary.pink
         rankLabel.textAlignment = .center
-        rankLabel.layer.cornerRadius = rankLabel.frame.width / 2
-        rankLabel.layer.borderColor = Color.Primary.pink.cgColor
-    
-        nameLabel.font = .systemFont(ofSize: 18, weight: .heavy)
+        rankLabel.clipsToBounds = true
+        rankLabel.layer.cornerRadius = 10
         
+        mvNameAudiStack.clipsToBounds = true
+        mvNameAudiStack.layer.cornerRadius = 8
+        
+        nameLabel.font = .systemFont(ofSize: 18, weight: .heavy)
         audiAccLabel.font = .systemFont(ofSize: 12)
         
         openDateLabel.textAlignment = .right
         openDateLabel.font = .systemFont(ofSize: 12)
         openDateLabel.textColor = .gray
+        openDateLabel.clipsToBounds = true
+        openDateLabel.layer.cornerRadius = 8
     }
     
     func configureCellData(data: BoxOfficeList) {
