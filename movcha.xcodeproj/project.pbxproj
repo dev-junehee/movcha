@@ -28,6 +28,7 @@
 		C46197702C121714007D3B6B /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461976F2C121714007D3B6B /* UITextField+Extension.swift */; };
 		C46197752C12EF1D007D3B6B /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = C46197742C12EF1D007D3B6B /* SkeletonView */; };
 		C46197772C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197762C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift */; };
+		C46197BB2C16DB08007D3B6B /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197BA2C16DB08007D3B6B /* TrendingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		C461976D2C11F706007D3B6B /* BoxOfficeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeTableViewCell.swift; sourceTree = "<group>"; };
 		C461976F2C121714007D3B6B /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		C46197762C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonTableViewProtocol.swift; sourceTree = "<group>"; };
+		C46197BA2C16DB08007D3B6B /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				C461971C2C0F22DE007D3B6B /* HomeViewController.swift */,
 				C461971E2C0F2352007D3B6B /* SignUpViewController.swift */,
 				C46197602C11ACE1007D3B6B /* BoxOfficeViewController.swift */,
+				C46197BA2C16DB08007D3B6B /* TrendingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			files = (
 				C46197672C11B10B007D3B6B /* API.swift in Sources */,
 				C46197292C0F2AE3007D3B6B /* UIViewController+Extension.swift in Sources */,
+				C46197BB2C16DB08007D3B6B /* TrendingViewController.swift in Sources */,
 				C461971F2C0F2352007D3B6B /* SignUpViewController.swift in Sources */,
 				C461976E2C11F706007D3B6B /* BoxOfficeTableViewCell.swift in Sources */,
 				C46197772C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift in Sources */,

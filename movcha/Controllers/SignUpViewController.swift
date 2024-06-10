@@ -10,7 +10,7 @@ import SnapKit
 
 class SignUpViewController: UIViewController {
     
-    let titleLabel = UILabel()
+    let titleImg = UIImageView()
     
     let emailField = UITextField()
     let passwordField = UITextField()
@@ -40,7 +40,7 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         // 서브 뷰 추가
-        let subViews: [UIView] = [titleLabel, emailField, passwordField, nicknameField, locationField, recommendField, signUpButton, addInfoLabel, addInfoSwitch]
+        let subViews: [UIView] = [titleImg, emailField, passwordField, nicknameField, locationField, recommendField, signUpButton, addInfoLabel, addInfoSwitch]
         
         for subview in subViews {
             view.addSubview(subview)
@@ -55,37 +55,39 @@ class SignUpViewController: UIViewController {
     }
 
     func configureLayout() {
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(8)
+        titleImg.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.centerX.equalTo(view)
+            make.width.equalTo(self.titleImg).offset(10)
+            make.height.equalTo(self.titleImg).offset(10)
         }
         
         emailField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(48)
+            make.top.equalTo(titleImg.snp.bottom)
             make.centerX.equalTo(view)
             make.size.equalTo(CGSize(width: 300, height: 40))
         }
         
         passwordField.snp.makeConstraints { make in
-            make.top.equalTo(emailField.snp.bottom).offset(16)
+            make.top.equalTo(emailField.snp.bottom).offset(8)
             make.centerX.equalTo(view)
             make.size.equalTo(CGSize(width: 300, height: 40))
         }
         
         nicknameField.snp.makeConstraints { make in
-            make.top.equalTo(passwordField.snp.bottom).offset(16)
+            make.top.equalTo(passwordField.snp.bottom).offset(8)
             make.centerX.equalTo(view)
             make.size.equalTo(CGSize(width: 300, height: 40))
         }
         
         locationField.snp.makeConstraints { make in
-            make.top.equalTo(nicknameField.snp.bottom).offset(16)
+            make.top.equalTo(nicknameField.snp.bottom).offset(8)
             make.centerX.equalTo(view)
             make.size.equalTo(CGSize(width: 300, height: 40))
         }
         
         recommendField.snp.makeConstraints { make in
-            make.top.equalTo(locationField.snp.bottom).offset(16)
+            make.top.equalTo(locationField.snp.bottom).offset(8)
             make.centerX.equalTo(view)
             make.size.equalTo(CGSize(width: 300, height: 40))
         }
@@ -108,8 +110,7 @@ class SignUpViewController: UIViewController {
     }
     
     func configureUI() {
-        titleLabel.font = .systemFont(ofSize: 44, weight: .black)
-        titleLabel.textColor = Color.Primary.pink
+        titleImg.image = UIImage.movchaLogo
         
         signUpTextFields.forEach {
             setSignUpTextFieldUI($0)
@@ -127,7 +128,7 @@ class SignUpViewController: UIViewController {
     }
 
     func configureData() {
-        titleLabel.text = Text.Title.movcha
+//        titleLabel.text = Text.Title.movcha
 
         let placeholders = [
             Text.SignUp.Placeholder.email,

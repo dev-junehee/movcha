@@ -13,16 +13,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
         guard let _ = (scene as? UIWindowScene) else { return }
         
         // MARK: TabBar Controller 탭 바 컨트롤러
         let homeViewController = UINavigationController(rootViewController: HomeViewController())
-        let boxOfficeController = UINavigationController(rootViewController: BoxOfficeViewController())
+        let boxOfficeViewController = UINavigationController(rootViewController: BoxOfficeViewController())
+        let trendingViewController = UINavigationController(rootViewController: TrendingViewController())
         
-        let controllers = [homeViewController, boxOfficeController]
+        let controllers = [homeViewController, boxOfficeViewController, trendingViewController]
         
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers(controllers, animated: true)
@@ -33,6 +32,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             items[1].title = Text.Title.boxOffice
             items[1].image = SystemImage.boxOffice
+            
+            items[2].title = Text.Title.trending
+            items[2].image = SystemImage.trending
         }
         
         tabBarController.view.backgroundColor = .systemBackground

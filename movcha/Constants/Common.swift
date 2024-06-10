@@ -10,10 +10,11 @@ import UIKit
 // MARK: Text 텍스트
 struct Text {
     struct Title {
+        static let movcha = "MOVCHA"
         static let home = "홈"
         static let signUp = "회원가입"
         static let boxOffice = "박스오피스"
-        static let movcha = "MOVCHA"
+        static let trending = "인기급상승"
     }
     
     struct Home {
@@ -49,6 +50,7 @@ struct SystemImage {
     static let home = UIImage(systemName: "house.fill")
     static let signUp = UIImage(systemName: "person.crop.circle.fill.badge.plus")
     static let boxOffice = UIImage(systemName: "movieclapper.fill")
+    static let trending = UIImage(systemName: "chart.line.uptrend.xyaxis")
     static let back = UIImage(systemName: "chevron.backward")
 }
 
