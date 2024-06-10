@@ -29,6 +29,8 @@
 		C46197752C12EF1D007D3B6B /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = C46197742C12EF1D007D3B6B /* SkeletonView */; };
 		C46197772C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197762C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift */; };
 		C46197BB2C16DB08007D3B6B /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197BA2C16DB08007D3B6B /* TrendingViewController.swift */; };
+		C46197BE2C16DDD2007D3B6B /* BoxOffice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197BD2C16DDD2007D3B6B /* BoxOffice.swift */; };
+		C46197C02C16DDDB007D3B6B /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197BF2C16DDDB007D3B6B /* Trending.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		C461976F2C121714007D3B6B /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		C46197762C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonTableViewProtocol.swift; sourceTree = "<group>"; };
 		C46197BA2C16DB08007D3B6B /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
+		C46197BD2C16DDD2007D3B6B /* BoxOffice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOffice.swift; sourceTree = "<group>"; };
+		C46197BF2C16DDDB007D3B6B /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 		C46197162C0F212E007D3B6B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C46197BD2C16DDD2007D3B6B /* BoxOffice.swift */,
+				C46197BF2C16DDDB007D3B6B /* Trending.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,10 +261,12 @@
 				C46197062C0F2011007D3B6B /* ViewController.swift in Sources */,
 				C46197212C0F23B0007D3B6B /* UIView+Extension.swift in Sources */,
 				C46197272C0F29B4007D3B6B /* Common.swift in Sources */,
+				C46197C02C16DDDB007D3B6B /* Trending.swift in Sources */,
 				C46197022C0F2011007D3B6B /* AppDelegate.swift in Sources */,
 				C46197702C121714007D3B6B /* UITextField+Extension.swift in Sources */,
 				C46197612C11ACE1007D3B6B /* BoxOfficeViewController.swift in Sources */,
 				C46197042C0F2011007D3B6B /* SceneDelegate.swift in Sources */,
+				C46197BE2C16DDD2007D3B6B /* BoxOffice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
