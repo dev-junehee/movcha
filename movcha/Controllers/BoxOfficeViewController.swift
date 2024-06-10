@@ -125,7 +125,7 @@ class BoxOfficeViewController: UIViewController {
     }
     
     func callRequest() {
-        let URL = "\(API.URL.boxOffice)?key=\(API.KEY.movie)&targetDt=\(searchDate)"
+        let URL = "\(API.URL.boxOffice)?key=\(API.KEY.kobis)&targetDt=\(searchDate)"
         AF.request(URL).responseDecodable(of: BoxOfficeResponse.self) { res in
             switch res.result {
             case .success(let data):
