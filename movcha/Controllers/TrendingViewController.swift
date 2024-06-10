@@ -14,7 +14,7 @@ class TrendingViewController: UIViewController {
 
     let mainTitle = UILabel()
     let trendingTableView = UITableView()
-    
+
     var trendingList: [TrendingResults] = []
     
     override func viewDidLoad() {
@@ -54,7 +54,6 @@ class TrendingViewController: UIViewController {
     
     func configureUI() {
         mainTitle.font = .systemFont(ofSize: 40, weight: .black)
-
     }
     
     func configureData() {
@@ -74,7 +73,6 @@ class TrendingViewController: UIViewController {
         .responseDecodable(of: Trending.self) { res in
             switch res.result {
             case .success(let value):
-                print("성공")
                 self.trendingList = value.results
                 self.trendingTableView.reloadData()
             case .failure(let error):
@@ -113,7 +111,7 @@ extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
         
         let idx = indexPath.row
         let trendingData = trendingList[idx]
-        
+     
         cell.selectionStyle = .none
         
         cell.configureCellHierarchy()

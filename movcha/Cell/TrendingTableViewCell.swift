@@ -36,7 +36,6 @@ class TrendingTableViewCell: UITableViewCell {
     let detailStack = UIStackView()
     let detailLabel = UILabel()
     let detailImgView = UIImageView()
-    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -185,8 +184,8 @@ class TrendingTableViewCell: UITableViewCell {
     }
     
     func configureCellData(data: TrendingResults) {
-        openDateLabel.text = data.release_date
-        genreLabel.text = "#Mystery"
+        openDateLabel.text = data.release_date ?? data.first_air_date
+        genreLabel.text = getGenreString(list: data.genre_ids)
         
         voteLabel.text = Text.Trending.vote
         voteAverage.text = convertDouble(data.vote_average)
@@ -207,4 +206,43 @@ extension TrendingTableViewCell {
         let strDouble = String(format: "%.1f", double)
         return strDouble
     }
+    
+    func getGenreString(list: [Int]) -> String {
+        var strArr: [String] = []
+        list.forEach { id in
+            strArr.append("#\(genres[id] ?? "")")
+        }
+        return strArr.joined(separator: " ")
+    }
 }
+
+// 임시 장르 데이터
+let genres: [Int: String] = [
+    12: "모험",
+    14: "판타지",
+    16: "애니메이션",
+    18: "드라마",
+    27: "공포",
+    28: "액션",
+    35: "코미디",
+    36: "역사",
+    37: "서부",
+    53: "스릴러",
+    80: "범죄",
+    99: "다큐멘터리",
+    878: "SF",
+    9648: "미스터리",
+    10402: "음악",
+    10749: "로맨스",
+    10751: "가족",
+    10752: "전쟁",
+    10759: "어드벤쳐",
+    10762: "키즈",
+    10763: "뉴스",
+    10764: "리얼리티",
+    10765: "SF-Fantasy",
+    10766: "Soap",
+    10767: "Talk",
+    10768: "전쟁",
+    10770: "TV영화",
+]
