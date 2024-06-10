@@ -90,9 +90,10 @@ class TrendingTableViewCell: UITableViewCell {
         dateGenreStack.snp.makeConstraints { make in
             make.top.equalTo(contentView).offset(8)
             make.horizontalEdges.equalTo(contentView).inset(16)
-            make.height.equalTo(40)
+            make.height.equalTo(44)
         }
         dateGenreStack.axis = .vertical
+        dateGenreStack.spacing = 4
         
         cardBackView.snp.makeConstraints { make in
             make.top.equalTo(dateGenreStack.snp.bottom).offset(16)
@@ -114,7 +115,7 @@ class TrendingTableViewCell: UITableViewCell {
             make.leading.equalTo(cardImg.snp.leading).inset(24)
             make.bottom.equalTo(cardImg.snp.bottom).inset(24)
             make.width.equalTo(80)
-            make.height.equalTo(30)
+            make.height.equalTo(26)
         }
         voteStack.axis = .horizontal
         voteStack.distribution = .fillEqually
@@ -142,42 +143,45 @@ class TrendingTableViewCell: UITableViewCell {
     }
     
     func configureCellUI() {
-        // 임시 확인
-        openDateLabel.textColor = .lightGray
-        genreLabel.font = .systemFont(ofSize: 22, weight: .semibold)
+        openDateLabel.textColor = Color.Primary.gray2
+        openDateLabel.font = .systemFont(ofSize: 16)
+        genreLabel.font = .systemFont(ofSize: 20, weight: .semibold)
         
-        cardBackView.backgroundColor = .white
+        cardBackView.backgroundColor = Color.Primary.white
         cardBackView.layer.cornerRadius = 10
-        cardBackView.layer.shadowColor = UIColor.black.cgColor
+        cardBackView.layer.shadowColor = Color.Primary.black.cgColor
         cardBackView.layer.shadowOffset = CGSize(width: 0, height: 0)
         cardBackView.layer.shadowRadius = 10
-        cardBackView.layer.shadowOpacity = 0.4
+        cardBackView.layer.shadowOpacity = 0.5
         
-        cardView.backgroundColor = .white
         cardView.clipsToBounds = true
         cardView.layer.cornerRadius = 10
-        
-//        cardImg.backgroundColor = .blue
-        cardImg.contentMode = .scaleAspectFill
+
         cardImg.clipsToBounds = true
         cardImg.layer.cornerRadius = 10
         cardImg.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        cardImg.contentMode = .scaleAspectFill
         
-        voteStack.backgroundColor = .white
+        voteStack.backgroundColor = Color.Primary.white
         voteLabel.backgroundColor = Color.Primary.pink
         voteLabel.textAlignment = .center
-        voteLabel.textColor = .white
+        voteLabel.textColor = Color.Primary.white
+        voteLabel.font = .systemFont(ofSize: 14, weight: .bold)
         voteAverage.textAlignment = .center
+        voteAverage.font = .systemFont(ofSize: 14, weight: .semibold)
         
-        titleLabel.font = .systemFont(ofSize: 22, weight: .medium)
+        titleLabel.font = .systemFont(ofSize: 22, weight: .bold)
         overviewLabel.font = .systemFont(ofSize: 14)
 
         detailStack.clipsToBounds = true
         detailStack.layer.cornerRadius = 10
         detailStack.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
+        detailLabel.textColor = Color.Primary.gray2
+        detailLabel.font = .systemFont(ofSize: 14)
+        
         detailImgView.contentMode = .scaleAspectFit
-        detailImgView.tintColor = Color.Primary.pink
+        detailImgView.tintColor = Color.Primary.gray2
     }
     
     func configureCellData(data: TrendingResults) {
@@ -185,7 +189,7 @@ class TrendingTableViewCell: UITableViewCell {
         genreLabel.text = "#Mystery"
         
         voteLabel.text = Text.Trending.vote
-        voteAverage.text = "\(data.vote_average)"
+        voteAverage.text = convertDouble(data.vote_average)
         
         let poster = URL(string: "\(API.URL.kmdbImg)\(data.poster_path)")
         cardImg.kf.setImage(with: poster)
@@ -195,5 +199,12 @@ class TrendingTableViewCell: UITableViewCell {
         
         detailLabel.text = Text.Trending.detail
         detailImgView.image = SystemImage.front
+    }
+}
+
+extension TrendingTableViewCell {
+    func convertDouble(_ double: Double) -> String {
+        let strDouble = String(format: "%.1f", double)
+        return strDouble
     }
 }

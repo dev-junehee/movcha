@@ -62,8 +62,6 @@ class TrendingViewController: UIViewController {
     }
     
     func callRequest() {
-//        let URL = "\(API.URL.trending)?language=ko"
-        
         let header: HTTPHeaders = [
             "Authorization": API.KEY.kmdb,
             "accept": "application/json"

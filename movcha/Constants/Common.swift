@@ -73,10 +73,12 @@ struct SystemImage {
 struct Color {
     struct Primary {
         static let black = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
+        static let white = UIColor.white
         static let pink = UIColor(red: 1, green: 0.0196, blue: 0.3451, alpha: 1.0)
         static let gray2 = UIColor.systemGray2
         static let gray4 = UIColor.systemGray4
         static let gray6 = UIColor.systemGray6
+        
     }
 }
 
