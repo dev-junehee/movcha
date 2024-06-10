@@ -21,7 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let boxOfficeViewController = UINavigationController(rootViewController: BoxOfficeViewController())
         let trendingViewController = UINavigationController(rootViewController: TrendingViewController())
         
-        let controllers = [homeViewController, boxOfficeViewController, trendingViewController]
+        // 임시 순서 변경 (기존: 홈 - 박스오피스 - 인기급상승)
+        let controllers = [trendingViewController, homeViewController, boxOfficeViewController]
         
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers(controllers, animated: true)

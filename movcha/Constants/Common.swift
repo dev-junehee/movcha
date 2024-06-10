@@ -51,6 +51,8 @@ struct SystemImage {
     static let signUp = UIImage(systemName: "person.crop.circle.fill.badge.plus")
     static let boxOffice = UIImage(systemName: "movieclapper.fill")
     static let trending = UIImage(systemName: "chart.line.uptrend.xyaxis")
+    static let list = UIImage(systemName: "list.bullet")
+    static let search = UIImage(systemName: "magnifyingglass")
     static let back = UIImage(systemName: "chevron.backward")
 }
 
