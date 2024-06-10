@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Alamofire
 import SnapKit
 
 class TrendingViewController: UIViewController {
@@ -14,12 +15,15 @@ class TrendingViewController: UIViewController {
     let mainTitle = UILabel()
     let trendingTableView = UITableView()
     
+    var trendingList: [TrendingResults] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHierarchy()
         configureLayout()
         configureUI()
         configureData()
+        callRequest()
         setBarButtons()
     }
     
@@ -57,6 +61,32 @@ class TrendingViewController: UIViewController {
         mainTitle.text = Text.Title.trending
     }
     
+    func callRequest() {
+//        let URL = "\(API.URL.trending)?language=ko"
+        
+        let header: HTTPHeaders = [
+            "Authorization": API.KEY.kmdb,
+            "accept": "application/json"
+        ]
+        
+        AF.request(API.URL.trending,
+                   method: .get,
+                   encoding: JSONEncoding.default,
+                   headers: header)
+        .responseDecodable(of: Trending.self) { res in
+            switch res.result {
+            case .success(let value):
+                print("성공")
+                self.trendingList = value.results
+                self.trendingTableView.reloadData()
+            case .failure(let error):
+                print("실패")
+                print(error)
+            }
+        }
+    }
+    
+    
     func setBarButtons() {
         addImgBarBtn(title: nil, image: SystemImage.list!, target: self, action: #selector(menuBtnClicked), type: .left, color: Color.Primary.pink)
         addImgBarBtn(title: nil, image: SystemImage.search!, target: self, action: #selector(searchBtnClicked), type: .right, color: Color.Primary.pink)
@@ -77,18 +107,21 @@ class TrendingViewController: UIViewController {
 extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return trendingList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TrendingTableViewCell.id, for: indexPath) as! TrendingTableViewCell
+        
+        let idx = indexPath.row
+        let trendingData = trendingList[idx]
         
         cell.selectionStyle = .none
         
         cell.configureCellHierarchy()
         cell.configureCellLayout()
         cell.configureCellUI()
-        cell.configureCellData()
+        cell.configureCellData(data: trendingData)
         
         return cell
     }

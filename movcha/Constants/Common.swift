@@ -9,6 +9,7 @@ import UIKit
 
 // MARK: Text 텍스트
 struct Text {
+    // 대표 타이틀
     struct Title {
         static let movcha = "MOVCHA"
         static let home = "홈"
@@ -17,10 +18,12 @@ struct Text {
         static let trending = "인기급상승"
     }
     
+    // 홈
     struct Home {
         
     }
     
+    // 회원가입
     struct SignUp {
         struct Placeholder {
             static let email = "이메일"
@@ -33,10 +36,18 @@ struct Text {
         static let addInfo = "추가 정보 입력하기"
     }
     
+    // 박스오피스
     struct BoxOffice {
         static let placeholder = "원하는 날짜를 입력해 주세요! (e.g. 20231206)"
     }
     
+    // 인기급상승
+    struct Trending {
+        static let vote = "평점"
+        static let detail = "자세히 보기"
+    }
+    
+    // 버튼
     struct Button {
         static let search = "검색"
         static let ok = "확인"
@@ -53,6 +64,7 @@ struct SystemImage {
     static let trending = UIImage(systemName: "chart.line.uptrend.xyaxis")
     static let list = UIImage(systemName: "list.bullet")
     static let search = UIImage(systemName: "magnifyingglass")
+    static let front = UIImage(systemName: "chevron.right")
     static let back = UIImage(systemName: "chevron.backward")
 }
 

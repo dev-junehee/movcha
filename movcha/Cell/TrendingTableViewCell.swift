@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+import Kingfisher
 import SnapKit
 
 class TrendingTableViewCell: UITableViewCell {
@@ -38,10 +40,7 @@ class TrendingTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        // 임시 확인
-//        contentView.backgroundColor = .blue
-        
+  
         configureCellHierarchy()
         configureCellLayout()
         configureCellUI()
@@ -158,7 +157,8 @@ class TrendingTableViewCell: UITableViewCell {
         cardView.clipsToBounds = true
         cardView.layer.cornerRadius = 10
         
-        cardImg.backgroundColor = .blue
+//        cardImg.backgroundColor = .blue
+        cardImg.contentMode = .scaleAspectFill
         cardImg.clipsToBounds = true
         cardImg.layer.cornerRadius = 10
         cardImg.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -180,17 +180,20 @@ class TrendingTableViewCell: UITableViewCell {
         detailImgView.tintColor = Color.Primary.pink
     }
     
-    func configureCellData() {
-        openDateLabel.text = "2022/12/06"
+    func configureCellData(data: TrendingResults) {
+        openDateLabel.text = data.release_date
         genreLabel.text = "#Mystery"
         
-        voteLabel.text = "평점"
-        voteAverage.text = "3.3"
+        voteLabel.text = Text.Trending.vote
+        voteAverage.text = "\(data.vote_average)"
         
-        titleLabel.text = "영화이름"
-        overviewLabel.text = "영화설명이들어갈자리 영화설명이들어갈자리"
+        let poster = URL(string: "\(API.URL.kmdbImg)\(data.poster_path)")
+        cardImg.kf.setImage(with: poster)
+
+        titleLabel.text = data.title ?? data.name
+        overviewLabel.text = data.overview
         
-        detailLabel.text = "자세히 보기"
-        detailImgView.image = UIImage(systemName: "chevron.right")
+        detailLabel.text = Text.Trending.detail
+        detailImgView.image = SystemImage.front
     }
 }
