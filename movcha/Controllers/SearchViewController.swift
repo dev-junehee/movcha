@@ -75,7 +75,7 @@ class SearchViewController: UIViewController {
     }
     
     func setBarButtons() {
-        addImgBarBtn(title: "홈으로 가기", image: SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Color.Primary.pink)
+        addImgBarBtn(title: nil, image: SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Color.Primary.pink)
     }
 
     @objc func backBarBtnClicked() {
