@@ -35,6 +35,8 @@
 		C46197C62C16EF6C007D3B6B /* BoxOffice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197BD2C16DDD2007D3B6B /* BoxOffice.swift */; };
 		C46197CA2C173FDF007D3B6B /* TrendingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197C92C173FDF007D3B6B /* TrendingDetailViewController.swift */; };
 		C46197CD2C174A81007D3B6B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C46197CC2C174A81007D3B6B /* Kingfisher */; };
+		C46197D92C187A21007D3B6B /* TrendingDetailOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197D82C187A21007D3B6B /* TrendingDetailOverviewCell.swift */; };
+		C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,8 @@
 		C46197C12C16E1D2007D3B6B /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
 		C46197C32C16E9D6007D3B6B /* TrendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingTableViewCell.swift; sourceTree = "<group>"; };
 		C46197C92C173FDF007D3B6B /* TrendingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDetailViewController.swift; sourceTree = "<group>"; };
+		C46197D82C187A21007D3B6B /* TrendingDetailOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDetailOverviewCell.swift; sourceTree = "<group>"; };
+		C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDetailCastCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,8 @@
 			children = (
 				C461976D2C11F706007D3B6B /* BoxOfficeTableViewCell.swift */,
 				C46197C32C16E9D6007D3B6B /* TrendingTableViewCell.swift */,
+				C46197D82C187A21007D3B6B /* TrendingDetailOverviewCell.swift */,
+				C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -269,9 +275,11 @@
 				C46197BB2C16DB08007D3B6B /* TrendingViewController.swift in Sources */,
 				C461971F2C0F2352007D3B6B /* SignUpViewController.swift in Sources */,
 				C461976E2C11F706007D3B6B /* BoxOfficeTableViewCell.swift in Sources */,
+				C46197D92C187A21007D3B6B /* TrendingDetailOverviewCell.swift in Sources */,
 				C46197772C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift in Sources */,
 				C461971D2C0F22DE007D3B6B /* HomeViewController.swift in Sources */,
 				C461971B2C0F21FB007D3B6B /* ReuseableProtocol.swift in Sources */,
+				C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */,
 				C46197062C0F2011007D3B6B /* ViewController.swift in Sources */,
 				C46197CA2C173FDF007D3B6B /* TrendingDetailViewController.swift in Sources */,
 				C46197212C0F23B0007D3B6B /* UIView+Extension.swift in Sources */,

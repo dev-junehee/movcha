@@ -190,7 +190,7 @@ class TrendingTableViewCell: UITableViewCell {
         voteLabel.text = Text.Trending.vote
         voteAverage.text = convertDouble(data.vote_average)
         
-        let poster = URL(string: "\(API.URL.kmdbImg)\(data.poster_path)")
+        let poster = URL(string:"\(API.URL.kmdbImg)\(data.backdrop_path)")
         cardImg.kf.setImage(with: poster)
 
         titleLabel.text = data.title ?? data.name
