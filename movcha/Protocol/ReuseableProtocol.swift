@@ -22,3 +22,9 @@ extension UITableViewCell: ReuseableProtocol {
         return String(describing: self)
     }
 }
+
+extension UICollectionViewCell: ReuseableProtocol {
+    static var id: String {
+        return String(describing: self)
+    }
+}
