@@ -39,6 +39,7 @@
 		C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */; };
 		C4B0B9EC2C18922600CC5765 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */; };
 		C4B0B9EE2C18AAAE00CC5765 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9ED2C18AAAE00CC5765 /* SearchCollectionViewCell.swift */; };
+		C4B0B9F02C18B6BC00CC5765 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9EF2C18B6BC00CC5765 /* Search.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDetailCastCell.swift; sourceTree = "<group>"; };
 		C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C4B0B9ED2C18AAAE00CC5765 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		C4B0B9EF2C18B6BC00CC5765 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				C46197BD2C16DDD2007D3B6B /* BoxOffice.swift */,
 				C46197BF2C16DDDB007D3B6B /* Trending.swift */,
 				C46197C12C16E1D2007D3B6B /* Credit.swift */,
+				C4B0B9EF2C18B6BC00CC5765 /* Search.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				C46197702C121714007D3B6B /* UITextField+Extension.swift in Sources */,
 				C46197612C11ACE1007D3B6B /* BoxOfficeViewController.swift in Sources */,
 				C46197C42C16E9D6007D3B6B /* TrendingTableViewCell.swift in Sources */,
+				C4B0B9F02C18B6BC00CC5765 /* Search.swift in Sources */,
 				C46197C62C16EF6C007D3B6B /* BoxOffice.swift in Sources */,
 				C46197042C0F2011007D3B6B /* SceneDelegate.swift in Sources */,
 			);
