@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
         configureLayout()
         configureUI()
         configureData()
-        configureBarBtn()
+        setBarButtons()
     }
     
     func configureHierarchy() {
@@ -46,11 +46,14 @@ class HomeViewController: UIViewController {
         mainTitle.text = Text.Title.home
     }
     
-    func configureBarBtn() {
-        addImgBarBtn(title: nil, image: SystemImage.signUp!, target: self, action: #selector(signUpBarButtonClicked), type: .right, color: Color.Primary.pink)
+    func setBarButtons() {
+        addImgBarBtn(title: nil, image: SystemImage.search!, target: self, action: #selector(searchBtnClicked), type: .right, color: Color.Primary.pink)
+    }
+
+    // MARK: 핸들러
+
+    @objc func searchBtnClicked() {
+        navigationController?.pushViewController(SearchViewController(), animated: true)
     }
     
-    @objc func signUpBarButtonClicked() {
-        navigationController?.pushViewController(SignUpViewController(), animated: true)
-    }
 }

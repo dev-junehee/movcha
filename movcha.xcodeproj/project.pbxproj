@@ -37,6 +37,7 @@
 		C46197CD2C174A81007D3B6B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C46197CC2C174A81007D3B6B /* Kingfisher */; };
 		C46197D92C187A21007D3B6B /* TrendingDetailOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197D82C187A21007D3B6B /* TrendingDetailOverviewCell.swift */; };
 		C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */; };
+		C4B0B9EC2C18922600CC5765 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		C46197C92C173FDF007D3B6B /* TrendingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDetailViewController.swift; sourceTree = "<group>"; };
 		C46197D82C187A21007D3B6B /* TrendingDetailOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDetailOverviewCell.swift; sourceTree = "<group>"; };
 		C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDetailCastCell.swift; sourceTree = "<group>"; };
+		C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				C46197602C11ACE1007D3B6B /* BoxOfficeViewController.swift */,
 				C46197BA2C16DB08007D3B6B /* TrendingViewController.swift */,
 				C46197C92C173FDF007D3B6B /* TrendingDetailViewController.swift */,
+				C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */,
 				C46197062C0F2011007D3B6B /* ViewController.swift in Sources */,
 				C46197CA2C173FDF007D3B6B /* TrendingDetailViewController.swift in Sources */,
+				C4B0B9EC2C18922600CC5765 /* SearchViewController.swift in Sources */,
 				C46197212C0F23B0007D3B6B /* UIView+Extension.swift in Sources */,
 				C46197272C0F29B4007D3B6B /* Common.swift in Sources */,
 				C46197C02C16DDDB007D3B6B /* Trending.swift in Sources */,

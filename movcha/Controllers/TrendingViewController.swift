@@ -24,7 +24,6 @@ class TrendingViewController: UIViewController {
         configureUI()
         configureData()
         callRequest()
-        setBarButtons()
     }
     
     func configureHierarchy() {
@@ -82,20 +81,7 @@ class TrendingViewController: UIViewController {
         }
     }
     
-    
-    func setBarButtons() {
-        addImgBarBtn(title: nil, image: SystemImage.list!, target: self, action: #selector(menuBtnClicked), type: .left, color: Color.Primary.pink)
-        addImgBarBtn(title: nil, image: SystemImage.search!, target: self, action: #selector(searchBtnClicked), type: .right, color: Color.Primary.pink)
-    }
-
-    // MARK: 핸들러
-    @objc func menuBtnClicked() {
-        print(#function)
-    }
-    
-    @objc func searchBtnClicked() {
-        print(#function)
-    }
+   
 }
 
 // MARK: 인기급상승 컨트롤러 익스텐션
