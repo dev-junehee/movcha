@@ -8,11 +8,26 @@
 import UIKit
 
 class TrendingDetailViewController: UIViewController {
+    
+    let trendingData: [TrendingResults] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "TEST"
+        configureNavigation()
+    }
+    
+    func configureNavigation() {
+        setNavigationTitle(Text.Title.trendingDetail)
+        addImgBarBtn(title: nil, image: SystemImage.back! , target: self, action: #selector(backBarBtnClicked), type: .left, color: Color.Primary.pink)
+    }
+    
+    
+    
+    
+    
+    @objc func backBarBtnClicked() {
+        navigationController?.popViewController(animated: true)
     }
     
 }

@@ -128,7 +128,6 @@ class SignUpViewController: UIViewController {
     }
 
     func configureData() {
-//        titleLabel.text = Text.Title.movcha
 
         let placeholders = [
             Text.SignUp.Placeholder.email,

@@ -16,6 +16,7 @@ struct Text {
         static let signUp = "회원가입"
         static let boxOffice = "박스오피스"
         static let trending = "인기급상승"
+        static let trendingDetail = "상세정보"
     }
     
     // 홈
@@ -45,6 +46,11 @@ struct Text {
     struct Trending {
         static let vote = "평점"
         static let detail = "자세히 보기"
+    }
+    
+    // 인기급상승 - 상세정보
+    struct TrendingDetail {
+        
     }
     
     // 버튼

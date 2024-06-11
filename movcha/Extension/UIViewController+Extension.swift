@@ -13,6 +13,10 @@ enum BarButtonType {
 }
 
 extension UIViewController {
+    func setNavigationTitle(_ title: String) {
+        self.navigationItem.title = title
+    }
+    
     // BarButton - text
     func addTextBarBtn(title: String?, style: UIBarButtonItem.Style, target: Any?, action: Selector?, type: BarButtonType, color: UIColor) {
         let barButton = UIBarButtonItem(title: title, style: style, target: target, action: action)
