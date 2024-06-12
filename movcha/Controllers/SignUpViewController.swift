@@ -114,36 +114,36 @@ class SignUpViewController: UIViewController {
             setSignUpTextFieldUI($0)
         }
         
-        addInfoLabel.textColor = Color.Primary.gray2
+        addInfoLabel.textColor = Constants.Color.Primary.gray2
         addInfoLabel.font = .systemFont(ofSize: 14)
         
-        signUpButton.backgroundColor = Color.Primary.pink
+        signUpButton.backgroundColor = Constants.Color.Primary.pink
         signUpButton.setTitleColor(.white, for: .normal)
         signUpButton.layer.cornerRadius = 10
         signUpButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
         
-        addInfoSwitch.onTintColor = Color.Primary.pink
+        addInfoSwitch.onTintColor = Constants.Color.Primary.pink
     }
 
     func configureData() {
 
         let placeholders = [
-            Text.SignUp.Placeholder.email,
-            Text.SignUp.Placeholder.password,
-            Text.SignUp.Placeholder.nickname,
-            Text.SignUp.Placeholder.location,
-            Text.SignUp.Placeholder.recommend
+            Constants.Text.SignUp.Placeholder.email,
+            Constants.Text.SignUp.Placeholder.password,
+            Constants.Text.SignUp.Placeholder.nickname,
+            Constants.Text.SignUp.Placeholder.location,
+            Constants.Text.SignUp.Placeholder.recommend
         ]
         signUpTextFields.enumerated().forEach {
-            $0.element.setPlaceholder(string: placeholders[$0.offset], color: Color.Primary.gray2)
+            $0.element.setPlaceholder(string: placeholders[$0.offset], color: Constants.Color.Primary.gray2)
         }
         
-        signUpButton.setTitle(Text.Title.signUp, for: .normal)
-        addInfoLabel.text = Text.SignUp.addInfo
+        signUpButton.setTitle(Constants.Text.Title.signUp, for: .normal)
+        addInfoLabel.text = Constants.Text.SignUp.addInfo
     }
     
     func configureBarBtn() {
-        addImgBarBtn(title: nil, image: SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Color.Primary.pink)
+        addImgBarBtn(title: nil, image: Constants.SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Constants.Color.Primary.pink)
     }
     
     func configureHandler() {
@@ -177,7 +177,7 @@ extension SignUpViewController {
     // 회원가입 텍스트 필드 UI 세팅
     func setSignUpTextFieldUI(_ textField: UITextField) {
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = Color.Primary.gray6.cgColor
+        textField.layer.borderColor = Constants.Color.Primary.gray6.cgColor
         textField.layer.cornerRadius = 8
         textField.font = .systemFont(ofSize: 12)
         textField.addPadding(type: .left, amount: 12)

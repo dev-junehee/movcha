@@ -12,6 +12,7 @@ import SnapKit
 
 class SearchCollectionViewCell: UICollectionViewCell {
     
+    var searchCategory: Int = 0
     let posterView = UIImageView()
     
     override init(frame: CGRect) {
@@ -27,7 +28,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCellHierarchy() {
-        contentView.backgroundColor = Color.Primary.pink
+        contentView.backgroundColor = Constants.Color.Primary.pink
         contentView.addSubview(posterView)
     }
     
@@ -43,9 +44,25 @@ class SearchCollectionViewCell: UICollectionViewCell {
         contentView.contentMode = .scaleAspectFill
     }
     
-    func configureCellData(data: TVResults) {
-        let IMG_URL = URL(string: "\(API.URL.kmdbImg)\(data.poster_path)")
-        posterView.kf.setImage(with: IMG_URL)
+    func configureCellData(data: SearchResults) {
+        print("dfdfdf", searchCategory)
+        dump(data)
+        
+        let backdrop = data.backdrop_path
+        let poster = data.poster_path
+        let profile = data.profile_path
+        
+        let backdropURL = URL(string: "\(API.URL.KMDB.img)\(backdrop)")
+        let posterURL = URL(string: "\(API.URL.KMDB.img)\(poster)")
+        let profileURL = URL(string: "\(API.URL.KMDB.img)\(profile)")
+        
+        if searchCategory == 2 {
+            posterView.kf.setImage(with: profileURL)
+        } else {
+            posterView.kf.setImage(with: posterURL ?? backdropURL)
+        }
+        
+        print("이거찍히나......")
     }
     
 }

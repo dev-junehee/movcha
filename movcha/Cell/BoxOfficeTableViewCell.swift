@@ -90,11 +90,11 @@ class BoxOfficeTableViewCell: UITableViewCell {
     }
 
     func configureCellUI() {
-        contentView.backgroundColor = Color.Primary.gray6
+        contentView.backgroundColor = Constants.Color.Primary.gray6
         contentView.layer.cornerRadius = 10
         
         rankLabel.font = .systemFont(ofSize: 16, weight: .semibold)
-        rankLabel.textColor = Color.Primary.pink
+        rankLabel.textColor = Constants.Color.Primary.pink
         rankLabel.textAlignment = .center
         rankLabel.clipsToBounds = true
         rankLabel.layer.cornerRadius = 10

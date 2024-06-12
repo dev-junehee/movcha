@@ -142,13 +142,13 @@ class TrendingTableViewCell: UITableViewCell {
     }
     
     func configureCellUI() {
-        openDateLabel.textColor = Color.Primary.gray2
+        openDateLabel.textColor = Constants.Color.Primary.gray2
         openDateLabel.font = .systemFont(ofSize: 16)
         genreLabel.font = .systemFont(ofSize: 20, weight: .semibold)
         
-        cardBackView.backgroundColor = Color.Primary.white
+        cardBackView.backgroundColor = Constants.Color.Primary.white
         cardBackView.layer.cornerRadius = 10
-        cardBackView.layer.shadowColor = Color.Primary.black.cgColor
+        cardBackView.layer.shadowColor = Constants.Color.Primary.black.cgColor
         cardBackView.layer.shadowOffset = CGSize(width: 0, height: 0)
         cardBackView.layer.shadowRadius = 10
         cardBackView.layer.shadowOpacity = 0.5
@@ -161,10 +161,10 @@ class TrendingTableViewCell: UITableViewCell {
         cardImg.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         cardImg.contentMode = .scaleAspectFill
         
-        voteStack.backgroundColor = Color.Primary.white
-        voteLabel.backgroundColor = Color.Primary.pink
+        voteStack.backgroundColor = Constants.Color.Primary.white
+        voteLabel.backgroundColor = Constants.Color.Primary.pink
         voteLabel.textAlignment = .center
-        voteLabel.textColor = Color.Primary.white
+        voteLabel.textColor = Constants.Color.Primary.white
         voteLabel.font = .systemFont(ofSize: 14, weight: .bold)
         voteAverage.textAlignment = .center
         voteAverage.font = .systemFont(ofSize: 14, weight: .semibold)
@@ -176,28 +176,28 @@ class TrendingTableViewCell: UITableViewCell {
         detailStack.layer.cornerRadius = 10
         detailStack.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
-        detailLabel.textColor = Color.Primary.gray2
+        detailLabel.textColor = Constants.Color.Primary.gray2
         detailLabel.font = .systemFont(ofSize: 14)
         
         detailImgView.contentMode = .scaleAspectFit
-        detailImgView.tintColor = Color.Primary.gray2
+        detailImgView.tintColor = Constants.Color.Primary.gray2
     }
     
     func configureCellData(data: TrendingResults) {
         openDateLabel.text = data.release_date ?? data.first_air_date
         genreLabel.text = getGenreString(list: data.genre_ids)
         
-        voteLabel.text = Text.Trending.vote
+        voteLabel.text = Constants.Text.Trending.vote
         voteAverage.text = convertDouble(data.vote_average)
         
-        let poster = URL(string:"\(API.URL.kmdbImg)\(data.backdrop_path)")
+        let poster = URL(string:"\(API.URL.KMDB.img)\(data.backdrop_path)")
         cardImg.kf.setImage(with: poster)
 
         titleLabel.text = data.title ?? data.name
         overviewLabel.text = data.overview
         
-        detailLabel.text = Text.Trending.detail
-        detailImgView.image = SystemImage.front
+        detailLabel.text = Constants.Text.Trending.detail
+        detailImgView.image = Constants.SystemImage.front
     }
 }
 

@@ -33,8 +33,8 @@ class TrendingDetailViewController: UIViewController {
     
     func configureNavigation() {
         view.backgroundColor = .white
-        setNavigationTitle(Text.Title.trendingDetail)
-        addImgBarBtn(title: nil, image: SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Color.Primary.pink)
+        setNavigationTitle(Constants.Text.Title.trendingDetail)
+        addImgBarBtn(title: nil, image: Constants.SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Constants.Color.Primary.pink)
     }
     
     func configureHierarchy() {

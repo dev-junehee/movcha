@@ -59,7 +59,7 @@ class TrendingDetailOverviewCell: UITableViewCell {
         
         overviewBtn.backgroundColor = .darkGray
         
-        overviewBtn.setImage(SystemImage.down, for: .normal)
+        overviewBtn.setImage(Constants.SystemImage.down, for: .normal)
     }
     
     func configreCellData() {

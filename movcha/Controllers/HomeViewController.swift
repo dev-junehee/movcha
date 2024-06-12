@@ -43,11 +43,11 @@ class HomeViewController: UIViewController {
     }
     
     func configureData() {
-        mainTitle.text = Text.Title.home
+        mainTitle.text = Constants.Text.Title.home
     }
     
     func setBarButtons() {
-        addImgBarBtn(title: nil, image: SystemImage.search!, target: self, action: #selector(searchBtnClicked), type: .right, color: Color.Primary.pink)
+        addImgBarBtn(title: nil, image: Constants.SystemImage.search!, target: self, action: #selector(searchBtnClicked), type: .right, color: Constants.Color.Primary.pink)
     }
 
     // MARK: 핸들러

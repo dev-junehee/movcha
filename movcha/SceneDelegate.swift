@@ -27,18 +27,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.setViewControllers(controllers, animated: true)
         
         if let items = tabBarController.tabBar.items {
-            items[0].title = Text.Title.home
-            items[0].image = SystemImage.home
+            items[0].title = Constants.Text.Title.home
+            items[0].image = Constants.SystemImage.home
             
-            items[1].title = Text.Title.boxOffice
-            items[1].image = SystemImage.boxOffice
+            items[1].title = Constants.Text.Title.boxOffice
+            items[1].image = Constants.SystemImage.boxOffice
             
-            items[2].title = Text.Title.trending
-            items[2].image = SystemImage.trending
+            items[2].title = Constants.Text.Title.trending
+            items[2].image = Constants.SystemImage.trending
         }
         
         tabBarController.view.backgroundColor = .systemBackground
-        tabBarController.tabBar.tintColor = Color.Primary.pink
+        tabBarController.tabBar.tintColor = Constants.Color.Primary.pink
         window?.rootViewController = tabBarController
     }
 

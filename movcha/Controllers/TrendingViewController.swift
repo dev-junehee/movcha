@@ -56,7 +56,7 @@ class TrendingViewController: UIViewController {
     }
     
     func configureData() {
-        mainTitle.text = Text.Title.trending
+        mainTitle.text = Constants.Text.Title.trending
     }
     
     func callRequest() {
@@ -65,7 +65,7 @@ class TrendingViewController: UIViewController {
             "accept": "application/json"
         ]
         
-        AF.request(API.URL.trending,
+        AF.request(API.URL.KMDB.Trending.all,
                    method: .get,
                    encoding: JSONEncoding.default,
                    headers: header)

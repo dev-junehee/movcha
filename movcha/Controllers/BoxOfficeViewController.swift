@@ -104,20 +104,20 @@ class BoxOfficeViewController: UIViewController {
         dateTextField.borderStyle = .none
         dateTextField.layer.borderWidth = 1
         dateTextField.layer.cornerRadius = 10
-        dateTextField.layer.borderColor = Color.Primary.gray6.cgColor
+        dateTextField.layer.borderColor = Constants.Color.Primary.gray6.cgColor
         dateTextField.font = .systemFont(ofSize: 12)
         dateTextField.keyboardType = .numberPad
         dateTextField.addPadding(type: .left, amount: 12)
         
-        searchButton.backgroundColor = Color.Primary.pink
+        searchButton.backgroundColor = Constants.Color.Primary.pink
         searchButton.layer.cornerRadius = 10
         searchButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
     }
     
     func configureData() {
-        mainTitle.text = Text.Title.boxOffice
-        dateTextField.setPlaceholder(string: Text.BoxOffice.placeholder, color: Color.Primary.gray2)
-        searchButton.setTitle(Text.Button.search, for: .normal)
+        mainTitle.text = Constants.Text.Title.boxOffice
+        dateTextField.setPlaceholder(string: Constants.Text.BoxOffice.placeholder, color: Constants.Color.Primary.gray2)
+        searchButton.setTitle(Constants.Text.Button.search, for: .normal)
     }
     
     func configureHandler() {
@@ -125,7 +125,7 @@ class BoxOfficeViewController: UIViewController {
     }
     
     func callRequest() {
-        let URL = "\(API.URL.boxOffice)?key=\(API.KEY.kobis)&targetDt=\(searchDate)"
+        let URL = "\(API.URL.KOBIS.boxOffice)?key=\(API.KEY.kobis)&targetDt=\(searchDate)"
         AF.request(URL).responseDecodable(of: BoxOfficeResponse.self) { res in
             switch res.result {
             case .success(let data):

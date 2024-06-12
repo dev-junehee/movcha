@@ -52,7 +52,7 @@ extension UIViewController {
             message: message,
             preferredStyle: .alert)
         
-        let warning = UIAlertAction(title: Text.Button.ok, style: .default)
+        let warning = UIAlertAction(title: Constants.Text.Button.ok, style: .default)
         alert.addAction(warning)
         present(alert, animated: true)
     }

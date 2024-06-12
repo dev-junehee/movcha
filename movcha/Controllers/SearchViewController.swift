@@ -14,9 +14,9 @@ import SnapKit
 class SearchViewController: UIViewController {
     
     let searchBar = UISearchBar()
-    let categoryControl = UISegmentedControl(items: ["영화", "TV 시리즈", "영화인"])
+    let searchCategory = UISegmentedControl(items: Constants.Text.Search.category)
     
-    var searchList = TVSearch(page: 0, results: [], total_pages: 0, total_results: 0)
+    var searchList = Search(page: 0, results: [], total_pages: 0, total_results: 0)
     var page = 0
     
     lazy var searchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionviewLayout())
@@ -47,7 +47,7 @@ class SearchViewController: UIViewController {
     }
     
     func configureHierarchy() {
-        navigationItem.title = "작품 검색"
+        navigationItem.title = Constants.Text.Title.search
         view.backgroundColor = .systemBackground
         
         searchBar.delegate = self
@@ -59,7 +59,7 @@ class SearchViewController: UIViewController {
         searchCollectionView.keyboardDismissMode = .onDrag
         
         view.addSubview(searchBar)
-        view.addSubview(categoryControl)
+        view.addSubview(searchCategory)
         view.addSubview(searchCollectionView)
     }
     
@@ -70,24 +70,24 @@ class SearchViewController: UIViewController {
             make.height.equalTo(44)
         }
         
-        categoryControl.snp.makeConstraints { make in
+        searchCategory.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom).offset(8)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(32)
         }
         searchCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(categoryControl.snp.bottom).offset(8)
+            make.top.equalTo(searchCategory.snp.bottom).offset(8)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
     func configureUI() {
         searchBar.searchBarStyle = .minimal
-        searchBar.placeholder = "영화, 드라마, 시리즈를 검색해 보세요!"
+        searchBar.placeholder = Constants.Text.Search.placeholder
     }
     
     func setBarButtons() {
-        addImgBarBtn(title: nil, image: SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Color.Primary.pink)
+        addImgBarBtn(title: nil, image: Constants.SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Constants.Color.Primary.pink)
     }
 
     @objc func backBarBtnClicked() {
@@ -100,27 +100,45 @@ class SearchViewController: UIViewController {
 
 // API
 extension SearchViewController {
-
+    // 검색
     func callSearchRequest(query: String) {
-        let URL = "\(API.URL.KMDB.Search.tv)\(query)"
+        var URL = ""
+        
+        switch searchCategory.selectedSegmentIndex {
+        case 0:
+            URL = "\(API.URL.KMDB.Search.movie)\(query)"
+            break
+        case 1:
+            URL = "\(API.URL.KMDB.Search.tv)\(query)"
+            break
+        case 2:
+            URL = "\(API.URL.KMDB.Search.person)\(query)"
+            break
+        default:
+            print("검색 카테고리 선택 오류")
+        }
         
         let headers: HTTPHeaders = [
             "Authorization": API.KEY.kmdb,
             "accept": "application/json"
         ]
         
+        print("API URL 확인", URL)
         AF.request(URL,
                    headers: headers)
-        .responseDecodable(of: TVSearch.self) { res in
+        .responseDecodable(of: Search.self) { res in
             switch res.result {
             case .success(let value):
                 print("검색 성공")
+                print(value.results)
                 
                 if self.page == 1 {
+                    self.searchList.results.removeAll()
                     self.searchList.results = value.results
                 } else {
                     self.searchList.results.append(contentsOf: value.results)
                 }
+                
                 self.searchCollectionView.reloadData()
     
                 if self.page == 1 {
@@ -132,7 +150,6 @@ extension SearchViewController {
                 print(error)
             }
         }
-        
     }
 }
 
@@ -140,16 +157,18 @@ extension SearchViewController {
 // SearchBar
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print(#function)
-        print(searchBar.text ?? "없음")
-        callSearchRequest(query: searchBar.text!)
+        guard let value = searchBar.text else {
+            print(#function, "검색어 입력 오류")
+            return
+        }
+        callSearchRequest(query: value)
     }
 }
 
 // Segmented Control
 extension SearchViewController {
     func configureCategoryControll() {
-        categoryControl.selectedSegmentIndex = 0
+        searchCategory.selectedSegmentIndex = 0
     }
 }
 
@@ -177,6 +196,8 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.id, for: indexPath) as! SearchCollectionViewCell
         
         let idx = indexPath.item
+        
+        cell.searchCategory = searchCategory.selectedSegmentIndex
         
         cell.configureCellHierarchy()
         cell.configureCellLayout()
