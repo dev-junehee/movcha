@@ -56,10 +56,8 @@ class SignUpViewController: UIViewController {
 
     func configureLayout() {
         titleImg.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(32)
             make.centerX.equalTo(view)
-            make.width.equalTo(self.titleImg).offset(10)
-            make.height.equalTo(self.titleImg).offset(10)
         }
         
         emailField.snp.makeConstraints { make in

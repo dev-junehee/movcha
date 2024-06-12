@@ -165,7 +165,6 @@ extension SearchViewController: UICollectionViewDataSourcePrefetching {
             }
         }
     }
-
 }
 
 // CollectionView
