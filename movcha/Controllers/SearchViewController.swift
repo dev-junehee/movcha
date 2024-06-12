@@ -16,6 +16,8 @@ class SearchViewController: UIViewController {
     let searchBar = UISearchBar()
     let searchCategory = UISegmentedControl(items: Constants.Text.Search.category)
     
+    var selectedSearchCategory = 0
+    
     var searchList = Search(page: 0, results: [], total_pages: 0, total_results: 0)
     var page = 0
     
@@ -46,7 +48,7 @@ class SearchViewController: UIViewController {
         setBarButtons()
     }
     
-    func configureHierarchy() {
+    private func configureHierarchy() {
         navigationItem.title = Constants.Text.Title.search
         view.backgroundColor = .systemBackground
         
@@ -63,7 +65,7 @@ class SearchViewController: UIViewController {
         view.addSubview(searchCollectionView)
     }
     
-    func configureLayout() {
+    private func configureLayout() {
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(8)
@@ -81,12 +83,12 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func configureUI() {
+    private func configureUI() {
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = Constants.Text.Search.placeholder
     }
     
-    func setBarButtons() {
+    private func setBarButtons() {
         addImgBarBtn(title: nil, image: Constants.SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Constants.Color.Primary.pink)
     }
 
@@ -132,6 +134,7 @@ extension SearchViewController {
                 print("검색 성공")
                 print(value.results)
                 
+                // 새로운 검색어일 때
                 if self.page == 1 {
                     self.searchList.results.removeAll()
                     self.searchList.results = value.results
@@ -169,7 +172,13 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController {
     func configureCategoryControll() {
         searchCategory.selectedSegmentIndex = 0
+        searchCategory.addTarget(self, action: #selector(categoryChanged), for: .valueChanged)
     }
+    
+    @objc func categoryChanged() {
+        selectedSearchCategory = searchCategory.selectedSegmentIndex
+    }
+    
 }
 
 // TableView DatasourceFetching

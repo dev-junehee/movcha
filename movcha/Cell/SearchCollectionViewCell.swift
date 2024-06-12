@@ -45,7 +45,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCellData(data: SearchResults) {
-        print("dfdfdf", searchCategory)
+        print(#function, searchCategory)
         dump(data)
         
         let backdrop = data.backdrop_path
@@ -61,8 +61,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
         } else {
             posterView.kf.setImage(with: posterURL ?? backdropURL)
         }
-        
-        print("이거찍히나......")
     }
     
 }
