@@ -6,7 +6,14 @@
 //
 
 import UIKit
+
+import Kingfisher
 import SnapKit
+
+enum SimilarType {
+    case MovieSimilar
+    case tv
+}
 
 class RecommendViewController: UIViewController {
     
@@ -45,15 +52,29 @@ class RecommendViewController: UIViewController {
         
         return layout
     }
+
+    
+    // 데이터
+    var itemTitle: String = ""
+    var itemType: Int = 0
+    var itemId: Int = 0
+    
+    var similarList: [TVSimilarResults] = []
+//    var recommendList
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("타이틀이 잘 들어오나요?", itemTitle)
+        print("미디어 타입이 잘 들어오나요?", itemType)
+        print("아이디가 잘 들어오나요?", itemId)
+        
         configureHierarchy()
         configureLayout()
         configureUI()
         configureData()
+        callRequest()
     }
     
     private func configureHierarchy() {
@@ -77,7 +98,7 @@ class RecommendViewController: UIViewController {
         recommendCollectionView.delegate = self
         recommendCollectionView.dataSource = self
         recommendCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.id)
-        similarCollectionView.tag = 1
+        recommendCollectionView.tag = 1
     }
     
     private func configureLayout() {
@@ -133,33 +154,67 @@ class RecommendViewController: UIViewController {
         recommendTitleLabel.font = Constants.Font.subTitle
         
     }
-    
 
     private func configureData() {
-        searchTitleLabel.text = "온에어"
+        searchTitleLabel.text = itemTitle
         searchSubLabel.text = "을(를) 검색했어요!"
-        
     }
     
 }
 
 
+// MARK: RecommendViewController 익스텐션
+
+// API
+extension RecommendViewController {
+    func callRequest() {
+        switch itemType {
+        case 0:
+            NetworkManager.shared.getSimilarMovieContents(id: itemId)
+            break
+        case 1:
+            NetworkManager.shared.getSimilarTVContents(id: itemId) { data in
+                if data.results.count == 0 {
+                    self.showAlert("검색 결과가 없어요!", message: "다른 작품을 검색해 보세요.")
+                    self.navigationController?.popViewController(animated: true)
+                    return
+                } else {
+                    self.similarList = data.results
+                    self.similarCollectionView.reloadData()
+                }
+            }
+            break
+        default:
+            print("영화인은 아직 검색할 수 없어요....")
+        }
+    }
+}
+
+
+
+// 컬렉션 뷰
 extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // 0-비슷한 콘텐츠
         // 1-추천 콘텐츠
-        if collectionView.tag == 0 {
-            return 20
+        if collectionView == similarCollectionView {
+            return similarList.count
         } else {
-            return 20
+            return similarList.count
         }
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.id, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.id, for: indexPath) as! RecommendCollectionViewCell
         
-        return cell
+        if collectionView == similarCollectionView {
+            let item = similarList[indexPath.item]
+            cell.configureCellData(data: item)
+            return cell
+        } else {
+            let item = similarList[indexPath.item]
+            cell.configureCellData(data: item)
+            return cell
+        }
     }
 }

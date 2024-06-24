@@ -15,6 +15,9 @@ struct Search: Decodable {
 }
 
 struct SearchResults: Decodable {
+    let original_name: String
+    let name: String
+    let id: Int
     let backdrop_path: String
     let poster_path: String
     let profile_path: String?

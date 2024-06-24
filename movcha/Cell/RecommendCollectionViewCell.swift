@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+import Kingfisher
 import SnapKit
 
 class RecommendCollectionViewCell: UICollectionViewCell {
@@ -35,10 +37,15 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureCellUI() {
-        posterView.backgroundColor = Constants.Color.Primary.pink
         posterView.clipsToBounds = true
         posterView.layer.cornerRadius = 10
-        posterView.contentMode = .scaleAspectFill
+        posterView.backgroundColor = Constants.Color.Primary.pink
+        posterView.contentMode = .scaleAspectFit
     }
     
+    func configureCellData(data: TVSimilarResults) {
+        guard let path = data.poster_path else { return }
+        let imageURL = URL(string: "\(API.URL.KMDB.img)\(path)")
+        posterView.kf.setImage(with: imageURL)
+    }
 }

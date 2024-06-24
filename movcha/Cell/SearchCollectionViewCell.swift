@@ -41,13 +41,10 @@ class SearchCollectionViewCell: UICollectionViewCell {
     func configureCellUI() {
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 10
-        contentView.contentMode = .scaleAspectFill
+        posterView.contentMode = .scaleAspectFill
     }
     
     func configureCellData(data: SearchResults) {
-        print(#function, searchCategory)
-        dump(data)
-        
         let backdrop = data.backdrop_path
         let poster = data.poster_path
         let profile = data.profile_path
