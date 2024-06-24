@@ -74,15 +74,15 @@ enum Constants {
     // MARK: Image 이미지
     // 시스템 이미지
     enum SystemImage {
-        static let home = UIImage(systemName: "house.fill")
-        static let signUp = UIImage(systemName: "person.crop.circle.fill.badge.plus")
-        static let boxOffice = UIImage(systemName: "movieclapper.fill")
-        static let trending = UIImage(systemName: "chart.line.uptrend.xyaxis")
-        static let list = UIImage(systemName: "list.bullet")
-        static let search = UIImage(systemName: "magnifyingglass")
-        static let front = UIImage(systemName: "chevron.right")
-        static let back = UIImage(systemName: "chevron.backward")
-        static let down = UIImage(systemName: "chevron.down")
+        static let home = UIImage(systemName: "house.fill")!
+        static let signUp = UIImage(systemName: "person.crop.circle.fill.badge.plus")!
+        static let boxOffice = UIImage(systemName: "movieclapper.fill")!
+        static let trending = UIImage(systemName: "chart.line.uptrend.xyaxis")!
+        static let list = UIImage(systemName: "list.bullet")!
+        static let search = UIImage(systemName: "magnifyingglass")!
+        static let front = UIImage(systemName: "chevron.right")!
+        static let back = UIImage(systemName: "chevron.backward")!
+        static let down = UIImage(systemName: "chevron.down")!
     }
 
 
@@ -92,6 +92,7 @@ enum Constants {
             static let black = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
             static let white = UIColor.white
             static let pink = UIColor(red: 1, green: 0.0196, blue: 0.3451, alpha: 1.0)
+            static let darkGray = UIColor.darkGray
             static let gray2 = UIColor.systemGray2
             static let gray4 = UIColor.systemGray4
             static let gray6 = UIColor.systemGray6
@@ -101,7 +102,8 @@ enum Constants {
 
     // MARK: Font 폰트
     enum Font {
-        
+        static let title: UIFont = .systemFont(ofSize: 40, weight: .black)
+        static let subTitle: UIFont = .systemFont(ofSize: 20, weight: .black)
     }
 }
 

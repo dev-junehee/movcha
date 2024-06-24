@@ -89,7 +89,7 @@ class SearchViewController: UIViewController {
     }
     
     private func setBarButtons() {
-        addImgBarBtn(title: nil, image: Constants.SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Constants.Color.Primary.pink)
+        addImgBarBtn(title: nil, image: Constants.SystemImage.back, target: self, action: #selector(backBarBtnClicked), type: .left, color: Constants.Color.Primary.pink)
     }
 
     @objc func backBarBtnClicked() {
@@ -216,4 +216,10 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("검색 결과 아이템을 클릭했어요")
+        
+        let recommendVC = RecommendViewController()
+        navigationController?.pushViewController(recommendVC, animated: true)
+    }
 }
