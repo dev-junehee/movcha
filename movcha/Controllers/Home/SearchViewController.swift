@@ -11,7 +11,7 @@ import Alamofire
 import Kingfisher
 import SnapKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: BaseViewController {
     
     let searchBar = UISearchBar()
     let searchCategory = UISegmentedControl(items: Constants.Text.Search.category)
@@ -41,16 +41,12 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureHierarchy()
-        configureLayout()
-        configureUI()
         configureCategoryControll()
         setBarButtons()
     }
     
-    private func configureHierarchy() {
+    override func configureHierarchy() {
         navigationItem.title = Constants.Text.Title.search
-        view.backgroundColor = .systemBackground
         
         searchBar.delegate = self
         
@@ -65,7 +61,7 @@ class SearchViewController: UIViewController {
         view.addSubview(searchCollectionView)
     }
     
-    private func configureLayout() {
+    override func configureLayout() {
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(8)
@@ -83,7 +79,9 @@ class SearchViewController: UIViewController {
         }
     }
     
-    private func configureUI() {
+    override func configureUI() {
+        super.configureUI()
+        
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = Constants.Text.Search.placeholder
     }

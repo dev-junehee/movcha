@@ -16,10 +16,6 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        configureHierarchy()
-//        configureLayout()
-//        configureUI()
-//        configureData()
         setBarButtons()
     }
     
@@ -44,16 +40,12 @@ class HomeViewController: BaseViewController {
         mainTitle.text = Constants.Text.Title.home
     }
     
-//    func configureData() {
-//        
-//    }
     
     func setBarButtons() {
         addImgBarBtn(title: nil, image: Constants.SystemImage.search, target: self, action: #selector(searchBtnClicked), type: .right, color: Constants.Color.Primary.pink)
     }
 
     // MARK: 핸들러
-
     @objc func searchBtnClicked() {
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }
