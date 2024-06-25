@@ -47,14 +47,22 @@ class RecommendTableViewCell: UITableViewCell {
     }
     
     private func configureCellLayout() {
+        titleLabel.snp.makeConstraints {
+            $0.top.horizontalEdges.equalTo(contentView).inset(20)
+            $0.height.equalTo(20)
+        }
         
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.horizontalEdges.bottom.equalTo(contentView)
+        }
     }
     
     private func configureCellUI() {
-        titleLabel.text = "타이틀입니다"
+        
     }
     
-    func configureCellData() {
-        
+    func configureCellData(title: String) {
+        titleLabel.text = title
     }
 }
