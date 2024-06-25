@@ -29,40 +29,6 @@ class RecommendViewController: UIViewController {
     let searchTitleLabel = UILabel()
     let searchSubLabel = UILabel()
     
-//    let similarTitleLabel = UILabel()
-//    lazy var similarCollectionView = UICollectionView(
-//        frame: .zero,
-//        collectionViewLayout: recommendCollectionViewLayout()
-//    )
-//    
-//    let recommendTitleLabel = UILabel()
-//    lazy var recommendCollectionView = UICollectionView(
-//        frame: .zero,
-//        collectionViewLayout: recommendCollectionViewLayout()
-//    )
-//    
-//    func recommendCollectionViewLayout() -> UICollectionViewLayout {
-//        let layout = UICollectionViewFlowLayout()
-//        
-//        let spacing: CGFloat = 8
-//        
-//        let width = UIScreen.main.bounds.width - spacing
-//        let height = UIScreen.main.bounds.height
-//        
-//        layout.scrollDirection = .horizontal
-//        layout.itemSize = CGSize(width: width / 3, height: height)
-//        layout.minimumInteritemSpacing = spacing
-//        layout.sectionInset = UIEdgeInsets(
-//            top: spacing,
-//            left: spacing,
-//            bottom: spacing,
-//            right: 0
-//        )
-//        
-//        return layout
-//    }
-
-    
     // 데이터
     var itemTitle: String = ""
     var itemType: Int = 0
@@ -74,15 +40,12 @@ class RecommendViewController: UIViewController {
         [SimilarResults(poster_path: "")],
         [SimilarResults(poster_path: "")]
     ]
+    
 //    var recommendList
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("타이틀이 잘 들어오나요?", itemTitle)
-        print("미디어 타입이 잘 들어오나요?", itemType)
-        print("아이디가 잘 들어오나요?", itemId)
         
         configureHierarchy()
         configureLayout()
@@ -98,25 +61,6 @@ class RecommendViewController: UIViewController {
         view.addSubview(searchTitleLabel)
         view.addSubview(searchSubLabel)
         view.addSubview(tableView)
-        
-//        view.addSubview(searchTitleLabel)
-//        view.addSubview(searchSubLabel)
-//        view.addSubview(similarTitleLabel)
-//        view.addSubview(similarCollectionView)
-//        view.addSubview(recommendTitleLabel)
-//        view.addSubview(recommendCollectionView)
-//        
-//        // 비슷한 콘텐츠 컬렉션 뷰
-//        similarCollectionView.delegate = self
-//        similarCollectionView.dataSource = self
-//        similarCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.id)
-//        similarCollectionView.tag = 0
-//        
-//        // 추천 콘텐츠 컬렉션 뷰
-//        recommendCollectionView.delegate = self
-//        recommendCollectionView.dataSource = self
-//        recommendCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.id)
-//        recommendCollectionView.tag = 1
     }
     
     private func configureLayout() {
@@ -136,32 +80,6 @@ class RecommendViewController: UIViewController {
             $0.top.equalTo(searchSubLabel.snp.bottom).offset(16)
             $0.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-        
-//        similarTitleLabel.snp.makeConstraints {
-//            $0.top.equalTo(searchTitleLabel.snp.bottom).offset(16)
-//            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
-//            $0.height.equalTo(30)
-//        }
-//        
-//        similarCollectionView.snp.makeConstraints {
-//            $0.top.equalTo(similarTitleLabel.snp.bottom).offset(8)
-//            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-//            $0.height.equalTo(180)
-//        }
-//        
-//        recommendTitleLabel.snp.makeConstraints {
-//            $0.top.equalTo(similarCollectionView.snp.bottom).offset(16)
-//            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
-//            $0.height.equalTo(30)
-//        }
-//        
-//        recommendCollectionView.snp.makeConstraints {
-//            $0.top.equalTo(recommendTitleLabel.snp.bottom).offset(8)
-//            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-//            $0.height.equalTo(180)
-//        }
-        
-        
     }
     
     private func configureUI() {
@@ -170,12 +88,6 @@ class RecommendViewController: UIViewController {
         searchSubLabel.font = .systemFont(ofSize: 14, weight: .regular)
         searchSubLabel.textColor = Constants.Color.Primary.darkGray
         searchSubLabel.baselineAdjustment = .alignBaselines
-
-//        similarTitleLabel.text = "비슷한 콘텐츠"
-//        similarTitleLabel.font = Constants.Font.subTitle
-//        recommendTitleLabel.text = "추천 콘텐츠"
-//        recommendTitleLabel.font = Constants.Font.subTitle
-        
     }
 
     private func configureData() {
@@ -207,7 +119,6 @@ extension RecommendViewController {
                         print("데이터를 확인해요!!!!!!!!!!")
                         dump(movieList)
                         self.similarList[0] = movieList
-//                        self.tableView.reloadData()
                     }
                     group.leave()
                 }
@@ -226,7 +137,6 @@ extension RecommendViewController {
                         print("데이터를 확인해요!!!!!!!!!!")
                         dump(tvList)
                         self.similarList[1] = tvList
-//                        self.tableView.reloadData()
                     }
                     group.leave()
                 }
@@ -273,15 +183,6 @@ extension RecommendViewController: UITableViewDelegate, UITableViewDataSource {
 // 컬렉션 뷰
 extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // 0-비슷한 콘텐츠
-        // 1-추천 콘텐츠
-        
-//        if collectionView.tag  == 0  {
-//            return similarList.count
-//        } else {
-//            return similarList.count
-//        }
-        
         return similarList[collectionView.tag].count
     }
     
@@ -292,27 +193,5 @@ extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.configureCellData(data: data)
         
         return cell
-        
-        
-//        // 비슷한 콘텐츠
-//        if collectionView == similarCollectionView {
-//            // 영화일 때
-//            if itemType == 0 {
-//                let item = similarList[indexPath.item]
-//                cell.configureCellMovieData(data: item as! MovieSimilarResults)
-//                return cell
-//            // 드라마일 때
-//            } else {
-//                let item = similarList[indexPath.item]
-//                cell.configureCellTVData(data: item as! TVSimilarResults)
-//                return cell
-//            }
-//        
-//        // 추천 콘텐츠
-//        } else {
-//            let item = similarList[indexPath.item]
-//            cell.configureCellTVData(data: item as! TVSimilarResults)
-//            return cell
-//        }
     }
 }
