@@ -10,11 +10,6 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-enum SimilarType {
-    case MovieSimilar
-    case tv
-}
-
 class RecommendViewController: UIViewController {
     
     lazy var tableView = {
@@ -36,12 +31,11 @@ class RecommendViewController: UIViewController {
     
     var titleList = ["비슷한 콘텐츠", "추천 콘텐츠"]
     
-    var similarList: [[SimilarResults]] = [
-        [SimilarResults(poster_path: "")],
-        [SimilarResults(poster_path: "")]
+    var contentsList: [[SimilarRecommendResults]] = [
+        [SimilarRecommendResults(poster_path: "")],
+        [SimilarRecommendResults(poster_path: "")]
     ]
     
-//    var recommendList
     
     
     override func viewDidLoad() {
@@ -106,48 +100,37 @@ extension RecommendViewController {
     func callRequest() {
         let group = DispatchGroup()
         
-        switch itemType {
-        case 0:
-            group.enter()
-            DispatchQueue.global().async(group: group) {
-                NetworkManager.shared.getSimilarMovieContents(id: self.itemId) { movieList in
-                    if movieList.count == 0 {
-                        self.showAlert("검색 결과가 없어요!", message: "다른 작품을 검색해 보세요.")
-                        self.navigationController?.popViewController(animated: true)
-                        return
-                    } else {
-                        print("데이터를 확인해요!!!!!!!!!!")
-                        dump(movieList)
-                        self.similarList[0] = movieList
-                    }
-                    group.leave()
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkManager.shared.getSimilarContentstype(type: self.itemType, id: self.itemId) { similarList in
+                if similarList.count == 0 {
+                    self.showAlert("검색 결과가 없어요!", message: "다른 작품을 검색해 보세요.")
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    dump(similarList)
+                    self.contentsList[0] = similarList
                 }
+                group.leave()
             }
-            break
-            
-        case 1:
-            group.enter()
-            DispatchQueue.global().async(group: group) {
-                NetworkManager.shared.getSimilarTVContents(id: self.itemId) { tvList in
-                    if tvList.count == 0 {
-                        self.showAlert("검색 결과가 없어요!", message: "다른 작품을 검색해 보세요.")
-                        self.navigationController?.popViewController(animated: true)
-                        return
-                    } else {
-                        print("데이터를 확인해요!!!!!!!!!!")
-                        dump(tvList)
-                        self.similarList[1] = tvList
-                    }
-                    group.leave()
+        }
+        
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkManager.shared.getRecommendContents(type: self.itemType, id: self.itemId) { recommendList in
+                if recommendList.count == 0 {
+                    self.showAlert("검색 결과가 없어요!", message: "다른 작품을 검색해 보세요.")
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    dump(recommendList)
+                    self.contentsList[1] = recommendList
                 }
+                group.leave()
             }
-            break
-            
-        default:
-            print("영화인은 아직 검색할 수 없어요....")
         }
         
         group.notify(queue: .main) {
+            print("통신완료!!!!!")
+            print(self.contentsList)
             self.tableView.reloadData()
         }
     }
@@ -156,7 +139,7 @@ extension RecommendViewController {
 
 extension RecommendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return similarList.count
+        return contentsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -183,13 +166,13 @@ extension RecommendViewController: UITableViewDelegate, UITableViewDataSource {
 // 컬렉션 뷰
 extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return similarList[collectionView.tag].count
+        return contentsList[collectionView.tag].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.id, for: indexPath) as! RecommendCollectionViewCell
         
-        let data = similarList[collectionView.tag][indexPath.item]
+        let data = contentsList[collectionView.tag][indexPath.item]
         cell.configureCellData(data: data)
         
         return cell
