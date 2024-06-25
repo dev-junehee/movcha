@@ -7,6 +7,17 @@
 
 import Foundation
 
+// 영화+드라마 통합
+struct Similar: Decodable {
+    let results: [SimilarResults]
+}
+
+struct SimilarResults: Decodable {
+    let poster_path: String
+}
+
+
+
 // 비슷한 콘텐츠 (영화)
 struct MovieSimilar: Decodable {
     let page: Int

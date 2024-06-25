@@ -28,16 +28,16 @@ class NetworkManager {
     // 비슷한 콘텐츠 - 영화
     func getSimilarMovieContents(
                             id: Int,
-                            completionHandler: @escaping (MovieSimilar) -> Void
+                            completionHandler: @escaping ([SimilarResults]) -> Void
     ) {
         let URL = "\(API.URL.KMDB.Similar.movie)\(id)/similar?language=ko"
      
         AF.request(URL, headers: headers)
-            .responseDecodable(of: MovieSimilar.self) { res in
+            .responseDecodable(of: Similar.self) { res in
                 switch res.result {
                 case .success(let value):
                     print("비슷한 콘텐츠 성공", value)
-                    completionHandler(value)
+                    completionHandler(value.results)
                 case .failure(let error):
                     print("비슷한 콘텐츠 에러", error)
                 }
@@ -47,16 +47,16 @@ class NetworkManager {
     // 비슷한 콘텐츠 - TV
     func getSimilarTVContents(
                             id: Int,
-                            completionHandler: @escaping (TVSimilar) -> Void
+                            completionHandler: @escaping ([SimilarResults]) -> Void
     ) {
         let URL = "\(API.URL.KMDB.Similar.tv)\(id)/similar?language=ko"
         
         AF.request(URL, headers: headers)
-            .responseDecodable(of: TVSimilar.self) { res in
+            .responseDecodable(of: Similar.self) { res in
                 switch res.result {
                 case .success(let value):
                     print("비슷한 콘텐츠 성공")
-                    completionHandler(value)
+                    completionHandler(value.results)
                 case .failure(let error):
                     print("비슷한 콘텐츠 에러", error)
                 }

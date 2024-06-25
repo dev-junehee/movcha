@@ -40,18 +40,11 @@ class RecommendCollectionViewCell: UICollectionViewCell {
         posterView.clipsToBounds = true
         posterView.layer.cornerRadius = 10
         posterView.backgroundColor = Constants.Color.Primary.pink
-        posterView.contentMode = .scaleAspectFit
-    }
-
-    func configureCellMovieData(data: MovieSimilarResults) {
-        guard let path = data.poster_path else { return }
-        let imageURL = URL(string: "\(API.URL.KMDB.img)\(path)")
-        posterView.kf.setImage(with: imageURL)
+        posterView.contentMode = .scaleAspectFill
     }
     
-    func configureCellTVData(data: TVSimilarResults) {
-        guard let path = data.poster_path else { return }
-        let imageURL = URL(string: "\(API.URL.KMDB.img)\(path)")
+    func configureCellData(data: SimilarResults) {
+        let imageURL = URL(string: "\(API.URL.KMDB.img)\(data.poster_path)")
         posterView.kf.setImage(with: imageURL)
     }
 }
