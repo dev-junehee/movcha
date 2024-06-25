@@ -34,7 +34,7 @@ extension UIViewController {
     // BarButton - image
     func addImgBarBtn(title: String?, image: UIImage, target: AnyObject?, action: Selector?, type: BarButtonType, color: UIColor) {
         let barButton = UIBarButtonItem(title: title, image: image, target: target, action: action)
-        
+
         barButton.tintColor = color
         
         switch type {

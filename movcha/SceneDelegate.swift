@@ -14,7 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let scene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: scene)
         
         // MARK: TabBar Controller 탭 바 컨트롤러
         let homeViewController = UINavigationController(rootViewController: HomeViewController())
@@ -39,7 +40,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         tabBarController.view.backgroundColor = .systemBackground
         tabBarController.tabBar.tintColor = Constants.Color.Primary.pink
+        
         window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

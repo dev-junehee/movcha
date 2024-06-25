@@ -143,7 +143,7 @@ class SignUpViewController: UIViewController {
     }
     
     func configureBarBtn() {
-        addImgBarBtn(title: nil, image: Constants.SystemImage.back!, target: self, action: #selector(backBarBtnClicked), type: .left, color: Constants.Color.Primary.pink)
+        addImgBarBtn(title: nil, image: Constants.SystemImage.back, target: self, action: #selector(backBarBtnClicked), type: .left, color: Constants.Color.Primary.pink)
     }
     
     func configureHandler() {
