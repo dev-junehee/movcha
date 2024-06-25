@@ -35,6 +35,11 @@ enum Constants {
             static let placeholder = "영화, 드라마, 시리즈를 검색해 보세요!"
         }
         
+        enum Recommend {
+            static let title = ["비슷한 콘텐츠", "추천 콘텐츠"]
+            static let subSearch = "을(를) 검색했어요!"
+        }
+        
         // 회원가입
         enum SignUp {
             enum Placeholder {

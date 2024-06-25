@@ -17,7 +17,8 @@ class RecommendViewController: UIViewController {
         view.delegate = self
         view.dataSource = self
         view.register(RecommendTableViewCell.self, forCellReuseIdentifier: RecommendTableViewCell.id)
-        view.rowHeight = 200
+        view.rowHeight = 230
+        view.separatorStyle = .none
         return view
     }()
     
@@ -29,14 +30,12 @@ class RecommendViewController: UIViewController {
     var itemType: Int = 0
     var itemId: Int = 0
     
-    var titleList = ["비슷한 콘텐츠", "추천 콘텐츠"]
+    var titleList = Constants.Text.Recommend.title
     
     var contentsList: [[SimilarRecommendResults]] = [
         [SimilarRecommendResults(poster_path: "")],
         [SimilarRecommendResults(poster_path: "")]
     ]
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +85,7 @@ class RecommendViewController: UIViewController {
 
     private func configureData() {
         searchTitleLabel.text = itemTitle
-        searchSubLabel.text = "을(를) 검색했어요!"
+        searchSubLabel.text = Constants.Text.Recommend.subSearch
     }
     
 }
@@ -96,7 +95,6 @@ class RecommendViewController: UIViewController {
 
 // API
 extension RecommendViewController {
-    
     func callRequest() {
         let group = DispatchGroup()
         
@@ -107,7 +105,6 @@ extension RecommendViewController {
                     self.showAlert("검색 결과가 없어요!", message: "다른 작품을 검색해 보세요.")
                     self.navigationController?.popViewController(animated: true)
                 } else {
-                    dump(similarList)
                     self.contentsList[0] = similarList
                 }
                 group.leave()
@@ -128,13 +125,11 @@ extension RecommendViewController {
             }
         }
         
+        // 통신 완료되면 테이블 뷰 리로드
         group.notify(queue: .main) {
-            print("통신완료!!!!!")
-            print(self.contentsList)
             self.tableView.reloadData()
         }
     }
-    
 }
 
 extension RecommendViewController: UITableViewDelegate, UITableViewDataSource {
@@ -144,8 +139,6 @@ extension RecommendViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RecommendTableViewCell.id, for: indexPath) as! RecommendTableViewCell
-        
-        cell.selectionStyle = .none
         
         cell.collectionView.tag = indexPath.row
         cell.collectionView.delegate = self
@@ -171,7 +164,7 @@ extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.id, for: indexPath) as! RecommendCollectionViewCell
-        
+
         let data = contentsList[collectionView.tag][indexPath.item]
         cell.configureCellData(data: data)
         
