@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SnapKit
 
-class TrendingDetailViewController: UIViewController {
+class TrendingDetailViewController: BaseViewController {
     
 //    var trendingID: Int = 0
     
@@ -25,19 +25,15 @@ class TrendingDetailViewController: UIViewController {
         super.viewDidLoad()
         
         configureNavigation()
-        configureHierarchy()
-        configureLayout()
-        configureUI()
         configureData()
     }
     
     func configureNavigation() {
-        view.backgroundColor = .white
         setNavigationTitle(Constants.Text.Title.trendingDetail)
         addImgBarBtn(title: nil, image: Constants.SystemImage.back, target: self, action: #selector(backBarBtnClicked), type: .left, color: Constants.Color.Primary.pink)
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         detailTableView.delegate = self
         detailTableView.dataSource = self
         
@@ -50,7 +46,7 @@ class TrendingDetailViewController: UIViewController {
         view.addSubview(detailTableView)
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         detailImgView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(200)
@@ -76,11 +72,12 @@ class TrendingDetailViewController: UIViewController {
         }
     }
     
-    func configureUI() {
+    override func configureUI() {
+        super.configureUI()
+        
         detailImgView.backgroundColor = .yellow
         titleLabel.backgroundColor = .red
         posterImgView.backgroundColor = .green
-        
         detailTableView.backgroundColor = .orange
     }
     
