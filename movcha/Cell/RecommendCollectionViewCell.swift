@@ -43,7 +43,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
         posterView.contentMode = .scaleAspectFill
     }
     
-    func configureCellData(data: SimilarResults) {
+    func configureCellData(data: SimilarRecommendResults) {
         let imageURL = URL(string: "\(API.URL.KMDB.img)\(data.poster_path)")
         posterView.kf.setImage(with: imageURL)
     }
