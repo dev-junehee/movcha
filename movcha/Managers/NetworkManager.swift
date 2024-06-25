@@ -27,7 +27,8 @@ class NetworkManager {
     
     // 비슷한 콘텐츠 - 영화
     func getSimilarMovieContents(
-                            id: Int
+                            id: Int,
+                            completionHandler: @escaping (MovieSimilar) -> Void
     ) {
         let URL = "\(API.URL.KMDB.Similar.movie)\(id)/similar?language=ko"
      
@@ -36,6 +37,7 @@ class NetworkManager {
                 switch res.result {
                 case .success(let value):
                     print("비슷한 콘텐츠 성공", value)
+                    completionHandler(value)
                 case .failure(let error):
                     print("비슷한 콘텐츠 에러", error)
                 }

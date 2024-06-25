@@ -59,7 +59,7 @@ class RecommendViewController: UIViewController {
     var itemType: Int = 0
     var itemId: Int = 0
     
-    var similarList: [TVSimilarResults] = []
+    var similarList: [Any] = []
 //    var recommendList
     
     
@@ -168,9 +168,19 @@ class RecommendViewController: UIViewController {
 // API
 extension RecommendViewController {
     func callRequest() {
+        print("타입이뭘까요...", itemType)
         switch itemType {
         case 0:
-            NetworkManager.shared.getSimilarMovieContents(id: itemId)
+            NetworkManager.shared.getSimilarMovieContents(id: itemId) { data in
+                if data.results.count == 0 {
+                    self.showAlert("검색 결과가 없어요!", message: "다른 작품을 검색해 보세요.")
+                    self.navigationController?.popViewController(animated: true)
+                    return
+                } else {
+                    self.similarList = data.results
+                    self.similarCollectionView.reloadData()
+                }
+            }
             break
         case 1:
             NetworkManager.shared.getSimilarTVContents(id: itemId) { data in
@@ -207,13 +217,24 @@ extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.id, for: indexPath) as! RecommendCollectionViewCell
         
+        // 비슷한 콘텐츠
         if collectionView == similarCollectionView {
-            let item = similarList[indexPath.item]
-            cell.configureCellData(data: item)
-            return cell
+            // 영화일 때
+            if itemType == 0 {
+                let item = similarList[indexPath.item]
+                cell.configureCellMovieData(data: item as! MovieSimilarResults)
+                return cell
+            // 드라마일 때
+            } else {
+                let item = similarList[indexPath.item]
+                cell.configureCellTVData(data: item as! TVSimilarResults)
+                return cell
+            }
+        
+        // 추천 콘텐츠
         } else {
             let item = similarList[indexPath.item]
-            cell.configureCellData(data: item)
+            cell.configureCellTVData(data: item as! TVSimilarResults)
             return cell
         }
     }

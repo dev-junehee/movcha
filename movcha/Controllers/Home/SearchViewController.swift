@@ -222,7 +222,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let item = searchList.results[indexPath.item]
         
         let recommendVC = RecommendViewController()
-        recommendVC.itemTitle = item.name
+        recommendVC.itemTitle = item.name ?? item.title!
         recommendVC.itemType = selectedSearchCategory
         recommendVC.itemId = item.id
         navigationController?.pushViewController(recommendVC, animated: true)

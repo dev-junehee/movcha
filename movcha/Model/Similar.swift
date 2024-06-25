@@ -19,7 +19,7 @@ struct MovieSimilarResults: Decodable {
     let original_title: String
     let title: String
     let id: Int
-    let poster_path: String
+    let poster_path: String?
 }
 
 // 비슷한 콘텐츠 (TV)
