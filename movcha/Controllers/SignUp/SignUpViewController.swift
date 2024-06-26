@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: BaseViewController {
     
     let titleImg = UIImageView()
     
@@ -28,17 +28,15 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureHierarchy()
-        configureLayout()
-        configureUI()
+//        configureHierarchy()
+//        configureLayout()
+//        configureUI()
         configureData()
         configureBarBtn()
         configureHandler()
     }
     
-    func configureHierarchy() {
-        view.backgroundColor = .systemBackground
-        
+    override func configureHierarchy() {
         // 서브 뷰 추가
         let subViews: [UIView] = [titleImg, emailField, passwordField, nicknameField, locationField, recommendField, signUpButton, addInfoLabel, addInfoSwitch]
         
@@ -54,7 +52,7 @@ class SignUpViewController: UIViewController {
         }
     }
 
-    func configureLayout() {
+    override func configureLayout() {
         titleImg.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(32)
             make.centerX.equalTo(view)
@@ -107,7 +105,9 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    func configureUI() {
+    override func configureUI() {
+        super.configureUI()
+        
         titleImg.image = UIImage.movchaLogo
         
         signUpTextFields.forEach {
@@ -126,7 +126,6 @@ class SignUpViewController: UIViewController {
     }
 
     func configureData() {
-
         let placeholders = [
             Constants.Text.SignUp.Placeholder.email,
             Constants.Text.SignUp.Placeholder.password,

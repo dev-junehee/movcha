@@ -11,7 +11,7 @@ import Alamofire
 import SkeletonView
 import SnapKit
 
-class BoxOfficeViewController: UIViewController {
+class BoxOfficeViewController: BaseViewController {
     
     let mainTitle = UILabel()
     
@@ -38,15 +38,12 @@ class BoxOfficeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        configureHierarchy()
-        configureLayout()
-        configureUI()
         configureData()
         configureHandler()
         callRequest()
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         let searchAreaViews = [dateTextField, searchButton]
         searchAreaViews.forEach {
             searchAreaStack.addArrangedSubview($0)
@@ -65,7 +62,7 @@ class BoxOfficeViewController: UIViewController {
         boxOfficeTableView.keyboardDismissMode = .onDrag
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         mainTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
@@ -98,7 +95,9 @@ class BoxOfficeViewController: UIViewController {
         }
     }
     
-    func configureUI() {
+    override func configureUI() {
+        super.configureUI()
+        
         mainTitle.font = .systemFont(ofSize: 40, weight: .black)
         
         dateTextField.borderStyle = .none

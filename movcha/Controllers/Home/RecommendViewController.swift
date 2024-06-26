@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-class RecommendViewController: UIViewController {
+class RecommendViewController: BaseViewController {
     
     lazy var tableView = {
         let view = UITableView()
@@ -40,15 +40,11 @@ class RecommendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureHierarchy()
-        configureLayout()
-        configureUI()
         configureData()
         callRequest()
     }
     
-    private func configureHierarchy() {
-        view.backgroundColor = .systemBackground
+    override func configureHierarchy() {
         navigationController?.navigationBar.tintColor = Constants.Color.Primary.pink
         
         view.addSubview(searchTitleLabel)
@@ -56,7 +52,7 @@ class RecommendViewController: UIViewController {
         view.addSubview(tableView)
     }
     
-    private func configureLayout() {
+    override func configureLayout() {
         searchTitleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(8)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
@@ -75,9 +71,10 @@ class RecommendViewController: UIViewController {
         }
     }
     
-    private func configureUI() {
-        searchTitleLabel.font = Constants.Font.title
+    override func configureUI() {
+        super.configureUI()
         
+        searchTitleLabel.font = Constants.Font.title
         searchSubLabel.font = .systemFont(ofSize: 14, weight: .regular)
         searchSubLabel.textColor = Constants.Color.Primary.darkGray
         searchSubLabel.baselineAdjustment = .alignBaselines

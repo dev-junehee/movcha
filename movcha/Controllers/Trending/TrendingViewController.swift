@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SnapKit
 
-class TrendingViewController: UIViewController {
+class TrendingViewController: BaseViewController {
 
     let mainTitle = UILabel()
     let trendingTableView = UITableView()
@@ -19,14 +19,15 @@ class TrendingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureHierarchy()
-        configureLayout()
-        configureUI()
+        
+//        configureHierarchy()
+//        configureLayout()
+//        configureUI()
         configureData()
         callRequest()
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         let subviews = [mainTitle, trendingTableView]
         subviews.forEach {
             view.addSubview($0)
@@ -38,7 +39,7 @@ class TrendingViewController: UIViewController {
         trendingTableView.separatorStyle = .none
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         mainTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
@@ -51,7 +52,9 @@ class TrendingViewController: UIViewController {
         }
     }
     
-    func configureUI() {
+    override func configureUI() {
+        super.configureUI()
+        
         mainTitle.font = .systemFont(ofSize: 40, weight: .black)
     }
     

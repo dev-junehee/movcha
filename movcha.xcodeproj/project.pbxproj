@@ -39,6 +39,7 @@
 		C46B29E42C29AF2400F81E4B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B29E32C29AF2400F81E4B /* NetworkManager.swift */; };
 		C46B29E62C29BA0900F81E4B /* SimilarRecommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B29E52C29BA0900F81E4B /* SimilarRecommend.swift */; };
 		C46B2A122C2AB1FD00F81E4B /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B2A112C2AB1FD00F81E4B /* RecommendTableViewCell.swift */; };
+		C47C46522C2B2EE500665A7A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46512C2B2EE500665A7A /* BaseViewController.swift */; };
 		C4A52B0A2C2981ED0013BCDF /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A52B092C2981ED0013BCDF /* RecommendViewController.swift */; };
 		C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */; };
 		C4B0B9EC2C18922600CC5765 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */; };
@@ -78,6 +79,7 @@
 		C46B29E32C29AF2400F81E4B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C46B29E52C29BA0900F81E4B /* SimilarRecommend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarRecommend.swift; sourceTree = "<group>"; };
 		C46B2A112C2AB1FD00F81E4B /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
+		C47C46512C2B2EE500665A7A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C4A52B092C2981ED0013BCDF /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDetailCastCell.swift; sourceTree = "<group>"; };
 		C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				C46197182C0F2193007D3B6B /* Protocol */,
 				C46197162C0F212E007D3B6B /* Model */,
 				C46197192C0F2198007D3B6B /* Extension */,
+				C47C46502C2B2EBF00665A7A /* Base */,
 				C46197172C0F2133007D3B6B /* Controllers */,
 				C461976B2C11F6A7007D3B6B /* Cell */,
 				C46197012C0F2011007D3B6B /* AppDelegate.swift */,
@@ -209,6 +212,14 @@
 				C46B29E32C29AF2400F81E4B /* NetworkManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		C47C46502C2B2EBF00665A7A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C47C46512C2B2EE500665A7A /* BaseViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		C4A52B032C297DDD0013BCDF /* Home */ = {
@@ -343,6 +354,7 @@
 				C467D1B42C2992B700702DC4 /* RecommendCollectionViewCell.swift in Sources */,
 				C46197C22C16E1D2007D3B6B /* Credit.swift in Sources */,
 				C46197672C11B10B007D3B6B /* API.swift in Sources */,
+				C47C46522C2B2EE500665A7A /* BaseViewController.swift in Sources */,
 				C46197292C0F2AE3007D3B6B /* UIViewController+Extension.swift in Sources */,
 				C46197BB2C16DB08007D3B6B /* TrendingViewController.swift in Sources */,
 				C461971F2C0F2352007D3B6B /* SignUpViewController.swift in Sources */,

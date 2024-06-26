@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
     let mainTitle = UILabel()
     
@@ -16,21 +16,17 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureHierarchy()
-        configureLayout()
-        configureUI()
-        configureData()
         setBarButtons()
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         let subviews = [mainTitle]
         subviews.forEach {
             view.addSubview($0)
         }
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         mainTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
@@ -38,20 +34,18 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func configureUI() {
+    override func configureUI() {
+        super.configureUI()
         mainTitle.font = .systemFont(ofSize: 40, weight: .black)
-    }
-    
-    func configureData() {
         mainTitle.text = Constants.Text.Title.home
     }
+    
     
     func setBarButtons() {
         addImgBarBtn(title: nil, image: Constants.SystemImage.search, target: self, action: #selector(searchBtnClicked), type: .right, color: Constants.Color.Primary.pink)
     }
 
     // MARK: 핸들러
-
     @objc func searchBtnClicked() {
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }
