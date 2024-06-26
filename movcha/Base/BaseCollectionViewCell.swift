@@ -1,5 +1,5 @@
 //
-//  BaseView.swift
+//  BaseTableViewCell.swift
 //  movcha
 //
 //  Created by junehee on 6/26/24.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-class BaseView: UIView {
+class BaseCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configureViewHierarchy()
-        configureViewLayout()
-        configureViewUI()
+        configureCellHierarchy()
+        configureCellLayout()
+        configureCellUI()
     }
     
     required init?(coder: NSCoder) {
@@ -22,12 +22,12 @@ class BaseView: UIView {
     }
     
     // 계층
-    func configureViewHierarchy() { }
+    func configureCellHierarchy() { }
     
     // 레이아웃
-    func configureViewLayout() { }
+    func configureCellLayout() { }
     
     // 디자인 & 변하지 않는 데이터
-    func configureViewUI() {
-    }
+    func configureCellUI() { }
 }
+
