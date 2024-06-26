@@ -41,7 +41,11 @@ class RecommendViewController: BaseViewController {
         super.viewDidLoad()
         
         configureData()
-        callRequest()
+        if itemType == 0 {
+            callRequest(type: .movie, id: itemId)
+        } else {
+            callRequest(type: .tv, id: itemId)
+        }
     }
     
     override func configureHierarchy() {
@@ -92,31 +96,39 @@ class RecommendViewController: BaseViewController {
 
 // API
 extension RecommendViewController {
-    func callRequest() {
+    func callRequest(type: GenreType, id: Int) {
         let group = DispatchGroup()
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkManager.shared.getSimilarContentstype(type: self.itemType, id: self.itemId) { similarList in
-                if similarList.count == 0 {
+            NetworkManager.shared.callRequest(api: .similar(type: type, id: id)) { (similar: SimilarRecommend?, error: String?) in
+                guard let similar = similar else {
+                    print(error ?? "RecommendViewController Call Similar Error")
+                    return
+                }
+                if similar.results.count == 0 {
                     self.showAlert("검색 결과가 없어요!", message: "다른 작품을 검색해 보세요.")
                     self.navigationController?.popViewController(animated: true)
                 } else {
-                    self.contentsList[0] = similarList
+                    self.contentsList[0] = similar.results
                 }
                 group.leave()
             }
+            
         }
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkManager.shared.getRecommendContents(type: self.itemType, id: self.itemId) { recommendList in
-                if recommendList.count == 0 {
+            NetworkManager.shared.callRequest(api: .recommend(type: type, id: id)) { (recommend: SimilarRecommend?, error: String?) in
+                guard let recommend = recommend else {
+                    print(error ?? "RecommendViewController Call Recommend Error")
+                    return
+                }
+                if recommend.results.count == 0 {
                     self.showAlert("검색 결과가 없어요!", message: "다른 작품을 검색해 보세요.")
                     self.navigationController?.popViewController(animated: true)
                 } else {
-                    dump(recommendList)
-                    self.contentsList[1] = recommendList
+                    self.contentsList[1] = recommend.results
                 }
                 group.leave()
             }

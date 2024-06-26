@@ -105,12 +105,16 @@ extension SearchViewController {
         
         group.enter()
         DispatchQueue.global().async {
-            NetworkManager.shared.callRequest(api: .search(type: type, query: query)) { (search: Search?, error: AFError?) in
+            NetworkManager.shared.callRequest(api: .search(type: type, query: query)) { (search: Search?, error: String?) in
+                guard let search = search else {
+                    print(error ?? "SearchViewController Call Search Error")
+                    return
+                }
                 if self.page == 1 {
                     self.searchList.results.removeAll()
-                    self.searchList.results = search?.results ?? []
+                    self.searchList.results = search.results
                 } else {
-                    self.searchList.results.append(contentsOf: search?.results ?? [])
+                    self.searchList.results.append(contentsOf: search.results)
                 }
                 group.leave()
             }
@@ -198,12 +202,18 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if selectedSearchCategory == 2 {
+            showAlert("영화인 연관 검색은 아직 준비 중이에요!", message: nil)
+            return
+        }
+        
         let item = searchList.results[indexPath.item]
         
         let recommendVC = RecommendViewController()
         recommendVC.itemTitle = item.name ?? item.title!
         recommendVC.itemType = selectedSearchCategory
         recommendVC.itemId = item.id
+        
         navigationController?.pushViewController(recommendVC, animated: true)
     }
 }
