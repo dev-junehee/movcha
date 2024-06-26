@@ -12,18 +12,7 @@ import SnapKit
 
 class RecommendViewController: BaseViewController {
     
-    lazy var tableView = {
-        let view = UITableView()
-        view.delegate = self
-        view.dataSource = self
-        view.register(RecommendTableViewCell.self, forCellReuseIdentifier: RecommendTableViewCell.id)
-        view.rowHeight = 230
-        view.separatorStyle = .none
-        return view
-    }()
-    
-    let searchTitleLabel = UILabel()
-    let searchSubLabel = UILabel()
+    let recommendView = RecommendView()
     
     // 데이터
     var itemTitle: String = ""
@@ -36,6 +25,10 @@ class RecommendViewController: BaseViewController {
         [SimilarRecommendResults(poster_path: "")],
         [SimilarRecommendResults(poster_path: "")]
     ]
+    
+    override func loadView() {
+        self.view = recommendView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,49 +44,20 @@ class RecommendViewController: BaseViewController {
     override func configureHierarchy() {
         navigationController?.navigationBar.tintColor = Constants.Color.Primary.pink
         
-        view.addSubview(searchTitleLabel)
-        view.addSubview(searchSubLabel)
-        view.addSubview(tableView)
-    }
-    
-    override func configureLayout() {
-        searchTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(8)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
-            $0.height.equalTo(40)
-        }
-        
-        searchSubLabel.snp.makeConstraints {
-            $0.top.trailing.equalTo(view.safeAreaLayoutGuide).inset(8)
-            $0.leading.equalTo(searchTitleLabel.snp.trailing).offset(8)
-            $0.height.equalTo(40)
-        }
-        
-        tableView.snp.makeConstraints {
-            $0.top.equalTo(searchSubLabel.snp.bottom).offset(16)
-            $0.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
-    }
-    
-    override func configureUI() {
-        super.configureUI()
-        
-        searchTitleLabel.font = Constants.Font.title
-        searchSubLabel.font = .systemFont(ofSize: 14, weight: .regular)
-        searchSubLabel.textColor = Constants.Color.Primary.darkGray
-        searchSubLabel.baselineAdjustment = .alignBaselines
+        recommendView.tableView.delegate = self
+        recommendView.tableView.dataSource = self
+        recommendView.tableView.register(RecommendTableViewCell.self, forCellReuseIdentifier: RecommendTableViewCell.id)
     }
 
     private func configureData() {
-        searchTitleLabel.text = itemTitle
-        searchSubLabel.text = Constants.Text.Recommend.subSearch
+        recommendView.searchTitleLabel.text = itemTitle
+        recommendView.searchSubLabel.text = Constants.Text.Recommend.subSearch
     }
     
 }
 
 
 // MARK: RecommendViewController 익스텐션
-
 // API
 extension RecommendViewController {
     func callRequest(type: GenreType, id: Int) {
@@ -136,7 +100,7 @@ extension RecommendViewController {
         
         // 통신 완료되면 테이블 뷰 리로드
         group.notify(queue: .main) {
-            self.tableView.reloadData()
+            self.recommendView.tableView.reloadData()
         }
     }
 }
