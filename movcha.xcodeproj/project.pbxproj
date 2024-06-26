@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C46197022C0F2011007D3B6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197012C0F2011007D3B6B /* AppDelegate.swift */; };
 		C46197042C0F2011007D3B6B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197032C0F2011007D3B6B /* SceneDelegate.swift */; };
-		C46197092C0F2011007D3B6B /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C46197082C0F2011007D3B6B /* Base */; };
 		C461970B2C0F2012007D3B6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C461970A2C0F2012007D3B6B /* Assets.xcassets */; };
 		C461970E2C0F2012007D3B6B /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C461970D2C0F2012007D3B6B /* Base */; };
 		C461971B2C0F21FB007D3B6B /* ReuseableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461971A2C0F21FB007D3B6B /* ReuseableProtocol.swift */; };
@@ -36,10 +35,6 @@
 		C46B29E62C29BA0900F81E4B /* SimilarRecommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B29E52C29BA0900F81E4B /* SimilarRecommend.swift */; };
 		C46B2A122C2AB1FD00F81E4B /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B2A112C2AB1FD00F81E4B /* RecommendTableViewCell.swift */; };
 		C47C46522C2B2EE500665A7A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46512C2B2EE500665A7A /* BaseViewController.swift */; };
-		C47C46592C2BFCDF00665A7A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C47C46582C2BFCDF00665A7A /* SnapKit */; };
-		C47C465C2C2BFCE800665A7A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C47C465B2C2BFCE800665A7A /* Kingfisher */; };
-		C47C465F2C2BFCF000665A7A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C47C465E2C2BFCF000665A7A /* Alamofire */; };
-		C47C46622C2BFCFA00665A7A /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = C47C46612C2BFCFA00665A7A /* SkeletonView */; };
 		C47C46642C2C010900665A7A /* TmdbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46632C2C010900665A7A /* TmdbAPI.swift */; };
 		C47C46662C2C446C00665A7A /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46652C2C446C00665A7A /* BaseView.swift */; };
 		C47C466A2C2C464400665A7A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46692C2C464400665A7A /* HomeView.swift */; };
@@ -47,6 +42,10 @@
 		C47C466E2C2C520200665A7A /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C466D2C2C520200665A7A /* RecommendView.swift */; };
 		C47C46702C2C576300665A7A /* BoxOfficeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C466F2C2C576300665A7A /* BoxOfficeView.swift */; };
 		C47C46722C2C5B6100665A7A /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46712C2C5B6100665A7A /* BaseCollectionViewCell.swift */; };
+		C47C46752C2C622400665A7A /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = C47C46742C2C622400665A7A /* SkeletonView */; };
+		C47C46782C2C623F00665A7A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C47C46772C2C623F00665A7A /* Alamofire */; };
+		C47C467B2C2C625B00665A7A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C47C467A2C2C625B00665A7A /* Kingfisher */; };
+		C47C467E2C2C627500665A7A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C47C467D2C2C627500665A7A /* SnapKit */; };
 		C4A52B0A2C2981ED0013BCDF /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A52B092C2981ED0013BCDF /* RecommendViewController.swift */; };
 		C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */; };
 		C4B0B9EC2C18922600CC5765 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */; };
@@ -58,7 +57,6 @@
 		C46196FE2C0F2011007D3B6B /* movcha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = movcha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46197012C0F2011007D3B6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C46197032C0F2011007D3B6B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C46197082C0F2011007D3B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C461970A2C0F2012007D3B6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C461970D2C0F2012007D3B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C461970F2C0F2012007D3B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,10 +104,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C47C46622C2BFCFA00665A7A /* SkeletonView in Frameworks */,
-				C47C465F2C2BFCF000665A7A /* Alamofire in Frameworks */,
-				C47C465C2C2BFCE800665A7A /* Kingfisher in Frameworks */,
-				C47C46592C2BFCDF00665A7A /* SnapKit in Frameworks */,
+				C47C467B2C2C625B00665A7A /* Kingfisher in Frameworks */,
+				C47C467E2C2C627500665A7A /* SnapKit in Frameworks */,
+				C47C46752C2C622400665A7A /* SkeletonView in Frameworks */,
+				C47C46782C2C623F00665A7A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +146,6 @@
 				C461976B2C11F6A7007D3B6B /* Cell */,
 				C46197012C0F2011007D3B6B /* AppDelegate.swift */,
 				C46197032C0F2011007D3B6B /* SceneDelegate.swift */,
-				C46197072C0F2011007D3B6B /* Main.storyboard */,
 				C461970C2C0F2012007D3B6B /* LaunchScreen.storyboard */,
 				C461970A2C0F2012007D3B6B /* Assets.xcassets */,
 				C461970F2C0F2012007D3B6B /* Info.plist */,
@@ -319,10 +316,10 @@
 			);
 			name = movcha;
 			packageProductDependencies = (
-				C47C46582C2BFCDF00665A7A /* SnapKit */,
-				C47C465B2C2BFCE800665A7A /* Kingfisher */,
-				C47C465E2C2BFCF000665A7A /* Alamofire */,
-				C47C46612C2BFCFA00665A7A /* SkeletonView */,
+				C47C46742C2C622400665A7A /* SkeletonView */,
+				C47C46772C2C623F00665A7A /* Alamofire */,
+				C47C467A2C2C625B00665A7A /* Kingfisher */,
+				C47C467D2C2C627500665A7A /* SnapKit */,
 			);
 			productName = movcha;
 			productReference = C46196FE2C0F2011007D3B6B /* movcha.app */;
@@ -353,10 +350,10 @@
 			);
 			mainGroup = C46196F52C0F2011007D3B6B;
 			packageReferences = (
-				C47C46572C2BFCDF00665A7A /* XCRemoteSwiftPackageReference "SnapKit" */,
-				C47C465A2C2BFCE800665A7A /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				C47C465D2C2BFCF000665A7A /* XCRemoteSwiftPackageReference "Alamofire" */,
-				C47C46602C2BFCFA00665A7A /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				C47C46732C2C622400665A7A /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				C47C46762C2C623F00665A7A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C47C46792C2C625B00665A7A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				C47C467C2C2C627500665A7A /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = C46196FF2C0F2011007D3B6B /* Products */;
 			projectDirPath = "";
@@ -375,7 +372,6 @@
 				C46197632C11AF3C007D3B6B /* .gitignore in Resources */,
 				C461970B2C0F2012007D3B6B /* Assets.xcassets in Resources */,
 				C461970E2C0F2012007D3B6B /* Base in Resources */,
-				C46197092C0F2011007D3B6B /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,14 +425,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C46197072C0F2011007D3B6B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C46197082C0F2011007D3B6B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C461970C2C0F2012007D3B6B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -580,7 +568,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "뭅챠";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -614,7 +601,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "뭅챠";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -659,31 +645,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C47C46572C2BFCDF00665A7A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
-		C47C465A2C2BFCE800665A7A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.12.0;
-			};
-		};
-		C47C465D2C2BFCF000665A7A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.1;
-			};
-		};
-		C47C46602C2BFCFA00665A7A /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+		C47C46732C2C622400665A7A /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
 			requirement = {
@@ -691,28 +653,52 @@
 				minimumVersion = 1.31.0;
 			};
 		};
+		C47C46762C2C623F00665A7A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		C47C46792C2C625B00665A7A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		C47C467C2C2C627500665A7A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C47C46582C2BFCDF00665A7A /* SnapKit */ = {
+		C47C46742C2C622400665A7A /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C47C46572C2BFCDF00665A7A /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
+			package = C47C46732C2C622400665A7A /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
-		C47C465B2C2BFCE800665A7A /* Kingfisher */ = {
+		C47C46772C2C623F00665A7A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C47C465A2C2BFCE800665A7A /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		C47C465E2C2BFCF000665A7A /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C47C465D2C2BFCF000665A7A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = C47C46762C2C623F00665A7A /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		C47C46612C2BFCFA00665A7A /* SkeletonView */ = {
+		C47C467A2C2C625B00665A7A /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C47C46602C2BFCFA00665A7A /* XCRemoteSwiftPackageReference "SkeletonView" */;
-			productName = SkeletonView;
+			package = C47C46792C2C625B00665A7A /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		C47C467D2C2C627500665A7A /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C47C467C2C2C627500665A7A /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
