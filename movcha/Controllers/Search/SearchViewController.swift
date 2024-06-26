@@ -13,31 +13,17 @@ import SnapKit
 
 class SearchViewController: BaseViewController {
     
-    let searchBar = UISearchBar()
-    let searchCategory = UISegmentedControl(items: Constants.Text.Search.category)
+    let searchView = SearchView()
     
     var selectedSearchCategory = 0
     
     var searchList = Search(page: 1, results: [], total_pages: 0, total_results: 0)
     var page = 1
-    
-    lazy var searchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionviewLayout())
-    
-    func collectionviewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        
-        let width = UIScreen.main.bounds.width - 48
-        let height = UIScreen.main.bounds.height - 60
-        
-        layout.itemSize = CGSize(width: width / 3, height: height / 5)
-        layout.scrollDirection = .vertical // 스크롤 방향
-        layout.minimumInteritemSpacing = 12  // 셀과 셀 사이 가로 간격
-        layout.minimumLineSpacing = 12 // 셀과 셀 사이 세로 간격
-        layout.sectionInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12) // 셀과 뷰 사이 간격
-        
-        return layout
-    }
 
+    override func loadView() {
+        self.view = searchView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,42 +34,13 @@ class SearchViewController: BaseViewController {
     override func configureHierarchy() {
         navigationItem.title = Constants.Text.Title.search
         
-        searchBar.delegate = self
+        searchView.searchBar.delegate = self
         
-        searchCollectionView.delegate = self
-        searchCollectionView.dataSource = self
-        searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.id)
-        searchCollectionView.prefetchDataSource = self
-        searchCollectionView.keyboardDismissMode = .onDrag
-        
-        view.addSubview(searchBar)
-        view.addSubview(searchCategory)
-        view.addSubview(searchCollectionView)
-    }
-    
-    override func configureLayout() {
-        searchBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(8)
-            make.height.equalTo(44)
-        }
-        
-        searchCategory.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom).offset(8)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(32)
-        }
-        searchCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(searchCategory.snp.bottom).offset(8)
-            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
-    }
-    
-    override func configureUI() {
-        super.configureUI()
-        
-        searchBar.searchBarStyle = .minimal
-        searchBar.placeholder = Constants.Text.Search.placeholder
+        searchView.searchCollectionView.delegate = self
+        searchView.searchCollectionView.dataSource = self
+        searchView.searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.id)
+        searchView.searchCollectionView.prefetchDataSource = self
+        searchView.searchCollectionView.keyboardDismissMode = .onDrag
     }
     
     private func setBarButtons() {
@@ -121,10 +78,10 @@ extension SearchViewController {
         }
         
         group.notify(queue: .main) {
-            self.searchCollectionView.reloadData()
+            self.searchView.searchCollectionView.reloadData()
 
             if self.page == 1 {
-                self.searchCollectionView.scrollsToTop = true
+                self.searchView.searchCollectionView.scrollsToTop = true
             }
         }
     }
@@ -153,12 +110,12 @@ extension SearchViewController: UISearchBarDelegate {
 // Segmented Control
 extension SearchViewController {
     func configureCategoryControll() {
-        searchCategory.selectedSegmentIndex = 0
-        searchCategory.addTarget(self, action: #selector(categoryChanged), for: .valueChanged)
+        self.searchView.searchCategory.selectedSegmentIndex = 0
+        self.searchView.searchCategory.addTarget(self, action: #selector(categoryChanged), for: .valueChanged)
     }
     
     @objc func categoryChanged() {
-        selectedSearchCategory = searchCategory.selectedSegmentIndex
+        selectedSearchCategory = self.searchView.searchCategory.selectedSegmentIndex
     }
     
 }
@@ -167,7 +124,7 @@ extension SearchViewController {
 extension SearchViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         print("Prefetch", indexPaths)
-        guard let value = searchBar.text else { return }
+        guard let value = self.searchView.searchBar.text else { return }
         for indexPath in indexPaths {
             if searchList.results.count - 2 == indexPath.item {
                 page += 1
@@ -195,7 +152,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let idx = indexPath.item
         let item = searchList.results[idx]
         
-        cell.searchCategory = searchCategory.selectedSegmentIndex
+        cell.searchCategory = self.searchView.searchCategory.selectedSegmentIndex
         cell.configureCellData(data: item)
  
         return cell
