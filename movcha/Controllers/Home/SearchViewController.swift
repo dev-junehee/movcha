@@ -100,55 +100,28 @@ class SearchViewController: BaseViewController {
 
 // API
 extension SearchViewController {
-    // 검색
     func callSearchRequest(query: String) {
-        var URL = ""
+        let group = DispatchGroup()
         
-        switch searchCategory.selectedSegmentIndex {
-        case 0:
-            URL = "\(API.URL.KMDB.Search.movie)\(query)"
-            break
-        case 1:
-            URL = "\(API.URL.KMDB.Search.tv)\(query)"
-            break
-        case 2:
-            URL = "\(API.URL.KMDB.Search.person)\(query)"
-            break
-        default:
-            print("검색 카테고리 선택 오류")
-        }
-        
-        let headers: HTTPHeaders = [
-            "Authorization": API.KEY.kmdb,
-            "accept": "application/json"
-        ]
-        
-        print("API URL 확인", URL)
-        AF.request(URL,
-                   headers: headers)
-        .responseDecodable(of: Search.self) { res in
-            switch res.result {
-            case .success(let value):
-                print("검색 성공")
-                print(value.results)
-                
+        group.enter()
+        DispatchQueue.global().async {
+            NetworkManager.shared.getSearchContents(type: self.selectedSearchCategory, query: query) { searchData in
                 // 새로운 검색어일 때
                 if self.page == 1 {
                     self.searchList.results.removeAll()
-                    self.searchList.results = value.results
+                    self.searchList.results = searchData
                 } else {
-                    self.searchList.results.append(contentsOf: value.results)
+                    self.searchList.results.append(contentsOf: searchData)
                 }
-                
-                self.searchCollectionView.reloadData()
-    
-                if self.page == 1 {
-                    self.searchCollectionView.scrollsToTop = true
-                }
-                
-            case .failure(let error):
-                print("검색 실패")
-                print(error)
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.searchCollectionView.reloadData()
+
+            if self.page == 1 {
+                self.searchCollectionView.scrollsToTop = true
             }
         }
     }

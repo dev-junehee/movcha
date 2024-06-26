@@ -23,6 +23,41 @@ class NetworkManager {
         "accept": "application/json"
     ]
     
+    
+    // 검색
+    func getSearchContents(type: Int, query: String, completionHandler: @escaping ([SearchResults]) -> Void) {
+        var URL = ""
+        
+        switch type {
+        case 0:
+            URL = "\(API.URL.KMDB.Search.movie)\(query)"
+            break
+        case 1:
+            URL = "\(API.URL.KMDB.Search.tv)\(query)"
+            break
+        case 2:
+            URL = "\(API.URL.KMDB.Search.person)\(query)"
+            break
+        default:
+            print("검색 카테고리 선택 오류")
+        }
+        
+        print("API URL 확인", URL)
+        AF.request(URL, headers: headers)
+            .responseDecodable(of: Search.self) { res in
+                switch res.result {
+                case .success(let value):
+                    print("검색 성공")
+                    print(value.results)
+                    completionHandler(value.results)
+                case .failure(let error):
+                    print("검색 실패")
+                    print(error)
+                }
+            }
+    }
+    
+    
     // 비슷한 콘텐츠
     func getSimilarContentstype(type: Int,
                                 id: Int, 

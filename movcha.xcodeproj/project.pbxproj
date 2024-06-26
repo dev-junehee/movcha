@@ -16,16 +16,13 @@
 		C461971D2C0F22DE007D3B6B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461971C2C0F22DE007D3B6B /* HomeViewController.swift */; };
 		C461971F2C0F2352007D3B6B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461971E2C0F2352007D3B6B /* SignUpViewController.swift */; };
 		C46197212C0F23B0007D3B6B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197202C0F23B0007D3B6B /* UIView+Extension.swift */; };
-		C46197242C0F27BA007D3B6B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C46197232C0F27BA007D3B6B /* SnapKit */; };
 		C46197272C0F29B4007D3B6B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197262C0F29B4007D3B6B /* Common.swift */; };
 		C46197292C0F2AE3007D3B6B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197282C0F2AE3007D3B6B /* UIViewController+Extension.swift */; };
 		C46197612C11ACE1007D3B6B /* BoxOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197602C11ACE1007D3B6B /* BoxOfficeViewController.swift */; };
 		C46197632C11AF3C007D3B6B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C46197622C11AF3C007D3B6B /* .gitignore */; };
 		C46197672C11B10B007D3B6B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197662C11B10B007D3B6B /* API.swift */; };
-		C461976A2C11B37E007D3B6B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C46197692C11B37E007D3B6B /* Alamofire */; };
 		C461976E2C11F706007D3B6B /* BoxOfficeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461976D2C11F706007D3B6B /* BoxOfficeTableViewCell.swift */; };
 		C46197702C121714007D3B6B /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461976F2C121714007D3B6B /* UITextField+Extension.swift */; };
-		C46197752C12EF1D007D3B6B /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = C46197742C12EF1D007D3B6B /* SkeletonView */; };
 		C46197772C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197762C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift */; };
 		C46197BB2C16DB08007D3B6B /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197BA2C16DB08007D3B6B /* TrendingViewController.swift */; };
 		C46197C02C16DDDB007D3B6B /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197BF2C16DDDB007D3B6B /* Trending.swift */; };
@@ -33,13 +30,16 @@
 		C46197C42C16E9D6007D3B6B /* TrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197C32C16E9D6007D3B6B /* TrendingTableViewCell.swift */; };
 		C46197C62C16EF6C007D3B6B /* BoxOffice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197BD2C16DDD2007D3B6B /* BoxOffice.swift */; };
 		C46197CA2C173FDF007D3B6B /* TrendingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197C92C173FDF007D3B6B /* TrendingDetailViewController.swift */; };
-		C46197CD2C174A81007D3B6B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C46197CC2C174A81007D3B6B /* Kingfisher */; };
 		C46197D92C187A21007D3B6B /* TrendingDetailOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46197D82C187A21007D3B6B /* TrendingDetailOverviewCell.swift */; };
 		C467D1B42C2992B700702DC4 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467D1B32C2992B700702DC4 /* RecommendCollectionViewCell.swift */; };
 		C46B29E42C29AF2400F81E4B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B29E32C29AF2400F81E4B /* NetworkManager.swift */; };
 		C46B29E62C29BA0900F81E4B /* SimilarRecommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B29E52C29BA0900F81E4B /* SimilarRecommend.swift */; };
 		C46B2A122C2AB1FD00F81E4B /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B2A112C2AB1FD00F81E4B /* RecommendTableViewCell.swift */; };
 		C47C46522C2B2EE500665A7A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46512C2B2EE500665A7A /* BaseViewController.swift */; };
+		C47C46592C2BFCDF00665A7A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C47C46582C2BFCDF00665A7A /* SnapKit */; };
+		C47C465C2C2BFCE800665A7A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C47C465B2C2BFCE800665A7A /* Kingfisher */; };
+		C47C465F2C2BFCF000665A7A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C47C465E2C2BFCF000665A7A /* Alamofire */; };
+		C47C46622C2BFCFA00665A7A /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = C47C46612C2BFCFA00665A7A /* SkeletonView */; };
 		C4A52B0A2C2981ED0013BCDF /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A52B092C2981ED0013BCDF /* RecommendViewController.swift */; };
 		C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */; };
 		C4B0B9EC2C18922600CC5765 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */; };
@@ -92,10 +92,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C46197CD2C174A81007D3B6B /* Kingfisher in Frameworks */,
-				C46197242C0F27BA007D3B6B /* SnapKit in Frameworks */,
-				C46197752C12EF1D007D3B6B /* SkeletonView in Frameworks */,
-				C461976A2C11B37E007D3B6B /* Alamofire in Frameworks */,
+				C47C46622C2BFCFA00665A7A /* SkeletonView in Frameworks */,
+				C47C465F2C2BFCF000665A7A /* Alamofire in Frameworks */,
+				C47C465C2C2BFCE800665A7A /* Kingfisher in Frameworks */,
+				C47C46592C2BFCDF00665A7A /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,10 +282,10 @@
 			);
 			name = movcha;
 			packageProductDependencies = (
-				C46197232C0F27BA007D3B6B /* SnapKit */,
-				C46197692C11B37E007D3B6B /* Alamofire */,
-				C46197742C12EF1D007D3B6B /* SkeletonView */,
-				C46197CC2C174A81007D3B6B /* Kingfisher */,
+				C47C46582C2BFCDF00665A7A /* SnapKit */,
+				C47C465B2C2BFCE800665A7A /* Kingfisher */,
+				C47C465E2C2BFCF000665A7A /* Alamofire */,
+				C47C46612C2BFCFA00665A7A /* SkeletonView */,
 			);
 			productName = movcha;
 			productReference = C46196FE2C0F2011007D3B6B /* movcha.app */;
@@ -316,10 +316,10 @@
 			);
 			mainGroup = C46196F52C0F2011007D3B6B;
 			packageReferences = (
-				C46197222C0F27BA007D3B6B /* XCRemoteSwiftPackageReference "SnapKit" */,
-				C46197682C11B37E007D3B6B /* XCRemoteSwiftPackageReference "Alamofire" */,
-				C46197732C12EF1D007D3B6B /* XCRemoteSwiftPackageReference "SkeletonView" */,
-				C46197CB2C174A81007D3B6B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				C47C46572C2BFCDF00665A7A /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C47C465A2C2BFCE800665A7A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				C47C465D2C2BFCF000665A7A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C47C46602C2BFCFA00665A7A /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = C46196FF2C0F2011007D3B6B /* Products */;
 			projectDirPath = "";
@@ -615,7 +615,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C46197222C0F27BA007D3B6B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		C47C46572C2BFCDF00665A7A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -623,23 +623,7 @@
 				minimumVersion = 5.7.1;
 			};
 		};
-		C46197682C11B37E007D3B6B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.1;
-			};
-		};
-		C46197732C12EF1D007D3B6B /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.31.0;
-			};
-		};
-		C46197CB2C174A81007D3B6B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		C47C465A2C2BFCE800665A7A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
@@ -647,28 +631,44 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		C47C465D2C2BFCF000665A7A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		C47C46602C2BFCFA00665A7A /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C46197232C0F27BA007D3B6B /* SnapKit */ = {
+		C47C46582C2BFCDF00665A7A /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C46197222C0F27BA007D3B6B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = C47C46572C2BFCDF00665A7A /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		C46197692C11B37E007D3B6B /* Alamofire */ = {
+		C47C465B2C2BFCE800665A7A /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C46197682C11B37E007D3B6B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = C47C465A2C2BFCE800665A7A /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		C47C465E2C2BFCF000665A7A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C47C465D2C2BFCF000665A7A /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		C46197742C12EF1D007D3B6B /* SkeletonView */ = {
+		C47C46612C2BFCFA00665A7A /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C46197732C12EF1D007D3B6B /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			package = C47C46602C2BFCFA00665A7A /* XCRemoteSwiftPackageReference "SkeletonView" */;
 			productName = SkeletonView;
-		};
-		C46197CC2C174A81007D3B6B /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C46197CB2C174A81007D3B6B /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
