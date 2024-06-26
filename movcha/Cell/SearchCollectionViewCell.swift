@@ -19,9 +19,8 @@ class SearchCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         configureCellHierarchy()
-        configureCellUI()
         configureCellLayout()
-    }
+        configureCellUI()    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -45,19 +44,13 @@ class SearchCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCellData(data: SearchResults) {
-        let backdrop = data.backdrop_path
-        let poster = data.poster_path
-        let profile = data.profile_path
-        
-        let backdropURL = URL(string: "\(API.URL.KMDB.img)\(backdrop)")
-        let posterURL = URL(string: "\(API.URL.KMDB.img)\(poster)")
-        let profileURL = URL(string: "\(API.URL.KMDB.img)\(profile)")
-        
         if searchCategory == 2 {
-            posterView.kf.setImage(with: profileURL)
+            guard let profile = data.profile_path else { return }
+            posterView.kf.setImage(with: URL(string: API.URL.TMDB.img + profile))
         } else {
-            posterView.kf.setImage(with: posterURL ?? backdropURL)
+            guard let poster = data.poster_path else { return }
+            posterView.kf.setImage(with: URL(string: API.URL.TMDB.img + poster))
         }
     }
-    
+
 }

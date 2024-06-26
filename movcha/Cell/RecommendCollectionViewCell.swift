@@ -44,7 +44,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCellData(data: SimilarRecommendResults) {
-        let imageURL = URL(string: "\(API.URL.KMDB.img)\(data.poster_path)")
+        let imageURL = URL(string: "\(API.URL.TMDB.img)\(data.poster_path)")
         posterView.kf.setImage(with: imageURL)
     }
 }

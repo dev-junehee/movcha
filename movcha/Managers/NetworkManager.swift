@@ -5,12 +5,8 @@
 //  Created by junehee on 6/24/24.
 //
 
+import Foundation
 import Alamofire
-
-enum NetworkType {
-    case movie
-    case tv
-}
 
 class NetworkManager {
     
@@ -19,53 +15,28 @@ class NetworkManager {
     private init() {}
     
     let headers: HTTPHeaders = [
-        "Authorization": API.KEY.kmdb,
+        "Authorization": API.KEY.tmdb,
         "accept": "application/json"
     ]
     
-    // 비슷한 콘텐츠
-    func getSimilarContentstype(type: Int,
-                                id: Int, 
-                                completionHandler: @escaping ([SimilarRecommendResults]) -> Void
-    ) {
-        let MOVIE_URL = "\(API.URL.KMDB.Similar.movie)\(id)/similar?language=ko"
-        let TV_URL = "\(API.URL.KMDB.Similar.tv)\(id)/similar?language=ko"
-        
-        let URL = type == 0 ? MOVIE_URL : TV_URL
-        
-        AF.request(URL, headers: headers)
-            .responseDecodable(of: SimilarRecommend.self) { res in
-                switch res.result {
-                case .success(let value):
-                    print("비슷한 콘텐츠 성공")
-                    completionHandler(value.results)
-                case .failure(let error):
-                    print("비슷한 콘텐츠 에러", error)
-                }
+    func callRequest<T: Decodable>(api: TmdbAPI, completionHandler: @escaping (T?, String?) -> Void) {
+        AF.request(api.endPoint,
+                   method: api.method,
+                   parameters: api.params,
+                   encoding: URLEncoding(destination: .queryString),
+                   headers: api.headers
+        ).responseDecodable(of: T.self) { res in
+            switch res.result {
+            case .success(let value):
+                print("callRequest 성공", T.self)
+                dump(value)
+                completionHandler(value, nil)
+            case .failure(let error):
+                print("callRequest 실패", T.self)
+                dump(error)
+                completionHandler(nil, error.errorDescription?.debugDescription)
             }
+        }
     }
-        
-    // 추천 콘텐츠
-    func getRecommendContents(type: Int,
-                              id: Int,
-                              completionHandler: @escaping ([SimilarRecommendResults]) -> Void
-    ) {
-        let MOVIE_URL = "\(API.URL.KMDB.Recommend.movie)\(id)/recommendations?language=ko"
-        let TV_URL = "\(API.URL.KMDB.Recommend.tv)\(id)/recommendations?language=ko"
-        
-        let URL = type == 0 ? MOVIE_URL : TV_URL
 
-        AF.request(URL, headers: headers)
-            .responseDecodable(of: SimilarRecommend.self) { res in
-                switch res.result {
-                case .success(let value):
-                    print("추천작 성공")
-                    dump(value)
-                    completionHandler(value.results)
-                case .failure(let error):
-                    print("추천작 에러")
-                    print(error)
-                }
-            }
-    }
 }

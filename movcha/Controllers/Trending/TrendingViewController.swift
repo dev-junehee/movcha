@@ -64,11 +64,11 @@ class TrendingViewController: BaseViewController {
     
     func callRequest() {
         let header: HTTPHeaders = [
-            "Authorization": API.KEY.kmdb,
+            "Authorization": API.KEY.tmdb,
             "accept": "application/json"
         ]
         
-        AF.request(API.URL.KMDB.Trending.all,
+        AF.request(API.URL.TMDB.Trending.all,
                    method: .get,
                    encoding: JSONEncoding.default,
                    headers: header)

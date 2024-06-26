@@ -18,8 +18,8 @@ class SearchViewController: BaseViewController {
     
     var selectedSearchCategory = 0
     
-    var searchList = Search(page: 0, results: [], total_pages: 0, total_results: 0)
-    var page = 0
+    var searchList = Search(page: 1, results: [], total_pages: 0, total_results: 0)
+    var page = 1
     
     lazy var searchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionviewLayout())
     
@@ -100,55 +100,31 @@ class SearchViewController: BaseViewController {
 
 // API
 extension SearchViewController {
-    // 검색
-    func callSearchRequest(query: String) {
-        var URL = ""
+    func callSearchRequest(type: SearchType, query: String) {
+        let group = DispatchGroup()
         
-        switch searchCategory.selectedSegmentIndex {
-        case 0:
-            URL = "\(API.URL.KMDB.Search.movie)\(query)"
-            break
-        case 1:
-            URL = "\(API.URL.KMDB.Search.tv)\(query)"
-            break
-        case 2:
-            URL = "\(API.URL.KMDB.Search.person)\(query)"
-            break
-        default:
-            print("검색 카테고리 선택 오류")
-        }
-        
-        let headers: HTTPHeaders = [
-            "Authorization": API.KEY.kmdb,
-            "accept": "application/json"
-        ]
-        
-        print("API URL 확인", URL)
-        AF.request(URL,
-                   headers: headers)
-        .responseDecodable(of: Search.self) { res in
-            switch res.result {
-            case .success(let value):
-                print("검색 성공")
-                print(value.results)
-                
-                // 새로운 검색어일 때
+        group.enter()
+        DispatchQueue.global().async {
+            NetworkManager.shared.callRequest(api: .search(type: type, query: query)) { (search: Search?, error: String?) in
+                guard let search = search else {
+                    print(error ?? "SearchViewController Call Search Error")
+                    return
+                }
                 if self.page == 1 {
                     self.searchList.results.removeAll()
-                    self.searchList.results = value.results
+                    self.searchList.results = search.results
                 } else {
-                    self.searchList.results.append(contentsOf: value.results)
+                    self.searchList.results.append(contentsOf: search.results)
                 }
-                
-                self.searchCollectionView.reloadData()
-    
-                if self.page == 1 {
-                    self.searchCollectionView.scrollsToTop = true
-                }
-                
-            case .failure(let error):
-                print("검색 실패")
-                print(error)
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.searchCollectionView.reloadData()
+
+            if self.page == 1 {
+                self.searchCollectionView.scrollsToTop = true
             }
         }
     }
@@ -162,7 +138,15 @@ extension SearchViewController: UISearchBarDelegate {
             print(#function, "검색어 입력 오류")
             return
         }
-        callSearchRequest(query: value)
+        
+        if selectedSearchCategory == 0 {
+            callSearchRequest(type: .movie, query: value)
+        } else if selectedSearchCategory == 1 {
+            callSearchRequest(type: .tv, query: value)
+        } else {
+            callSearchRequest(type: .person, query: value)
+        }
+        
     }
 }
 
@@ -183,11 +167,17 @@ extension SearchViewController {
 extension SearchViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         print("Prefetch", indexPaths)
-        
+        guard let value = searchBar.text else { return }
         for indexPath in indexPaths {
             if searchList.results.count - 2 == indexPath.item {
                 page += 1
-                callSearchRequest(query: searchBar.text!)
+                if selectedSearchCategory == 0 {
+                    callSearchRequest(type: .movie, query: value)
+                } else if selectedSearchCategory == 1 {
+                    callSearchRequest(type: .tv, query: value)
+                } else {
+                    callSearchRequest(type: .person, query: value)
+                }
             }
         }
     }
@@ -203,19 +193,19 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.id, for: indexPath) as! SearchCollectionViewCell
         
         let idx = indexPath.item
+        let item = searchList.results[idx]
         
         cell.searchCategory = searchCategory.selectedSegmentIndex
-        
-        cell.configureCellHierarchy()
-        cell.configureCellLayout()
-        cell.configureCellUI()
-        cell.configureCellData(data: searchList.results[idx])
-
+        cell.configureCellData(data: item)
+ 
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("검색 결과 아이템을 클릭했어요")
+        if selectedSearchCategory == 2 {
+            showAlert("영화인 연관 검색은 아직 준비 중이에요!", message: nil)
+            return
+        }
         
         let item = searchList.results[indexPath.item]
         
@@ -223,6 +213,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         recommendVC.itemTitle = item.name ?? item.title!
         recommendVC.itemType = selectedSearchCategory
         recommendVC.itemId = item.id
+        
         navigationController?.pushViewController(recommendVC, animated: true)
     }
 }
