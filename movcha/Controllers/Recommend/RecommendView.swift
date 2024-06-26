@@ -9,8 +9,10 @@ import UIKit
 
 class RecommendView: BaseView {
     
+    // 추천 콘텐츠 테이블 뷰
     let tableView = UITableView()
     
+    // 검색 결과-콘텐츠명, 서브텍스트
     let searchTitleLabel = UILabel()
     let searchSubLabel = UILabel()
     
