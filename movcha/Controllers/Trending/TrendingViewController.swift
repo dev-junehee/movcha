@@ -68,7 +68,7 @@ class TrendingViewController: BaseViewController {
             "accept": "application/json"
         ]
         
-        AF.request(API.URL.KMDB.Trending.all,
+        AF.request(API.URL.TMDB.Trending.all,
                    method: .get,
                    encoding: JSONEncoding.default,
                    headers: header)

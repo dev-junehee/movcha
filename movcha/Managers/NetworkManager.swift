@@ -30,13 +30,13 @@ class NetworkManager {
         
         switch type {
         case 0:
-            URL = "\(API.URL.KMDB.Search.movie)\(query)"
+            URL = "\(API.URL.TMDB.Search.movie)\(query)"
             break
         case 1:
-            URL = "\(API.URL.KMDB.Search.tv)\(query)"
+            URL = "\(API.URL.TMDB.Search.tv)\(query)"
             break
         case 2:
-            URL = "\(API.URL.KMDB.Search.person)\(query)"
+            URL = "\(API.URL.TMDB.Search.person)\(query)"
             break
         default:
             print("검색 카테고리 선택 오류")
@@ -63,8 +63,8 @@ class NetworkManager {
                                 id: Int, 
                                 completionHandler: @escaping ([SimilarRecommendResults]) -> Void
     ) {
-        let MOVIE_URL = "\(API.URL.KMDB.Similar.movie)\(id)/similar?language=ko"
-        let TV_URL = "\(API.URL.KMDB.Similar.tv)\(id)/similar?language=ko"
+        let MOVIE_URL = "\(API.URL.TMDB.Similar.movie)\(id)/similar?language=ko"
+        let TV_URL = "\(API.URL.TMDB.Similar.tv)\(id)/similar?language=ko"
         
         let URL = type == 0 ? MOVIE_URL : TV_URL
         
@@ -85,8 +85,8 @@ class NetworkManager {
                               id: Int,
                               completionHandler: @escaping ([SimilarRecommendResults]) -> Void
     ) {
-        let MOVIE_URL = "\(API.URL.KMDB.Recommend.movie)\(id)/recommendations?language=ko"
-        let TV_URL = "\(API.URL.KMDB.Recommend.tv)\(id)/recommendations?language=ko"
+        let MOVIE_URL = "\(API.URL.TMDB.Recommend.movie)\(id)/recommendations?language=ko"
+        let TV_URL = "\(API.URL.TMDB.Recommend.tv)\(id)/recommendations?language=ko"
         
         let URL = type == 0 ? MOVIE_URL : TV_URL
 
