@@ -5,12 +5,8 @@
 //  Created by junehee on 6/24/24.
 //
 
+import Foundation
 import Alamofire
-
-enum NetworkType {
-    case movie
-    case tv
-}
 
 class NetworkManager {
     
@@ -19,43 +15,63 @@ class NetworkManager {
     private init() {}
     
     let headers: HTTPHeaders = [
-        "Authorization": API.KEY.kmdb,
+        "Authorization": API.KEY.tmdb,
         "accept": "application/json"
     ]
     
-    
-    // 검색
-    func getSearchContents(type: Int, query: String, completionHandler: @escaping ([SearchResults]) -> Void) {
-        var URL = ""
-        
-        switch type {
-        case 0:
-            URL = "\(API.URL.TMDB.Search.movie)\(query)"
-            break
-        case 1:
-            URL = "\(API.URL.TMDB.Search.tv)\(query)"
-            break
-        case 2:
-            URL = "\(API.URL.TMDB.Search.person)\(query)"
-            break
-        default:
-            print("검색 카테고리 선택 오류")
-        }
-        
-        print("API URL 확인", URL)
-        AF.request(URL, headers: headers)
-            .responseDecodable(of: Search.self) { res in
-                switch res.result {
-                case .success(let value):
-                    print("검색 성공")
-                    print(value.results)
-                    completionHandler(value.results)
-                case .failure(let error):
-                    print("검색 실패")
-                    print(error)
-                }
+    func callRequest<T: Decodable>(api: TmdbAPI, completionHandler: @escaping (T?, AFError?) -> Void) {
+        AF.request(api.endPoint,
+                   method: api.method,
+                   parameters: api.params,
+                   encoding: URLEncoding(destination: .queryString),
+                   headers: api.headers
+        ).responseDecodable(of: T.self) { res in
+            switch res.result {
+            case .success(let value):
+                print("getSearch 검색 성공")
+                dump(value)
+                completionHandler(value, nil)
+            case .failure(let error):
+                print("getSearch 검색 실패")
+                dump(error)
+                completionHandler(nil, error)
             }
+        }
     }
+    
+    
+//    // 검색
+//    func getSearchContents(type: Int, query: String, completionHandler: @escaping ([SearchResults]) -> Void) {
+//        var URL = ""
+//        
+//        switch type {
+//        case 0:
+//            URL = "\(API.URL.TMDB.Search.movie)\(query)"
+//            break
+//        case 1:
+//            URL = "\(API.URL.TMDB.Search.tv)\(query)"
+//            break
+//        case 2:
+//            URL = "\(API.URL.TMDB.Search.person)\(query)"
+//            break
+//        default:
+//            print("검색 카테고리 선택 오류")
+//        }
+//        
+//        print("API URL 확인", URL)
+//        AF.request(URL, headers: headers)
+//            .responseDecodable(of: Search.self) { res in
+//                switch res.result {
+//                case .success(let value):
+//                    print("검색 성공")
+//                    print(value.results)
+//                    completionHandler(value.results)
+//                case .failure(let error):
+//                    print("검색 실패")
+//                    print(error)
+//                }
+//            }
+//    }
     
     
     // 비슷한 콘텐츠

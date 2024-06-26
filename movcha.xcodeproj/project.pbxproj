@@ -40,6 +40,7 @@
 		C47C465C2C2BFCE800665A7A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C47C465B2C2BFCE800665A7A /* Kingfisher */; };
 		C47C465F2C2BFCF000665A7A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C47C465E2C2BFCF000665A7A /* Alamofire */; };
 		C47C46622C2BFCFA00665A7A /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = C47C46612C2BFCFA00665A7A /* SkeletonView */; };
+		C47C46642C2C010900665A7A /* TmdbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46632C2C010900665A7A /* TmdbAPI.swift */; };
 		C4A52B0A2C2981ED0013BCDF /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A52B092C2981ED0013BCDF /* RecommendViewController.swift */; };
 		C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */; };
 		C4B0B9EC2C18922600CC5765 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */; };
@@ -80,6 +81,7 @@
 		C46B29E52C29BA0900F81E4B /* SimilarRecommend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarRecommend.swift; sourceTree = "<group>"; };
 		C46B2A112C2AB1FD00F81E4B /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
 		C47C46512C2B2EE500665A7A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C47C46632C2C010900665A7A /* TmdbAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbAPI.swift; sourceTree = "<group>"; };
 		C4A52B092C2981ED0013BCDF /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDetailCastCell.swift; sourceTree = "<group>"; };
 		C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				C46197662C11B10B007D3B6B /* API.swift */,
+				C47C46632C2C010900665A7A /* TmdbAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				C46197022C0F2011007D3B6B /* AppDelegate.swift in Sources */,
 				C46197702C121714007D3B6B /* UITextField+Extension.swift in Sources */,
 				C46197612C11ACE1007D3B6B /* BoxOfficeViewController.swift in Sources */,
+				C47C46642C2C010900665A7A /* TmdbAPI.swift in Sources */,
 				C46197C42C16E9D6007D3B6B /* TrendingTableViewCell.swift in Sources */,
 				C4B0B9F02C18B6BC00CC5765 /* Search.swift in Sources */,
 				C46197C62C16EF6C007D3B6B /* BoxOffice.swift in Sources */,

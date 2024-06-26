@@ -18,8 +18,8 @@ class SearchViewController: BaseViewController {
     
     var selectedSearchCategory = 0
     
-    var searchList = Search(page: 0, results: [], total_pages: 0, total_results: 0)
-    var page = 0
+    var searchList = Search(page: 1, results: [], total_pages: 0, total_results: 0)
+    var page = 1
     
     lazy var searchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionviewLayout())
     
@@ -100,18 +100,17 @@ class SearchViewController: BaseViewController {
 
 // API
 extension SearchViewController {
-    func callSearchRequest(query: String) {
+    func callSearchRequest(type: SearchType, query: String) {
         let group = DispatchGroup()
         
         group.enter()
         DispatchQueue.global().async {
-            NetworkManager.shared.getSearchContents(type: self.selectedSearchCategory, query: query) { searchData in
-                // 새로운 검색어일 때
+            NetworkManager.shared.callRequest(api: .search(type: type, query: query)) { (search: Search?, error: AFError?) in
                 if self.page == 1 {
                     self.searchList.results.removeAll()
-                    self.searchList.results = searchData
+                    self.searchList.results = search?.results ?? []
                 } else {
-                    self.searchList.results.append(contentsOf: searchData)
+                    self.searchList.results.append(contentsOf: search?.results ?? [])
                 }
                 group.leave()
             }
@@ -135,7 +134,15 @@ extension SearchViewController: UISearchBarDelegate {
             print(#function, "검색어 입력 오류")
             return
         }
-        callSearchRequest(query: value)
+        
+        if selectedSearchCategory == 0 {
+            callSearchRequest(type: .movie, query: value)
+        } else if selectedSearchCategory == 1 {
+            callSearchRequest(type: .tv, query: value)
+        } else {
+            callSearchRequest(type: .person, query: value)
+        }
+        
     }
 }
 
@@ -156,11 +163,17 @@ extension SearchViewController {
 extension SearchViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         print("Prefetch", indexPaths)
-        
+        guard let value = searchBar.text else { return }
         for indexPath in indexPaths {
             if searchList.results.count - 2 == indexPath.item {
                 page += 1
-                callSearchRequest(query: searchBar.text!)
+                if selectedSearchCategory == 0 {
+                    callSearchRequest(type: .movie, query: value)
+                } else if selectedSearchCategory == 1 {
+                    callSearchRequest(type: .tv, query: value)
+                } else {
+                    callSearchRequest(type: .person, query: value)
+                }
             }
         }
     }
@@ -176,20 +189,15 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.id, for: indexPath) as! SearchCollectionViewCell
         
         let idx = indexPath.item
+        let item = searchList.results[idx]
         
         cell.searchCategory = searchCategory.selectedSegmentIndex
-        
-        cell.configureCellHierarchy()
-        cell.configureCellLayout()
-        cell.configureCellUI()
-        cell.configureCellData(data: searchList.results[idx])
-
+        cell.configureCellData(data: item)
+ 
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("검색 결과 아이템을 클릭했어요")
-        
         let item = searchList.results[indexPath.item]
         
         let recommendVC = RecommendViewController()

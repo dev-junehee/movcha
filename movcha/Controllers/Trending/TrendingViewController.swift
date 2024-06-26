@@ -64,7 +64,7 @@ class TrendingViewController: BaseViewController {
     
     func callRequest() {
         let header: HTTPHeaders = [
-            "Authorization": API.KEY.kmdb,
+            "Authorization": API.KEY.tmdb,
             "accept": "application/json"
         ]
         
