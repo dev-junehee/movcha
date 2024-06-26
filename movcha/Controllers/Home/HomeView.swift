@@ -10,6 +10,7 @@ import SnapKit
 
 class HomeView: BaseView {
     
+    // 메인 타이틀
     let mainTitle = UILabel()
     
     override func configureViewHierarchy() {
