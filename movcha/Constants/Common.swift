@@ -109,6 +109,7 @@ enum Constants {
     enum Font {
         static let title: UIFont = .systemFont(ofSize: 40, weight: .black)
         static let subTitle: UIFont = .systemFont(ofSize: 20, weight: .black)
+        static let body: UIFont = .systemFont(ofSize: 14, weight: .regular)
     }
 }
 

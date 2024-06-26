@@ -9,35 +9,19 @@ import UIKit
 
 class RecommendView: BaseView {
     
-    lazy var tableView = {
-        let view = UITableView()
-        view.rowHeight = 230
-        view.separatorStyle = .none
-        return view
-    }()
+    let tableView = UITableView()
     
-    let searchTitleLabel = {
-        let view = UILabel()
-        view.font = Constants.Font.title
-        return view
-    }()
+    let searchTitleLabel = UILabel()
+    let searchSubLabel = UILabel()
     
-    let searchSubLabel = {
-        let view = UILabel()
-        view.font = .systemFont(ofSize: 14, weight: .regular)
-        view.textColor = Constants.Color.Primary.darkGray
-        view.baselineAdjustment = .alignBaselines
-        return view
-    }()
-    
-    override func configureHierarchy() {
+    override func configureViewHierarchy() {
         let subViews = [tableView, searchTitleLabel, searchSubLabel]
         subViews.forEach {
             self.addSubview($0)
         }
     }
     
-    override func configureLayout() {
+    override func configureViewLayout() {
         searchTitleLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(8)
             $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
@@ -54,6 +38,17 @@ class RecommendView: BaseView {
             $0.top.equalTo(searchSubLabel.snp.bottom).offset(16)
             $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
         }
+    }
+    
+    override func configureViewUI() {
+        tableView.rowHeight = 230
+        tableView.separatorStyle = .none
+        
+        searchTitleLabel.font = Constants.Font.title
+        
+        searchSubLabel.font = Constants.Font.body
+        searchSubLabel.textColor = Constants.Color.Primary.darkGray
+        searchSubLabel.baselineAdjustment = .alignBaselines
     }
 
 }

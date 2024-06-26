@@ -12,9 +12,9 @@ class BaseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configureHierarchy()
-        configureLayout()
-        configureUI()
+        configureViewHierarchy()
+        configureViewLayout()
+        configureViewUI()
     }
     
     required init?(coder: NSCoder) {
@@ -22,12 +22,12 @@ class BaseView: UIView {
     }
     
     // 계층
-    func configureHierarchy() { }
+    func configureViewHierarchy() { }
     
     // 레이아웃
-    func configureLayout() { }
+    func configureViewLayout() { }
     
     // 디자인 & 변하지 않는 데이터 바인딩
-    func configureUI() {
+    func configureViewUI() {
     }
 }

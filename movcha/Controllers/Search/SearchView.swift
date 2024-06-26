@@ -10,21 +10,15 @@ import SnapKit
 
 class SearchView: BaseView {
     
-    // 검색창
-    let searchBar = {
-        let view = UISearchBar()
-        view.searchBarStyle = .minimal
-        view.placeholder = Constants.Text.Search.placeholder
-        return view
-    }()
-    
-    // 검색 카테고리
-    let searchCategory = {
-        let view = UISegmentedControl(items: Constants.Text.Search.category)
-        return view
-    }()
+    // 검색창, 검색 카테고리
+    let searchBar = UISearchBar()
+    let searchCategory = UISegmentedControl(items: Constants.Text.Search.category)
 
-    lazy var searchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionviewLayout())
+    // 검색 결과 컬렉션 뷰
+    lazy var searchCollectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: collectionviewLayout()
+    )
     
     func collectionviewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -41,14 +35,14 @@ class SearchView: BaseView {
         return layout
     }
     
-    override func configureHierarchy() {
+    override func configureViewHierarchy() {
         let subViews = [searchBar, searchCategory, searchCollectionView]
         subViews.forEach {
             self.addSubview($0)
         }
     }
     
-    override func configureLayout() {
+    override func configureViewLayout() {
         searchBar.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(8)
@@ -65,5 +59,10 @@ class SearchView: BaseView {
             $0.top.equalTo(searchCategory.snp.bottom).offset(8)
             $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
         }
+    }
+    
+    override func configureViewUI() {
+        searchBar.searchBarStyle = .minimal
+        searchBar.placeholder = Constants.Text.Search.placeholder
     }
 }

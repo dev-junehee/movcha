@@ -10,22 +10,22 @@ import SnapKit
 
 class HomeView: BaseView {
     
-    let mainTitle = {
-        let label = UILabel()
-        label.font = Constants.Font.title
-        label.text = Constants.Text.Title.home
-        return label
-    }()
+    let mainTitle = UILabel()
     
-    override func configureHierarchy() {
+    override func configureViewHierarchy() {
         self.addSubview(mainTitle)
     }
     
-    override func configureLayout() {
+    override func configureViewLayout() {
         mainTitle.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
             $0.height.equalTo(50)
         }
+    }
+    
+    override func configureViewUI() {
+        mainTitle.font = Constants.Font.title
+        mainTitle.text = Constants.Text.Title.home
     }
 }
