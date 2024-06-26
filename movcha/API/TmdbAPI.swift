@@ -35,13 +35,13 @@ enum TmdbAPI {
     }
     
     var baseURL: String {
-        return "https://api.themoviedb.org/3/"
+        return API.URL.TMDB.base
     }
     
     var endPoint: URL {
         switch self {
         case .trending:
-            return URL(string: baseURL + "trending/all/day")!
+            return URL(string: baseURL + API.URL.TMDB.Trending.all)!
         case .genre(let type):
             return URL(string: baseURL + "genre/\(type.rawValue)/list")!
         case .search(let type, _):
