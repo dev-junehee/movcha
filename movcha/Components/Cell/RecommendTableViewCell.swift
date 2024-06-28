@@ -8,14 +8,10 @@
 import UIKit
 import SnapKit
 
-class RecommendTableViewCell: UITableViewCell {
+class RecommendTableViewCell: BaseTableViewCell {
     
-    let titleLabel = {
-        let label = UILabel()
-        label.font = Constants.Font.subTitle
-        return label
-    }()
-    
+    let titleLabel = UILabel()
+
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     
     static func layout() -> UICollectionViewLayout {
@@ -27,26 +23,13 @@ class RecommendTableViewCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         return layout
     }
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        configureCellHierarchy()
-        configureCellLayout()
-        configureCellUI()
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    private func configureCellHierarchy() {
+    override func configureCellHierarchy() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(collectionView)
     }
     
-    private func configureCellLayout() {
+    override func configureCellLayout() {
         titleLabel.snp.makeConstraints {
             $0.top.horizontalEdges.equalTo(contentView).inset(20)
             $0.height.equalTo(20)
@@ -58,11 +41,12 @@ class RecommendTableViewCell: UITableViewCell {
         }
     }
     
-    private func configureCellUI() {
-        
+    override func configureCellUI() {
+        titleLabel.font = Constants.Font.subTitle
     }
     
     func configureCellData(title: String) {
         titleLabel.text = title
     }
+    
 }

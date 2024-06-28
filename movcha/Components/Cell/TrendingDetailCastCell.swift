@@ -10,37 +10,22 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-class TrendingDetailCastCell: UITableViewCell {
+class TrendingDetailCastCell: BaseTableViewCell {
     
     let castImgView = UIImageView()
     
     let nameStack = UIStackView()
     let nameLabel = UILabel()
     let charactorLabel = UILabel()
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        configureHierarchy()
-        configureLayout()
-        configureUI()
+    
+    override func configureCellHierarchy() {
+        let subViews = [castImgView, nameLabel, charactorLabel]
+        subViews.forEach {
+            contentView.addSubview($0)
+        }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configureHierarchy() {
-//        nameStack.addArrangedSubview(nameLabel)
-//        nameStack.addArrangedSubview(charactorLabel)
-        
-        contentView.addSubview(castImgView)
-//        contentView.addSubview(nameStack)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(charactorLabel)
-    }
-    
-    func configureLayout() {
+    override func configureCellLayout() {
         castImgView.snp.makeConstraints {
             $0.top.equalTo(contentView).inset(8)
             $0.leading.equalTo(contentView).offset(16)
@@ -63,7 +48,7 @@ class TrendingDetailCastCell: UITableViewCell {
         }
     }
     
-    func configureUI() {
+    override func configureCellUI() {
         castImgView.clipsToBounds = true
         castImgView.layer.cornerRadius = 10
         castImgView.contentMode = .scaleAspectFill

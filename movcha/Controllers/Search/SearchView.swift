@@ -13,6 +13,8 @@ class SearchView: BaseView {
     // 검색창, 검색 카테고리
     let searchBar = UISearchBar()
     let searchCategory = UISegmentedControl(items: Constants.Text.Search.category)
+    
+    let emptyView = EmptyView()
 
     // 검색 결과 컬렉션 뷰
     lazy var searchCollectionView = UICollectionView(
@@ -36,7 +38,7 @@ class SearchView: BaseView {
     }
     
     override func configureViewHierarchy() {
-        let subViews = [searchBar, searchCategory, searchCollectionView]
+        let subViews = [searchBar, searchCategory, searchCollectionView, emptyView]
         subViews.forEach {
             self.addSubview($0)
         }
@@ -59,10 +61,16 @@ class SearchView: BaseView {
             $0.top.equalTo(searchCategory.snp.bottom).offset(8)
             $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
         }
+        
+        emptyView.snp.makeConstraints {
+            $0.top.equalTo(searchCategory.snp.bottom).offset(8)
+            $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
+        }
     }
     
     override func configureViewUI() {
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = Constants.Text.Search.placeholder
     }
+    
 }
