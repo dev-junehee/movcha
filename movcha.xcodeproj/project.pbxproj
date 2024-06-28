@@ -50,6 +50,7 @@
 		C47C46862C2E9EDB00665A7A /* TrendingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46852C2E9EDB00665A7A /* TrendingDetailView.swift */; };
 		C47C46882C2EFEAA00665A7A /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46872C2EFEAA00665A7A /* BaseTableViewCell.swift */; };
 		C47C468C2C2F054800665A7A /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C468B2C2F054800665A7A /* EmptyView.swift */; };
+		C47C468F2C2F211300665A7A /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = C47C468E2C2F211300665A7A /* SideMenu */; };
 		C4A52B0A2C2981ED0013BCDF /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A52B092C2981ED0013BCDF /* RecommendViewController.swift */; };
 		C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */; };
 		C4B0B9EC2C18922600CC5765 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */; };
@@ -115,6 +116,7 @@
 				C47C467B2C2C625B00665A7A /* Kingfisher in Frameworks */,
 				C47C467E2C2C627500665A7A /* SnapKit in Frameworks */,
 				C47C46752C2C622400665A7A /* SkeletonView in Frameworks */,
+				C47C468F2C2F211300665A7A /* SideMenu in Frameworks */,
 				C47C46782C2C623F00665A7A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +350,7 @@
 				C47C46772C2C623F00665A7A /* Alamofire */,
 				C47C467A2C2C625B00665A7A /* Kingfisher */,
 				C47C467D2C2C627500665A7A /* SnapKit */,
+				C47C468E2C2F211300665A7A /* SideMenu */,
 			);
 			productName = movcha;
 			productReference = C46196FE2C0F2011007D3B6B /* movcha.app */;
@@ -382,6 +385,7 @@
 				C47C46762C2C623F00665A7A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C47C46792C2C625B00665A7A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C47C467C2C2C627500665A7A /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C47C468D2C2F211300665A7A /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = C46196FF2C0F2011007D3B6B /* Products */;
 			projectDirPath = "";
@@ -709,6 +713,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		C47C468D2C2F211300665A7A /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -731,6 +743,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C47C467C2C2C627500665A7A /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		C47C468E2C2F211300665A7A /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C47C468D2C2F211300665A7A /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
