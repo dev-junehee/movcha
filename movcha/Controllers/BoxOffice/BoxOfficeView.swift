@@ -31,8 +31,6 @@ class BoxOfficeView: BaseView {
         subviews.forEach {
             self.addSubview($0)
         }
-        
-       
     }
     
     override func configureViewLayout() {

@@ -11,11 +11,14 @@ import Alamofire
 import SnapKit
 
 class TrendingViewController: BaseViewController {
-
-    let mainTitle = UILabel()
-    let trendingTableView = UITableView()
+    
+    let trendingView = TrendingView()
 
     var trendingList: [TrendingResults] = []
+    
+    override func loadView() {
+        self.view = trendingView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,38 +28,14 @@ class TrendingViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        let subviews = [mainTitle, trendingTableView]
-        subviews.forEach {
-            view.addSubview($0)
-        }
-        
-        trendingTableView.delegate = self
-        trendingTableView.dataSource = self
-        trendingTableView.register(TrendingTableViewCell.self, forCellReuseIdentifier: TrendingTableViewCell.id)
-        trendingTableView.separatorStyle = .none
-    }
-    
-    override func configureLayout() {
-        mainTitle.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
-            make.height.equalTo(50)
-        }
-        
-        trendingTableView.snp.makeConstraints { make in
-            make.top.equalTo(mainTitle.snp.bottom).offset(8)
-            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
-    }
-    
-    override func configureUI() {
-        super.configureUI()
-        
-        mainTitle.font = .systemFont(ofSize: 40, weight: .black)
+        trendingView.trendingTableView.delegate = self
+        trendingView.trendingTableView.dataSource = self
+        trendingView.trendingTableView.register(TrendingTableViewCell.self, forCellReuseIdentifier: TrendingTableViewCell.id)
+        trendingView.trendingTableView.separatorStyle = .none
     }
     
     func configureData() {
-        mainTitle.text = Constants.Text.Title.trending
+        trendingView.mainTitle.text = Constants.Text.Title.trending
     }
     
     func callRequest() {
@@ -74,16 +53,15 @@ class TrendingViewController: BaseViewController {
             
             // error가 nil이면 성공 데이터가 들어왔다는 의미
             self.trendingList = trendingList.results
-            self.trendingTableView.reloadData()
+            self.trendingView.trendingTableView.reloadData()
         }
     }
     
 }
 
-// MARK: 인기급상승 컨트롤러 익스텐션
 
+// MARK: 인기급상승 컨트롤러 익스텐션
 extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trendingList.count
     }
