@@ -53,13 +53,10 @@ class TrendingDetailOverviewCell: UITableViewCell {
     }
     
     func configureCellUI() {
-//        overviewLabel.backgroundColor = .lightGray
         overviewLabel.font = .systemFont(ofSize: 14)
         overviewLabel.numberOfLines = 2
-        
-//        overviewBtn.backgroundColor = .darkGray
-        
         overviewBtn.setImage(Constants.SystemImage.down, for: .normal)
+        overviewBtn.tintColor = Constants.Color.Primary.pink
     }
     
     func configreCellData(data: String) {
@@ -71,8 +68,6 @@ class TrendingDetailOverviewCell: UITableViewCell {
     }
     
     @objc func overviewBtnClicked() {
-        print(#function)
-        print(isDown)
         isDown.toggle()
         
         if isDown {
@@ -83,7 +78,6 @@ class TrendingDetailOverviewCell: UITableViewCell {
             overviewBtn.setImage(Constants.SystemImage.down, for: .normal)
         }
         
-        print(isDown)
         tableView?.reloadData()
     }
 }

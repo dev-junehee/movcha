@@ -13,20 +13,16 @@ import SnapKit
 
 class TrendingDetailViewController: BaseViewController {
     
-//    var trendingID: Int = 0
-
-    
-    let detailImgView = UIImageView()
-    
-    let titleLabel = UILabel()
-    let posterImgView = UIImageView()
-    
-    let detailTableView = UITableView()
+    let detailView = TrendingDetailView()
     
     // 데이터
     var contentsData: TrendingResults?
     var contentsType: GenreType = .movie
     var creditList: [Cast] = []
+    
+    override func loadView() {
+        self.view = detailView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,67 +38,29 @@ class TrendingDetailViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        detailTableView.delegate = self
-        detailTableView.dataSource = self
+        detailView.detailTableView.delegate = self
+        detailView.detailTableView.dataSource = self
         
-        detailTableView.register(TrendingDetailOverviewCell.self, forCellReuseIdentifier: TrendingDetailOverviewCell.id)
-        detailTableView.register(TrendingDetailCastCell.self, forCellReuseIdentifier: TrendingDetailCastCell.id)
-        
-        view.addSubview(detailImgView)
-        view.addSubview(titleLabel)
-        view.addSubview(posterImgView)
-        view.addSubview(detailTableView)
-    }
-    
-    override func configureLayout() {
-        detailImgView.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(200)
-        }
-        
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(detailImgView.snp.top).offset(16)
-            make.leading.equalTo(detailImgView.snp.leading).offset(16)
-            make.width.equalTo(100)
-            make.height.equalTo(36)
-        }
-        
-        posterImgView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(16)
-            make.leading.equalTo(detailImgView.snp.leading).offset(16)
-            make.width.equalTo(100)
-            make.bottom.equalTo(detailImgView.snp.bottom)
-        }
-        
-        detailTableView.snp.makeConstraints { make in
-            make.top.equalTo(detailImgView.snp.bottom)
-            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
+        detailView.detailTableView.register(TrendingDetailOverviewCell.self, forCellReuseIdentifier: TrendingDetailOverviewCell.id)
+        detailView.detailTableView.register(TrendingDetailCastCell.self, forCellReuseIdentifier: TrendingDetailCastCell.id)
     }
     
     override func configureUI() {
         super.configureUI()
         
-//        detailImgView.backgroundColor = .yellow
-        
-//        titleLabel.backgroundColor = .red
-        titleLabel.textColor = Constants.Color.Primary.white
-        
-//        posterImgView.backgroundColor = .green
-        posterImgView.contentMode = .scaleAspectFit
-        
-//        detailTableView.backgroundColor = .orange
+        detailView.titleLabel.textColor = Constants.Color.Primary.white
+        detailView.posterImgView.contentMode = .scaleAspectFit
     }
     
     func configureData() {
         guard let contentsData = contentsData else { return }
-        titleLabel.text = contentsData.title
+        detailView.titleLabel.text = contentsData.title
         
         let posterImage = URL(string: API.URL.TMDB.img + contentsData.poster_path)
-        posterImgView.kf.setImage(with: posterImage)
+        detailView.posterImgView.kf.setImage(with: posterImage)
         
         let detailImage = URL(string: API.URL.TMDB.img + contentsData.backdrop_path)
-        detailImgView.kf.setImage(with: detailImage)
+        detailView.detailImgView.kf.setImage(with: detailImage)
     }
     
     func callRequest() {
@@ -124,7 +82,7 @@ class TrendingDetailViewController: BaseViewController {
                 dump(creditsList)
                 
                 self.creditList = creditsList.cast
-                self.detailTableView.reloadData()
+                self.detailView.detailTableView.reloadData()
             }
     }
     
@@ -164,7 +122,7 @@ extension TrendingDetailViewController: UITableViewDelegate, UITableViewDataSour
         if section == 0 {
             let overviewCell = tableView.dequeueReusableCell(withIdentifier: TrendingDetailOverviewCell.id, for: indexPath) as! TrendingDetailOverviewCell
             
-            overviewCell.tableView = detailTableView
+            overviewCell.tableView = detailView.detailTableView
             overviewCell.configreCellData(data: contentsData?.overview ?? "줄거리 없음")
             overviewCell.configureHandler()
             
