@@ -87,6 +87,7 @@ enum Constants {
         static let search = UIImage(systemName: "magnifyingglass")!
         static let front = UIImage(systemName: "chevron.right")!
         static let back = UIImage(systemName: "chevron.backward")!
+        static let up = UIImage(systemName: "chevron.up")!
         static let down = UIImage(systemName: "chevron.down")!
     }
 

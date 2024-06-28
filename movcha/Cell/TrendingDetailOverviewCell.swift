@@ -53,17 +53,17 @@ class TrendingDetailOverviewCell: UITableViewCell {
     }
     
     func configureCellUI() {
-        overviewLabel.backgroundColor = .lightGray
+//        overviewLabel.backgroundColor = .lightGray
         overviewLabel.font = .systemFont(ofSize: 14)
         overviewLabel.numberOfLines = 2
         
-        overviewBtn.backgroundColor = .darkGray
+//        overviewBtn.backgroundColor = .darkGray
         
         overviewBtn.setImage(Constants.SystemImage.down, for: .normal)
     }
     
-    func configreCellData() {
-        overviewLabel.text = "영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리 영화 줄거리"
+    func configreCellData(data: String) {
+        overviewLabel.text = data
     }
     
     func configureHandler() {
@@ -77,9 +77,12 @@ class TrendingDetailOverviewCell: UITableViewCell {
         
         if isDown {
             overviewLabel.numberOfLines = 0
+            overviewBtn.setImage(Constants.SystemImage.up, for: .normal)
         } else {
             overviewLabel.numberOfLines = 2
+            overviewBtn.setImage(Constants.SystemImage.down, for: .normal)
         }
+        
         print(isDown)
         tableView?.reloadData()
     }

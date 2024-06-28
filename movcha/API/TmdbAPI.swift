@@ -23,6 +23,7 @@ enum TmdbAPI {
     case trending
     case genre(type: GenreType)
     case search(type: SearchType, query: String)
+    case credits(type: GenreType, id: Int)
     case similar(type: GenreType, id: Int)
     case recommend(type: GenreType, id: Int)
     case image
@@ -46,6 +47,8 @@ enum TmdbAPI {
             return URL(string: baseURL + "genre/\(type.rawValue)/list")!
         case .search(let type, _):
             return URL(string: baseURL + "search/\(type.rawValue)")!
+        case .credits(let type, let id):
+            return URL(string: baseURL + "\(type.rawValue)/\(id)/credits")!
         case .similar(let type, let id):
             return URL(string: baseURL + "\(type.rawValue)/\(id)/similar")!
         case .recommend(let type, let id):
@@ -61,7 +64,7 @@ enum TmdbAPI {
     
     var params: Parameters {
         switch self {
-        case .trending, .genre, .similar, .recommend:
+        case .trending, .genre, .credits, .similar, .recommend:
             return ["language": "ko-KR"]
         case .search(_, let query):
             return [

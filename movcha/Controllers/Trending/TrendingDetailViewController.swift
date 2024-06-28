@@ -8,11 +8,13 @@
 import UIKit
 
 import Alamofire
+import Kingfisher
 import SnapKit
 
 class TrendingDetailViewController: BaseViewController {
     
 //    var trendingID: Int = 0
+
     
     let detailImgView = UIImageView()
     
@@ -20,12 +22,18 @@ class TrendingDetailViewController: BaseViewController {
     let posterImgView = UIImageView()
     
     let detailTableView = UITableView()
+    
+    // 데이터
+    var contentsData: TrendingResults?
+    var contentsType: GenreType = .movie
+    var creditList: [Cast] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureNavigation()
         configureData()
+        callRequest()
     }
     
     func configureNavigation() {
@@ -75,14 +83,49 @@ class TrendingDetailViewController: BaseViewController {
     override func configureUI() {
         super.configureUI()
         
-        detailImgView.backgroundColor = .yellow
-        titleLabel.backgroundColor = .red
-        posterImgView.backgroundColor = .green
-        detailTableView.backgroundColor = .orange
+//        detailImgView.backgroundColor = .yellow
+        
+//        titleLabel.backgroundColor = .red
+        titleLabel.textColor = Constants.Color.Primary.white
+        
+//        posterImgView.backgroundColor = .green
+        posterImgView.contentMode = .scaleAspectFit
+        
+//        detailTableView.backgroundColor = .orange
     }
     
     func configureData() {
-        titleLabel.text = "영화제목"
+        guard let contentsData = contentsData else { return }
+        titleLabel.text = contentsData.title
+        
+        let posterImage = URL(string: API.URL.TMDB.img + contentsData.poster_path)
+        posterImgView.kf.setImage(with: posterImage)
+        
+        let detailImage = URL(string: API.URL.TMDB.img + contentsData.backdrop_path)
+        detailImgView.kf.setImage(with: detailImage)
+    }
+    
+    func callRequest() {
+        guard let contentsData = contentsData else { return }
+        NetworkManager.shared.callRequest(
+            api: .credits(type: contentsType, id: contentsData.id)) { (creditsList: Credits?, error: String?) in
+                guard error == nil else {
+                    self.showAlert("잠시 후 다시 시도해주세요.", message: error ?? "콘텐츠 크레딧 결과를 가져오지 못했어요.")
+                    return
+                }
+                
+                guard let creditsList = creditsList else {
+                    self.showAlert("콘텐츠 크레딧 데이터가 존재하지 않아요.", message: "이전 화면으로 돌아갈게요.")
+                    self.navigationController?.popViewController(animated: true)
+                    return
+                }
+                
+                print(error)
+                dump(creditsList)
+                
+                self.creditList = creditsList.cast
+                self.detailTableView.reloadData()
+            }
     }
     
     @objc func backBarBtnClicked() {
@@ -93,8 +136,7 @@ class TrendingDetailViewController: BaseViewController {
 
 
 extension TrendingDetailViewController: UITableViewDelegate, UITableViewDataSource {
-    // 0: Overview
-    // 1: Case
+    // 0: Overview, 1: Cast
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -103,7 +145,7 @@ extension TrendingDetailViewController: UITableViewDelegate, UITableViewDataSour
         if section == 0 {
             return 1
         } else {
-            return 20
+            return creditList.count
         }
     }
     
@@ -111,34 +153,28 @@ extension TrendingDetailViewController: UITableViewDelegate, UITableViewDataSour
         if section == 0 {
             return "OverView"
         } else {
-            return "Case"
+            return "Cast"
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = indexPath.section
-//        let idx = indexPath.row
+        let idx = indexPath.row
         
         if section == 0 {
             let overviewCell = tableView.dequeueReusableCell(withIdentifier: TrendingDetailOverviewCell.id, for: indexPath) as! TrendingDetailOverviewCell
             
             overviewCell.tableView = detailTableView
-            
-            overviewCell.configureCellHierarchy()
-            overviewCell.configureCellLayout()
-            overviewCell.configureCellUI()
-            overviewCell.configreCellData()
+            overviewCell.configreCellData(data: contentsData?.overview ?? "줄거리 없음")
             overviewCell.configureHandler()
             
             return overviewCell
             
         } else {
             let castCell = tableView.dequeueReusableCell(withIdentifier: TrendingDetailCastCell.id, for: indexPath) as! TrendingDetailCastCell
-            
-            castCell.configureHierarchy()
-            castCell.configureLayout()
-            castCell.configureUI()
-            
+  
+            let castData = creditList[idx]
+            castCell.configureCellData(data: castData)
             
             return castCell
         }

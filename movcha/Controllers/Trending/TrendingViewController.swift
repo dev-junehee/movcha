@@ -83,10 +83,14 @@ extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function, indexPath.row)
-        let detailNav = TrendingDetailViewController()
+        let trendingDetailVC = TrendingDetailViewController()
+        
+        let idx = indexPath.row
+        let trendingData = trendingList[idx]
+        
+        trendingDetailVC.contentsData = trendingData
 
-        navigationController?.pushViewController(detailNav, animated: true)
+        navigationController?.pushViewController(trendingDetailVC, animated: true)
     }
 }
     

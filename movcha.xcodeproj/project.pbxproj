@@ -279,8 +279,8 @@
 			isa = PBXGroup;
 			children = (
 				C46197BA2C16DB08007D3B6B /* TrendingViewController.swift */,
-				C46197C92C173FDF007D3B6B /* TrendingDetailViewController.swift */,
 				C47C46832C2E863D00665A7A /* TrendingView.swift */,
+				C46197C92C173FDF007D3B6B /* TrendingDetailViewController.swift */,
 			);
 			path = Trending;
 			sourceTree = "<group>";

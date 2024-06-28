@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+import Kingfisher
 import SnapKit
 
 class TrendingDetailCastCell: UITableViewCell {
@@ -47,15 +49,32 @@ class TrendingDetailCastCell: UITableViewCell {
             make.leading.equalTo(castImgView.snp.trailing).offset(16)
             make.trailing.equalTo(contentView).inset(16)
         }
+        nameStack.axis = .vertical
+        
+        nameLabel.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(nameStack)
+            make.height.equalTo(20)
+        }
+        
+        charactorLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom)
+            make.horizontalEdges.bottom.equalTo(nameStack)
+            make.height.equalTo(20)
+        }
     }
     
     func configureUI() {
-        castImgView.backgroundColor = .blue
+        castImgView.clipsToBounds = true
         castImgView.layer.cornerRadius = 10
+        castImgView.contentMode = .scaleAspectFit
+    }
+    
+    func configureCellData(data: Cast) {
+        guard let image = data.profile_path else { return }
+        let imageURL = URL(string: API.URL.TMDB.img + image)
+        castImgView.kf.setImage(with: imageURL)
         
-        nameStack.backgroundColor = .yellow
-        
-        nameLabel.backgroundColor = .red
-        charactorLabel.backgroundColor = .orange
+        nameLabel.text = "\(data.name) (\(data.original_name)"
+        charactorLabel.text = "\(data.character)"
     }
 }
