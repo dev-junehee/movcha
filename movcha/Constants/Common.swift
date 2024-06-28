@@ -33,6 +33,7 @@ enum Constants {
             static let tv = "TV 시리즈"
             static let person = "영화인"
             static let placeholder = "영화, 드라마, 시리즈를 검색해 보세요!"
+            static let empty = "검색 결과가 없어요."
         }
         
         enum Recommend {
@@ -66,7 +67,9 @@ enum Constants {
         
         // 인기급상승 - 상세정보
         enum TrendingDetail {
-            
+            static let overview = "Overview"
+            static let noOverview = "(줄거리 준비 중)"
+            static let cast = "Cast"
         }
         
         // 버튼

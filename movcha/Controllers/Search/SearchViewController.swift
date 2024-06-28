@@ -17,7 +17,12 @@ class SearchViewController: BaseViewController {
     
     var selectedSearchCategory = 0
     
-    var searchList = Search(page: 1, results: [], total_pages: 0, total_results: 0)
+    var searchList = Search(page: 1, results: [], total_pages: 0, total_results: 0) {
+        didSet {
+            viewToggle()
+            searchView.searchCollectionView.reloadData()
+        }
+    }
     var page = 1
 
     override func loadView() {
@@ -29,6 +34,7 @@ class SearchViewController: BaseViewController {
         
         configureCategoryControll()
         setBarButtons()
+        viewToggle()
     }
     
     override func configureHierarchy() {
@@ -46,8 +52,13 @@ class SearchViewController: BaseViewController {
     private func setBarButtons() {
         addImgBarBtn(title: nil, image: Constants.SystemImage.back, target: self, action: #selector(backBarBtnClicked), type: .left, color: Constants.Color.Primary.pink)
     }
+    
+    private func viewToggle() {
+        searchView.emptyView.isHidden = !searchList.results.isEmpty
+        searchView.searchCollectionView.isHidden = searchList.results.isEmpty
+    }
 
-    @objc func backBarBtnClicked() {
+    @objc private func backBarBtnClicked() {
         navigationController?.popViewController(animated: true)
     }
 }

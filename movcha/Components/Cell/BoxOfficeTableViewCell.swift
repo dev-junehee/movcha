@@ -10,7 +10,7 @@ import UIKit
 import SkeletonView
 import SnapKit
 
-class BoxOfficeTableViewCell: UITableViewCell {
+class BoxOfficeTableViewCell: BaseTableViewCell {
 
     let rankLabel = UILabel()
     
@@ -20,28 +20,15 @@ class BoxOfficeTableViewCell: UITableViewCell {
     
     let openDateLabel = UILabel()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        self.isSkeletonable = true
-        self.contentView.isSkeletonable = true
-        
-        configureCellHierarchy()
-        configureCellLayout()
-        configureCellUI()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-        // 셀 간격 조정
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
     }
     
-    func configureCellHierarchy() {
+    override func configureCellHierarchy() {
+        self.isSkeletonable = true
+        self.contentView.isSkeletonable = true
+        
         let stackSubViews = [nameLabel, audiAccLabel]
         stackSubViews.forEach {
             mvNameAudiStack.addArrangedSubview($0)
@@ -55,7 +42,7 @@ class BoxOfficeTableViewCell: UITableViewCell {
         }
     }
     
-    func configureCellLayout() {
+    override func configureCellLayout() {
         rankLabel.snp.makeConstraints { make in
             make.leading.equalTo(contentView)
             make.centerY.equalTo(contentView)
@@ -89,7 +76,7 @@ class BoxOfficeTableViewCell: UITableViewCell {
 
     }
 
-    func configureCellUI() {
+    override func configureCellUI() {
         contentView.backgroundColor = Constants.Color.Primary.gray6
         contentView.layer.cornerRadius = 10
         
@@ -118,6 +105,5 @@ class BoxOfficeTableViewCell: UITableViewCell {
         audiAccLabel.text = "누적관객수: \(Int(data.audiAcc)?.formatted() ?? "0")명"
         openDateLabel.text = "\(data.openDt) 개봉"
     }
+    
 }
-
-

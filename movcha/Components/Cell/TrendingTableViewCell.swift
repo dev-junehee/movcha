@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-class TrendingTableViewCell: UITableViewCell {
+class TrendingTableViewCell: BaseTableViewCell {
     // 카드 그림자
     let cardBackView = UIView()
     
@@ -37,25 +37,13 @@ class TrendingTableViewCell: UITableViewCell {
     let detailLabel = UILabel()
     let detailImgView = UIImageView()
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-  
-        configureCellHierarchy()
-        configureCellLayout()
-        configureCellUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         // 테이블 뷰 셀 사이의 간격
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
     }
 
-    func configureCellHierarchy() {
+    override func configureCellHierarchy() {
         let dateGenreViews = [openDateLabel, genreLabel]
         dateGenreViews.forEach {
             dateGenreStack.addArrangedSubview($0)
@@ -85,63 +73,63 @@ class TrendingTableViewCell: UITableViewCell {
         contentView.addSubview(cardBackView)
     }
     
-    func configureCellLayout() {
-        dateGenreStack.snp.makeConstraints { make in
-            make.top.equalTo(contentView).offset(8)
-            make.horizontalEdges.equalTo(contentView).inset(16)
-            make.height.equalTo(44)
+    override func configureCellLayout() {
+        dateGenreStack.snp.makeConstraints {
+            $0.top.equalTo(contentView).offset(8)
+            $0.horizontalEdges.equalTo(contentView).inset(16)
+            $0.height.equalTo(44)
         }
         dateGenreStack.axis = .vertical
         dateGenreStack.spacing = 4
         
-        cardBackView.snp.makeConstraints { make in
-            make.top.equalTo(dateGenreStack.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(contentView).inset(16)
-            make.bottom.equalTo(contentView).inset(16)
-            make.height.equalTo(cardBackView.snp.width)
+        cardBackView.snp.makeConstraints {
+            $0.top.equalTo(dateGenreStack.snp.bottom).offset(16)
+            $0.horizontalEdges.equalTo(contentView).inset(16)
+            $0.bottom.equalTo(contentView).inset(16)
+            $0.height.equalTo(cardBackView.snp.width)
         }
 
-        cardView.snp.makeConstraints { make in
-            make.horizontalEdges.verticalEdges.equalTo(cardBackView)
+        cardView.snp.makeConstraints {
+            $0.horizontalEdges.verticalEdges.equalTo(cardBackView)
         }
         
-        cardImg.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(cardView)
-            make.height.equalTo(220)
+        cardImg.snp.makeConstraints {
+            $0.top.horizontalEdges.equalTo(cardView)
+            $0.height.equalTo(220)
         }
         
-        voteStack.snp.makeConstraints { make in
-            make.leading.equalTo(cardImg.snp.leading).inset(24)
-            make.bottom.equalTo(cardImg.snp.bottom).inset(24)
-            make.width.equalTo(80)
-            make.height.equalTo(26)
+        voteStack.snp.makeConstraints {
+            $0.leading.equalTo(cardImg.snp.leading).inset(24)
+            $0.bottom.equalTo(cardImg.snp.bottom).inset(24)
+            $0.width.equalTo(80)
+            $0.height.equalTo(26)
         }
         voteStack.axis = .horizontal
         voteStack.distribution = .fillEqually
         
-        titleOverviewStack.snp.makeConstraints { make in
-            make.top.equalTo(cardImg.snp.bottom)
-            make.horizontalEdges.equalTo(cardView).inset(24)
-            make.height.equalTo(70)
+        titleOverviewStack.snp.makeConstraints {
+            $0.top.equalTo(cardImg.snp.bottom)
+            $0.horizontalEdges.equalTo(cardView).inset(24)
+            $0.height.equalTo(70)
         }
         titleOverviewStack.axis = .vertical
 
-        detailStack.snp.makeConstraints { make in
-            make.top.equalTo(titleOverviewStack.snp.bottom)
-            make.horizontalEdges.equalTo(cardView).inset(24)
-            make.height.equalTo(40)
-            make.bottom.equalTo(cardView).inset(4)
+        detailStack.snp.makeConstraints {
+            $0.top.equalTo(titleOverviewStack.snp.bottom)
+            $0.horizontalEdges.equalTo(cardView).inset(24)
+            $0.height.equalTo(40)
+            $0.bottom.equalTo(cardView).inset(4)
         }
         detailStack.axis = .horizontal
         detailStack.distribution = .equalSpacing
         
-        detailImgView.snp.makeConstraints { make in
-            make.height.equalTo(10)
+        detailImgView.snp.makeConstraints {
+            $0.height.equalTo(10)
         }
         
     }
     
-    func configureCellUI() {
+    override func configureCellUI() {
         openDateLabel.textColor = Constants.Color.Primary.gray2
         openDateLabel.font = .systemFont(ofSize: 16)
         genreLabel.font = .systemFont(ofSize: 20, weight: .semibold)
