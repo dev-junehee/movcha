@@ -20,9 +20,6 @@ class TrendingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        configureHierarchy()
-//        configureLayout()
-//        configureUI()
         configureData()
         callRequest()
     }
@@ -63,28 +60,24 @@ class TrendingViewController: BaseViewController {
     }
     
     func callRequest() {
-        let header: HTTPHeaders = [
-            "Authorization": API.KEY.tmdb,
-            "accept": "application/json"
-        ]
-        
-        AF.request(API.URL.TMDB.Trending.all,
-                   method: .get,
-                   encoding: JSONEncoding.default,
-                   headers: header)
-        .responseDecodable(of: Trending.self) { res in
-            switch res.result {
-            case .success(let value):
-                self.trendingList = value.results
-                self.trendingTableView.reloadData()
-            case .failure(let error):
-                print("실패")
-                print(error)
+        NetworkManager.shared.callRequest(api: .trending) { (trendingList: Trending? , error: String?) in
+            guard error == nil else {
+                self.showAlert("잠시 후 다시 시도해주세요.", message: error ?? "인기급상승 결과를 가져오지 못했어요.")
+                return
             }
+            
+            guard let trendingList = trendingList else {
+                self.showAlert("인기급상승 데이터가 존재하지 않아요.", message: "이전 화면으로 돌아갈게요.")
+                self.navigationController?.popViewController(animated: true)
+                return
+            }
+            
+            // error가 nil이면 성공 데이터가 들어왔다는 의미
+            self.trendingList = trendingList.results
+            self.trendingTableView.reloadData()
         }
     }
     
-   
 }
 
 // MARK: 인기급상승 컨트롤러 익스텐션
@@ -102,10 +95,6 @@ extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
         let trendingData = trendingList[idx]
      
         cell.selectionStyle = .none
-        
-        cell.configureCellHierarchy()
-        cell.configureCellLayout()
-        cell.configureCellUI()
         cell.configureCellData(data: trendingData)
         
         return cell
