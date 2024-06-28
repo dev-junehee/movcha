@@ -22,8 +22,9 @@ enum Constants {
         }
         
         // 홈
-        enum Home {
-            
+        enum Home: CaseIterable {
+            static let sideMenuTitle = ["회원가입"]
+            static let sideMenuIcon = [Constants.SystemImage.person]
         }
         
         // 검색
@@ -92,6 +93,7 @@ enum Constants {
         static let back = UIImage(systemName: "chevron.backward")!
         static let up = UIImage(systemName: "chevron.up")!
         static let down = UIImage(systemName: "chevron.down")!
+        static let person = UIImage(systemName: "person")
     }
 
 
