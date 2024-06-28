@@ -8,52 +8,36 @@
 import UIKit
 import SnapKit
 
-class TrendingDetailOverviewCell: UITableViewCell {
+class TrendingDetailOverviewCell: BaseTableViewCell {
     
     let overviewLabel = UILabel()
     let overviewBtn = UIButton()
     var isDown = false
     
     var tableView: UITableView?
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        configureCellHierarchy()
-        configureCellLayout()
-        configureCellUI()
-        configureHandler()
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configureCellHierarchy() {
+    override func configureCellHierarchy() {
         backgroundColor = .white
-        
         contentView.addSubview(overviewLabel)
         contentView.addSubview(overviewBtn)
     }
     
-    func configureCellLayout() {
-        overviewLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView)
-            make.horizontalEdges.equalTo(contentView).inset(16)
-            make.bottom.equalTo(overviewBtn.snp.top)
+    override func configureCellLayout() {
+        overviewLabel.snp.makeConstraints {
+            $0.top.equalTo(contentView).offset(16)
+            $0.horizontalEdges.equalTo(contentView).inset(20)
+            $0.bottom.equalTo(overviewBtn.snp.top)
         }
         
-        overviewBtn.snp.makeConstraints { make in
-            make.top.equalTo(overviewLabel.snp.bottom)
-            make.horizontalEdges.equalTo(contentView).inset(16)
-            make.bottom.equalTo(contentView)
-            make.height.equalTo(20)
+        overviewBtn.snp.makeConstraints {
+            $0.top.equalTo(overviewLabel.snp.bottom).offset(50)
+            $0.horizontalEdges.equalTo(contentView).inset(20)
+            $0.bottom.equalTo(contentView).inset(6)
         }
-        
     }
     
-    func configureCellUI() {
-        overviewLabel.font = .systemFont(ofSize: 14)
+    override func configureCellUI() {
+        overviewLabel.font = Constants.Font.body
         overviewLabel.numberOfLines = 2
         overviewBtn.setImage(Constants.SystemImage.down, for: .normal)
         overviewBtn.tintColor = Constants.Color.Primary.pink

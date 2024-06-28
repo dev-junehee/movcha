@@ -66,7 +66,9 @@ enum Constants {
         
         // 인기급상승 - 상세정보
         enum TrendingDetail {
-            
+            static let overview = "Overview"
+            static let noOverview = "(줄거리 준비 중)"
+            static let cast = "Cast"
         }
         
         // 버튼

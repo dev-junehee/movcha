@@ -69,6 +69,7 @@ class TrendingDetailViewController: BaseViewController {
             api: .credits(type: contentsType, id: contentsData.id)) { (creditsList: Credits?, error: String?) in
                 guard error == nil else {
                     self.showAlert("잠시 후 다시 시도해주세요.", message: error ?? "콘텐츠 크레딧 결과를 가져오지 못했어요.")
+                    self.navigationController?.popViewController(animated: true)
                     return
                 }
                 
@@ -77,9 +78,6 @@ class TrendingDetailViewController: BaseViewController {
                     self.navigationController?.popViewController(animated: true)
                     return
                 }
-                
-                print(error)
-                dump(creditsList)
                 
                 self.creditList = creditsList.cast
                 self.detailView.detailTableView.reloadData()
@@ -109,9 +107,9 @@ extension TrendingDetailViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "OverView"
+            return Constants.Text.TrendingDetail.overview
         } else {
-            return "Cast"
+            return Constants.Text.TrendingDetail.cast
         }
     }
     
@@ -123,7 +121,7 @@ extension TrendingDetailViewController: UITableViewDelegate, UITableViewDataSour
             let overviewCell = tableView.dequeueReusableCell(withIdentifier: TrendingDetailOverviewCell.id, for: indexPath) as! TrendingDetailOverviewCell
             
             overviewCell.tableView = detailView.detailTableView
-            overviewCell.configreCellData(data: contentsData?.overview ?? "줄거리 없음")
+            overviewCell.configreCellData(data: contentsData?.overview ?? Constants.Text.TrendingDetail.noOverview)
             overviewCell.configureHandler()
             
             return overviewCell
@@ -144,7 +142,7 @@ extension TrendingDetailViewController: UITableViewDelegate, UITableViewDataSour
         if section == 0 {
             return UITableView.automaticDimension
         } else {
-            return 100
+            return 120
         }
     }
     

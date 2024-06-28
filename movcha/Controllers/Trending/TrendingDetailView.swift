@@ -25,28 +25,37 @@ class TrendingDetailView: BaseView {
     }
     
     override func configureViewLayout() {
-        detailImgView.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
-            make.height.equalTo(200)
+        detailImgView.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(8)
+            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
+            $0.height.equalTo(200)
         }
         
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(detailImgView.snp.top).offset(16)
-            make.leading.equalTo(detailImgView.snp.leading).offset(16)
-            make.width.equalTo(100)
-            make.height.equalTo(36)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(detailImgView.snp.top).offset(16)
+            $0.horizontalEdges.equalTo(detailImgView).inset(16)
+            $0.height.equalTo(36)
         }
         
-        posterImgView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(16)
-            make.leading.equalTo(detailImgView.snp.leading).offset(16)
-            make.width.equalTo(100)
-            make.bottom.equalTo(detailImgView.snp.bottom)
+        posterImgView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(16)
+            $0.leading.equalTo(detailImgView.snp.leading).offset(16)
+            $0.width.equalTo(100)
+            $0.bottom.equalTo(detailImgView.snp.bottom)
         }
         
-        detailTableView.snp.makeConstraints { make in
-            make.top.equalTo(detailImgView.snp.bottom)
-            make.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
+        detailTableView.snp.makeConstraints {
+            $0.top.equalTo(detailImgView.snp.bottom)
+            $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
         }
+    }
+    
+    override func configureViewUI() {
+        detailImgView.alpha = 0.7
+        detailImgView.contentMode = .scaleAspectFill
+        titleLabel.font = Constants.Font.subTitle
+        titleLabel.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        titleLabel.shadowColor = Constants.Color.Primary.gray2
+        titleLabel.layer.shadowOpacity = 0.3
     }
 }

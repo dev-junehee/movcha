@@ -23,6 +23,7 @@ class TrendingDetailCastCell: UITableViewCell {
         
         configureHierarchy()
         configureLayout()
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
@@ -30,43 +31,46 @@ class TrendingDetailCastCell: UITableViewCell {
     }
     
     func configureHierarchy() {
-        nameStack.addArrangedSubview(nameLabel)
-        nameStack.addArrangedSubview(charactorLabel)
+//        nameStack.addArrangedSubview(nameLabel)
+//        nameStack.addArrangedSubview(charactorLabel)
         
         contentView.addSubview(castImgView)
-        contentView.addSubview(nameStack)
+//        contentView.addSubview(nameStack)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(charactorLabel)
     }
     
     func configureLayout() {
-        castImgView.snp.makeConstraints { make in
-            make.verticalEdges.equalTo(contentView).inset(8)
-            make.leading.equalTo(contentView).inset(16)
-            make.width.equalTo(60)
+        castImgView.snp.makeConstraints {
+            $0.top.equalTo(contentView).inset(8)
+            $0.leading.equalTo(contentView).offset(16)
+            $0.width.equalTo(80)
+            $0.height.equalTo(contentView).inset(8)
         }
         
-        nameStack.snp.makeConstraints { make in
-            make.verticalEdges.equalTo(contentView).inset(8)
-            make.leading.equalTo(castImgView.snp.trailing).offset(16)
-            make.trailing.equalTo(contentView).inset(16)
-        }
-        nameStack.axis = .vertical
-        
-        nameLabel.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(nameStack)
-            make.height.equalTo(20)
+        nameLabel.snp.makeConstraints {
+            $0.top.equalTo(contentView).offset(16)
+            $0.trailing.equalTo(contentView).inset(8)
+            $0.leading.equalTo(castImgView.snp.trailing).offset(8)
+            $0.height.equalTo(20)
         }
         
-        charactorLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom)
-            make.horizontalEdges.bottom.equalTo(nameStack)
-            make.height.equalTo(20)
+        charactorLabel.snp.makeConstraints {
+            $0.top.equalTo(nameLabel.snp.bottom)
+            $0.leading.equalTo(castImgView.snp.trailing).offset(8)
+            $0.trailing.equalTo(contentView)
+            $0.height.equalTo(20)
         }
     }
     
     func configureUI() {
         castImgView.clipsToBounds = true
         castImgView.layer.cornerRadius = 10
-        castImgView.contentMode = .scaleAspectFit
+        castImgView.contentMode = .scaleAspectFill
+    
+        nameLabel.font = .boldSystemFont(ofSize: 17)
+        charactorLabel.font = Constants.Font.body
+        charactorLabel.textColor = Constants.Color.Primary.darkGray
     }
     
     func configureCellData(data: Cast) {
@@ -74,7 +78,7 @@ class TrendingDetailCastCell: UITableViewCell {
         let imageURL = URL(string: API.URL.TMDB.img + image)
         castImgView.kf.setImage(with: imageURL)
         
-        nameLabel.text = "\(data.name) (\(data.original_name)"
+        nameLabel.text = "\(data.name) (\(data.original_name))"
         charactorLabel.text = "\(data.character)"
     }
 }
