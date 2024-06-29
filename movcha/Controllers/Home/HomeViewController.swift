@@ -11,7 +11,6 @@ import SideMenu
 class HomeViewController: BaseViewController {
     
     let homeView = HomeView()
-    
     let menu = SideMenuNavigationController(rootViewController: SideMenuViewController())
     
     override func loadView() {

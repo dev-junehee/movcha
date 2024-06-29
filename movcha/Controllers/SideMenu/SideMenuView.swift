@@ -22,8 +22,4 @@ class SideMenuView: BaseView {
         }
     }
     
-    override func configureViewUI() {
-        backgroundColor = .lightGray
-    }
-    
 }
