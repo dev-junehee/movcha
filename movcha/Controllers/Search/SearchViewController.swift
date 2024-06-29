@@ -115,6 +115,7 @@ extension SearchViewController: UISearchBarDelegate {
             callSearchRequest(type: .person, query: value)
         }
         
+        view.endEditing(true)
     }
 }
 
@@ -127,6 +128,9 @@ extension SearchViewController {
     
     @objc func categoryChanged() {
         selectedSearchCategory = self.searchView.searchCategory.selectedSegmentIndex
+        searchView.searchBar.text = ""
+        searchList.results = []
+        searchView.searchCollectionView.reloadData()
     }
     
 }
