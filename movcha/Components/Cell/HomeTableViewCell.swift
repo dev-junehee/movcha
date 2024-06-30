@@ -10,8 +10,6 @@ import SnapKit
 
 class HomeTableViewCell: BaseTableViewCell {
     
-    var isMain = true
-    
     let titleLabel = UILabel()
     lazy var collectionView = UICollectionView(
         frame: .zero,
@@ -23,7 +21,7 @@ class HomeTableViewCell: BaseTableViewCell {
         layout.itemSize = CGSize(width: 120, height: 160)
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         layout.scrollDirection = .horizontal
         return layout
     }
@@ -47,11 +45,11 @@ class HomeTableViewCell: BaseTableViewCell {
     }
     
     override func configureCellUI() {
-//        collectionView.backgroundColor = .darkGray
+        titleLabel.font = Constants.Font.subTitle
     }
     
-    func configureCellData(data: String) {
-        titleLabel.text = data
+    func configureCellData(title: String) {
+        titleLabel.text = title
     }
     
 }

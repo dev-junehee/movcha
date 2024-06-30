@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+import Kingfisher
 import SnapKit
 
 class HomeCollectionViewCell: BaseCollectionViewCell {
@@ -30,11 +32,13 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
         subImage.contentMode = .scaleAspectFill
         
         // 임시
-        subImage.backgroundColor = .brown
+        subImage.backgroundColor = Constants.Color.Primary.pink
     }
     
-    func configureCellData() {
-        
+    func configureCellData(data: HomePosterPaths) {
+        guard let path = data.poster_path else { return }
+        let image = URL(string: API.URL.TMDB.img + path)
+        subImage.kf.setImage(with: image)
     }
     
 }

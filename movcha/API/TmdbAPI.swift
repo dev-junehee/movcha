@@ -21,6 +21,8 @@ enum SearchType: String {
 
 enum TmdbAPI {
     case trending
+    case trendingMovie
+    case trendingTV
     case genre(type: GenreType)
     case search(type: SearchType, query: String)
     case credits(type: GenreType, id: Int)
@@ -43,6 +45,10 @@ enum TmdbAPI {
         switch self {
         case .trending:
             return URL(string: baseURL + API.URL.TMDB.Trending.all)!
+        case .trendingMovie:
+            return URL(string: baseURL + API.URL.TMDB.Trending.movie)!
+        case .trendingTV:
+            return URL(string: baseURL + API.URL.TMDB.Trending.tv)!
         case .genre(let type):
             return URL(string: baseURL + "genre/\(type.rawValue)/list")!
         case .search(let type, _):
@@ -64,7 +70,7 @@ enum TmdbAPI {
     
     var params: Parameters {
         switch self {
-        case .trending, .genre, .credits, .similar, .recommend:
+        case .trending, .trendingMovie, .trendingTV, .genre, .credits, .similar, .recommend:
             return ["language": "ko-KR"]
         case .search(_, let query):
             return [
