@@ -21,11 +21,15 @@ enum SearchType: String {
 
 enum TmdbAPI {
     case trending
+    case trendingMovie
+    case trendingTV
     case genre(type: GenreType)
     case search(type: SearchType, query: String)
     case credits(type: GenreType, id: Int)
     case similar(type: GenreType, id: Int)
     case recommend(type: GenreType, id: Int)
+    case topRatedMovie
+    case topRatedTV
     case image
     
     var headers: HTTPHeaders {
@@ -43,6 +47,10 @@ enum TmdbAPI {
         switch self {
         case .trending:
             return URL(string: baseURL + API.URL.TMDB.Trending.all)!
+        case .trendingMovie:
+            return URL(string: baseURL + API.URL.TMDB.Trending.movie)!
+        case .trendingTV:
+            return URL(string: baseURL + API.URL.TMDB.Trending.tv)!
         case .genre(let type):
             return URL(string: baseURL + "genre/\(type.rawValue)/list")!
         case .search(let type, _):
@@ -53,6 +61,10 @@ enum TmdbAPI {
             return URL(string: baseURL + "\(type.rawValue)/\(id)/similar")!
         case .recommend(let type, let id):
             return URL(string: baseURL + "\(type.rawValue)/\(id)/recommendations")!
+        case .topRatedMovie:
+            return URL(string: baseURL + API.URL.TMDB.TopRated.movie)!
+        case .topRatedTV:
+            return URL(string: baseURL + API.URL.TMDB.TopRated.tv)!
         case .image:
             return URL(string: API.URL.TMDB.img)!
         }
@@ -64,8 +76,14 @@ enum TmdbAPI {
     
     var params: Parameters {
         switch self {
-        case .trending, .genre, .credits, .similar, .recommend:
+        case .trending, .trendingMovie, .trendingTV, .genre, .credits, .similar, .recommend:
             return ["language": "ko-KR"]
+        case .topRatedMovie, .topRatedTV:
+            return [
+                "language": "ko-KR",
+                "page": 1,
+                "region": "410"
+            ]
         case .search(_, let query):
             return [
                 "language": "ko-KR",

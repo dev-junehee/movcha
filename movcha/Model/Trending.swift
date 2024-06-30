@@ -5,6 +5,14 @@
 //  Created by junehee on 6/10/24.
 //
 
+struct Home: Decodable {
+    let results: [HomePosterPaths]
+}
+
+struct HomePosterPaths: Decodable {
+    let poster_path: String?
+}
+
 // TMDb: Trending (day)
 struct Trending: Decodable {
     let page: Int
