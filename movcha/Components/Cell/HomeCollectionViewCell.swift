@@ -35,10 +35,15 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
         subImage.backgroundColor = Constants.Color.Primary.pink
     }
     
-    func configureCellData(data: HomePosterPaths) {
-        guard let path = data.poster_path else { return }
+//    func configureCellData(data: HomePosterPaths) {
+//        guard let path = data.poster_path else { return }
+//        let image = URL(string: API.URL.TMDB.img + path)
+//        subImage.kf.setImage(with: image)
+//    }
+    
+    func configureCellData(data: String?) {
+        guard let path = data else { return }
         let image = URL(string: API.URL.TMDB.img + path)
         subImage.kf.setImage(with: image)
     }
-    
 }

@@ -13,8 +13,10 @@ class HomeViewController: BaseViewController {
     let homeView = HomeView()
     let menu = SideMenuNavigationController(rootViewController: SideMenuViewController())
     
-    var homeContentTitles: [String] = ["이번 주 인기영화", "이번 주 인기 시리즈"]
+    var homeContentTitles: [String] = ["이번 주 인기영화", "이번 주 인기 시리즈", "최고 영화 베스트", "스테디 인기 시리즈"]
     var homeContentList: [[HomePosterPaths]] = [
+        [HomePosterPaths(poster_path: "")],
+        [HomePosterPaths(poster_path: "")],
         [HomePosterPaths(poster_path: "")],
         [HomePosterPaths(poster_path: "")],
     ]
@@ -83,6 +85,30 @@ extension HomeViewController {
             }
         }
         
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkManager.shared.callRequest(api: .topRatedMovie) { (homeContentList: Home? , error: String?) in
+                guard let homeContentList = homeContentList else {
+                    print("홈 화면 - TopRaged Movie 실패")
+                    return
+                }
+                self.homeContentList[2] = homeContentList.results
+                group.leave()
+            }
+        }
+        
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkManager.shared.callRequest(api: .topRatedTV) { (homeContentList: Home? , error: String?) in
+                guard let homeContentList = homeContentList else {
+                    print("홈 화면 - TopRaged Tv 실패")
+                    return
+                }
+                self.homeContentList[3] = homeContentList.results
+                group.leave()
+            }
+        }
+        
         group.notify(queue: .main) {
             self.homeView.tableView.reloadData()
         }
@@ -130,7 +156,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.id, for: indexPath) as! HomeCollectionViewCell
         
         let data = homeContentList[collectionView.tag][indexPath.row]
-        cell.configureCellData(data: data)
+        cell.configureCellData(data: data.poster_path)
         
         return cell
     }

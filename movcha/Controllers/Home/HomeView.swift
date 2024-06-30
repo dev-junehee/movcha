@@ -37,8 +37,5 @@ class HomeView: BaseView {
     override func configureViewUI() {
         mainTitle.font = Constants.Font.title
         mainTitle.text = Constants.Text.Title.home
-        
-        // 임시 확인용
-        tableView.backgroundColor = .lightGray
     }
 }
