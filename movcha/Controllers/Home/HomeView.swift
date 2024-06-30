@@ -12,21 +12,33 @@ class HomeView: BaseView {
     
     // 메인 타이틀
     let mainTitle = UILabel()
+    let tableView = UITableView()
     
     override func configureViewHierarchy() {
-        self.addSubview(mainTitle)
+        let subView = [mainTitle, tableView]
+        subView.forEach {
+            self.addSubview($0)
+        }
     }
     
     override func configureViewLayout() {
         mainTitle.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
-            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
+            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).offset(16)
             $0.height.equalTo(50)
+        }
+        
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(mainTitle.snp.bottom).offset(16)
+            $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
     
     override func configureViewUI() {
         mainTitle.font = Constants.Font.title
         mainTitle.text = Constants.Text.Title.home
+        
+        // 임시 확인용
+        tableView.backgroundColor = .lightGray
     }
 }

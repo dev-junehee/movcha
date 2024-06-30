@@ -55,6 +55,8 @@
 		C47C46942C2F254600665A7A /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46932C2F254600665A7A /* SideMenuView.swift */; };
 		C47C46962C2F299900665A7A /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46952C2F299900665A7A /* SideMenuTableViewCell.swift */; };
 		C47C46982C3024E700665A7A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46972C3024E700665A7A /* SignUpView.swift */; };
+		C47C469C2C30427A00665A7A /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C469B2C30427A00665A7A /* HomeTableViewCell.swift */; };
+		C47C469E2C3059BF00665A7A /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C469D2C3059BF00665A7A /* HomeCollectionViewCell.swift */; };
 		C4A52B0A2C2981ED0013BCDF /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A52B092C2981ED0013BCDF /* RecommendViewController.swift */; };
 		C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */; };
 		C4B0B9EC2C18922600CC5765 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */; };
@@ -109,6 +111,8 @@
 		C47C46932C2F254600665A7A /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		C47C46952C2F299900665A7A /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		C47C46972C3024E700665A7A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		C47C469B2C30427A00665A7A /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		C47C469D2C3059BF00665A7A /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		C4A52B092C2981ED0013BCDF /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDetailCastCell.swift; sourceTree = "<group>"; };
 		C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 				C467D1B32C2992B700702DC4 /* RecommendCollectionViewCell.swift */,
 				C46B2A112C2AB1FD00F81E4B /* RecommendTableViewCell.swift */,
 				C47C46952C2F299900665A7A /* SideMenuTableViewCell.swift */,
+				C47C469B2C30427A00665A7A /* HomeTableViewCell.swift */,
+				C47C469D2C3059BF00665A7A /* HomeCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 				C46B29E62C29BA0900F81E4B /* SimilarRecommend.swift in Sources */,
 				C467D1B42C2992B700702DC4 /* RecommendCollectionViewCell.swift in Sources */,
 				C47C468C2C2F054800665A7A /* EmptyView.swift in Sources */,
+				C47C469E2C3059BF00665A7A /* HomeCollectionViewCell.swift in Sources */,
 				C47C46922C2F231E00665A7A /* SideMenuViewController.swift in Sources */,
 				C46197C22C16E1D2007D3B6B /* Credit.swift in Sources */,
 				C46197672C11B10B007D3B6B /* API.swift in Sources */,
@@ -452,6 +459,7 @@
 				C46197772C12F2F1007D3B6B /* SkeletonTableViewProtocol.swift in Sources */,
 				C47C46982C3024E700665A7A /* SignUpView.swift in Sources */,
 				C461971D2C0F22DE007D3B6B /* HomeViewController.swift in Sources */,
+				C47C469C2C30427A00665A7A /* HomeTableViewCell.swift in Sources */,
 				C461971B2C0F21FB007D3B6B /* ReuseableProtocol.swift in Sources */,
 				C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */,
 				C46197CA2C173FDF007D3B6B /* TrendingDetailViewController.swift in Sources */,
