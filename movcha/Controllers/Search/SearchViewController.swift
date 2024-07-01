@@ -29,15 +29,13 @@ final class SearchViewController: BaseViewController {
         super.viewDidLoad()
         
         configureCategoryControll()
+        setNavigationTitle(Constants.Text.Title.search)
         setBarButtons()
         viewToggle()
     }
     
     override func configureHierarchy() {
-        navigationItem.title = Constants.Text.Title.search
-        
         searchView.searchBar.delegate = self
-        
         searchView.searchCollectionView.delegate = self
         searchView.searchCollectionView.dataSource = self
         searchView.searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.id)

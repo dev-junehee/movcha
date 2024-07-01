@@ -6,14 +6,11 @@
 //
 
 import UIKit
-
-import Alamofire
 import Kingfisher
-import SnapKit
 
-class TrendingDetailViewController: BaseViewController {
+final class TrendingDetailViewController: BaseViewController {
     
-    let detailView = TrendingDetailView()
+    private let detailView = TrendingDetailView()
     
     // 데이터
     var contentsData: TrendingResults?
@@ -32,7 +29,7 @@ class TrendingDetailViewController: BaseViewController {
         callRequest()
     }
     
-    func configureNavigation() {
+    private func configureNavigation() {
         setNavigationTitle(Constants.Text.Title.trendingDetail)
         addImgBarBtn(title: nil, image: Constants.SystemImage.back, target: self, action: #selector(backBarBtnClicked), type: .left, color: Constants.Color.Primary.pink)
     }
@@ -52,7 +49,7 @@ class TrendingDetailViewController: BaseViewController {
         detailView.posterImgView.contentMode = .scaleAspectFit
     }
     
-    func configureData() {
+    private func configureData() {
         guard let contentsData = contentsData else { return }
         detailView.titleLabel.text = contentsData.title
         
@@ -63,7 +60,16 @@ class TrendingDetailViewController: BaseViewController {
         detailView.detailImgView.kf.setImage(with: detailImage)
     }
     
-    func callRequest() {
+    @objc private func backBarBtnClicked() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+}
+
+
+// MARK: 익스텐션
+extension TrendingDetailViewController {
+    private func callRequest() {
         guard let contentsData = contentsData else { return }
         NetworkManager.shared.callRequest(
             api: .credits(type: contentsType, id: contentsData.id)) { (creditsList: Credits?, error: String?) in
@@ -83,13 +89,7 @@ class TrendingDetailViewController: BaseViewController {
                 self.detailView.detailTableView.reloadData()
             }
     }
-    
-    @objc func backBarBtnClicked() {
-        navigationController?.popViewController(animated: true)
-    }
-    
 }
-
 
 extension TrendingDetailViewController: UITableViewDelegate, UITableViewDataSource {
     // 0: Overview, 1: Cast
