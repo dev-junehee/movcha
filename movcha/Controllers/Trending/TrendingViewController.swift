@@ -7,14 +7,11 @@
 
 import UIKit
 
-import Alamofire
-import SnapKit
-
-class TrendingViewController: BaseViewController {
+final class TrendingViewController: BaseViewController {
     
-    let trendingView = TrendingView()
-
-    var trendingList: [TrendingResults] = []
+    private let trendingView = TrendingView()
+    
+    private var trendingList: [TrendingResults] = []
     
     override func loadView() {
         self.view = trendingView
@@ -22,8 +19,6 @@ class TrendingViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureData()
         callRequest()
     }
     
@@ -34,11 +29,12 @@ class TrendingViewController: BaseViewController {
         trendingView.trendingTableView.separatorStyle = .none
     }
     
-    func configureData() {
-        trendingView.mainTitle.text = Constants.Text.Title.trending
-    }
-    
-    func callRequest() {
+}
+
+
+// MARK: 인기급상승 컨트롤러 익스텐션
+extension TrendingViewController {
+    private func callRequest() {
         NetworkManager.shared.callRequest(api: .trending) { (trendingList: Trending? , error: String?) in
             guard error == nil else {
                 self.showAlert("잠시 후 다시 시도해주세요.", message: error ?? "인기급상승 결과를 가져오지 못했어요.")
@@ -56,11 +52,8 @@ class TrendingViewController: BaseViewController {
             self.trendingView.trendingTableView.reloadData()
         }
     }
-    
 }
 
-
-// MARK: 인기급상승 컨트롤러 익스텐션
 extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trendingList.count
