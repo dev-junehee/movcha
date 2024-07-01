@@ -25,6 +25,7 @@ enum Constants {
         enum Home: CaseIterable {
             static let sideMenuTitle = ["회원가입"]
             static let sideMenuIcon = [Constants.SystemImage.person]
+            static let title = ["이번 주 인기영화", "이번 주 인기 시리즈", "최고 영화 베스트", "스테디 인기 시리즈"]
         }
         
         // 검색
