@@ -15,10 +15,12 @@ final class HomeViewController: BaseViewController {
     
     private var homeContentTitles = Constants.Text.Home.title
     private var homeContentList: [[HomePosterPaths]] = [
-        [HomePosterPaths(poster_path: "")],
-        [HomePosterPaths(poster_path: "")],
-        [HomePosterPaths(poster_path: "")],
-        [HomePosterPaths(poster_path: "")],
+        [HomePosterPaths(id: 0, poster_path: "")],
+        [HomePosterPaths(id: 0, poster_path: "")],
+        [HomePosterPaths(id: 0, poster_path: "")],
+        [HomePosterPaths(id: 0, poster_path: "")],
+        [HomePosterPaths(id: 0, poster_path: "")],
+        [HomePosterPaths(id: 0, poster_path: "")],
     ]
     
     override func loadView() {
@@ -108,6 +110,30 @@ extension HomeViewController {
             }
         }
         
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkManager.shared.callRequest(api: .popularMovie) { (homeContentList: Home? , error: String?) in
+                guard let homeContentList = homeContentList else {
+                    print("홈 화면 - Popular movie 실패")
+                    return
+                }
+                self.homeContentList[4] = homeContentList.results
+                group.leave()
+            }
+        }
+        
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkManager.shared.callRequest(api: .popularTV) { (homeContentList: Home? , error: String?) in
+                guard let homeContentList = homeContentList else {
+                    print("홈 화면 - Popular tv 실패")
+                    return
+                }
+                self.homeContentList[5] = homeContentList.results
+                group.leave()
+            }
+        }
+        
         group.notify(queue: .main) {
             self.homeView.tableView.reloadData()
         }
@@ -158,5 +184,23 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.configureCellData(data: data.poster_path)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
+        
+        if collectionView.tag != 4 && collectionView.tag != 5 {
+            showAlert("준비 중인 기능이에요!", message: "인기 영화 모음/인기 시리즈 모음에서 이용해 주세요.")
+            return
+        }
+    
+        let id = homeContentList[collectionView.tag][indexPath.item].id
+        let type = collectionView.tag == 4 ? GenreType.movie : GenreType.tv
+        
+        let videoVC = VideoViewController()
+        videoVC.contentsId = id
+        videoVC.contentsType = type
+        
+        navigationController?.pushViewController(videoVC, animated: true)
     }
 }
