@@ -22,7 +22,7 @@ class SearchView: BaseView {
         collectionViewLayout: collectionviewLayout()
     )
     
-    func collectionviewLayout() -> UICollectionViewLayout {
+    private func collectionviewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         
         let width = UIScreen.main.bounds.width - 48

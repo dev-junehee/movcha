@@ -7,11 +7,11 @@
 
 import UIKit
 
-class SideMenuViewController: BaseViewController {
+final class SideMenuViewController: BaseViewController {
     
-    let menuView = SideMenuView()
-    let menuTitles = Constants.Text.Home.sideMenuTitle
-    let menuIcons = Constants.Text.Home.sideMenuIcon
+    private let menuView = SideMenuView()
+    private let menuTitles = Constants.Text.Home.sideMenuTitle
+    private let menuIcons = Constants.Text.Home.sideMenuIcon
     
     override func loadView() {
         self.view = menuView
