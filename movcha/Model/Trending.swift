@@ -10,6 +10,7 @@ struct Home: Decodable {
 }
 
 struct HomePosterPaths: Decodable {
+    let id: Int
     let poster_path: String?
 }
 

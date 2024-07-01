@@ -20,6 +20,7 @@ class NetworkManager {
     ]
     
     func callRequest<T: Decodable>(api: TmdbAPI, completionHandler: @escaping (T?, String?) -> Void) {
+        print(api)
         AF.request(api.endPoint,
                    method: api.method,
                    parameters: api.params,
