@@ -10,7 +10,7 @@ import SnapKit
 
 class TrendingView: BaseView {
     
-    let mainTitle = UILabel()
+    private let mainTitle = UILabel()
     let trendingTableView = UITableView()
     
     override func configureViewHierarchy() {
@@ -21,19 +21,20 @@ class TrendingView: BaseView {
     }
     
     override func configureViewLayout() {
-        mainTitle.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide)
-            make.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
-            make.height.equalTo(50)
+        mainTitle.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
+            $0.height.equalTo(50)
         }
         
-        trendingTableView.snp.makeConstraints { make in
-            make.top.equalTo(mainTitle.snp.bottom).offset(8)
-            make.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
+        trendingTableView.snp.makeConstraints {
+            $0.top.equalTo(mainTitle.snp.bottom).offset(8)
+            $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
     
     override func configureViewUI() {
+        mainTitle.text = Constants.Text.Title.trending
         mainTitle.font = .systemFont(ofSize: 40, weight: .black)
     }
     

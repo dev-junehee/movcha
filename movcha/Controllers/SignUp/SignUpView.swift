@@ -26,13 +26,17 @@ class SignUpView: BaseView {
     let addInfoSwitch = UISwitch()
     
     override func configureViewHierarchy() {
-        let subViews: [UIView] = [titleImg, emailField, passwordField, nicknameField, locationField, recommendField, signUpButton, addInfoLabel, addInfoSwitch]
-        
-        for subview in subViews {
-            self.addSubview(subview)
+        let subViews: [UIView] = [
+            titleImg, emailField, passwordField,
+            nicknameField, locationField, recommendField,
+            signUpButton, addInfoLabel, addInfoSwitch
+        ]
+        subViews.forEach {
+            self.addSubview($0)
         }
         
-        signUpTextFields = [emailField, passwordField, nicknameField, locationField, recommendField
+        signUpTextFields = [
+            emailField, passwordField, nicknameField, locationField, recommendField
         ]
     }
     
@@ -111,7 +115,7 @@ class SignUpView: BaseView {
 
 extension SignUpView {
     // 회원가입 텍스트 필드 UI 세팅
-    func setSignUpTextFieldUI(_ textField: UITextField) {
+    private func setSignUpTextFieldUI(_ textField: UITextField) {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = Constants.Color.Primary.gray6.cgColor
         textField.layer.cornerRadius = 8

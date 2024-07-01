@@ -11,10 +11,10 @@ import SnapKit
 class BoxOfficeView: BaseView {
     
     // 메인 타이틀
-    let mainTitle = UILabel()
+    private let mainTitle = UILabel()
     
     // 검색창 영역
-    let searchAreaStack = UIStackView()
+    private let searchAreaStack = UIStackView()
     let dateTextField = UITextField()
     let searchButton = UIButton()
     
@@ -34,23 +34,23 @@ class BoxOfficeView: BaseView {
     }
     
     override func configureViewLayout() {
-        mainTitle.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide)
-            make.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
-            make.height.equalTo(50)
+        mainTitle.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
+            $0.height.equalTo(50)
         }
         
-        searchAreaStack.snp.makeConstraints { make in
-            make.top.equalTo(mainTitle.snp.bottom).offset(8)
-            make.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
-            make.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(40)
+        searchAreaStack.snp.makeConstraints {
+            $0.top.equalTo(mainTitle.snp.bottom).offset(8)
+            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
+            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.height.equalTo(40)
         }
         searchAreaStack.spacing = 8
         searchAreaStack.alignment = .fill
         
-        dateTextField.snp.makeConstraints { make in
-            make.top.leading.bottom.equalTo(searchAreaStack)
+        dateTextField.snp.makeConstraints {
+            $0.top.leading.bottom.equalTo(searchAreaStack)
         }
         
         searchButton.snp.makeConstraints { make in
@@ -58,15 +58,16 @@ class BoxOfficeView: BaseView {
             make.width.equalTo(60)
         }
         
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(searchAreaStack.snp.bottom).offset(12)
-            make.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
-            make.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
-            make.bottom.equalTo(self.safeAreaLayoutGuide)
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(searchAreaStack.snp.bottom).offset(12)
+            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
+            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
     
     override func configureViewUI() {
+        mainTitle.text = Constants.Text.Title.boxOffice
         mainTitle.font = Constants.Font.title
         
         dateTextField.borderStyle = .none

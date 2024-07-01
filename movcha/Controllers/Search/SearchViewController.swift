@@ -7,23 +7,19 @@
 
 import UIKit
 
-import Alamofire
-import Kingfisher
-import SnapKit
-
-class SearchViewController: BaseViewController {
+final class SearchViewController: BaseViewController {
     
-    let searchView = SearchView()
+    private let searchView = SearchView()
     
-    var selectedSearchCategory = 0
+    private var page = 1
+    private var selectedSearchCategory = 0
     
-    var searchList = Search(page: 1, results: [], total_pages: 0, total_results: 0) {
+    private var searchList = Search(page: 1, results: [], total_pages: 0, total_results: 0) {
         didSet {
             viewToggle()
             searchView.searchCollectionView.reloadData()
         }
     }
-    var page = 1
 
     override func loadView() {
         self.view = searchView
@@ -33,15 +29,13 @@ class SearchViewController: BaseViewController {
         super.viewDidLoad()
         
         configureCategoryControll()
+        setNavigationTitle(Constants.Text.Title.search)
         setBarButtons()
         viewToggle()
     }
     
     override func configureHierarchy() {
-        navigationItem.title = Constants.Text.Title.search
-        
         searchView.searchBar.delegate = self
-        
         searchView.searchCollectionView.delegate = self
         searchView.searchCollectionView.dataSource = self
         searchView.searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.id)
@@ -68,7 +62,7 @@ class SearchViewController: BaseViewController {
 
 // API
 extension SearchViewController {
-    func callSearchRequest(type: SearchType, query: String) {
+    private func callSearchRequest(type: SearchType, query: String) {
         let group = DispatchGroup()
         
         group.enter()
@@ -121,12 +115,12 @@ extension SearchViewController: UISearchBarDelegate {
 
 // Segmented Control
 extension SearchViewController {
-    func configureCategoryControll() {
+    private func configureCategoryControll() {
         self.searchView.searchCategory.selectedSegmentIndex = 0
         self.searchView.searchCategory.addTarget(self, action: #selector(categoryChanged), for: .valueChanged)
     }
     
-    @objc func categoryChanged() {
+    @objc private func categoryChanged() {
         selectedSearchCategory = self.searchView.searchCategory.selectedSegmentIndex
         searchView.searchBar.text = ""
         searchList.results = []

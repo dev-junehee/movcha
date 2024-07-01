@@ -7,9 +7,9 @@
 
 import UIKit
 
-class SignUpViewController: BaseViewController {
+final class SignUpViewController: BaseViewController {
     
-    let signUpView = SignUpView()
+    private let signUpView = SignUpView()
     
     override func loadView() {
         self.view = signUpView
@@ -29,7 +29,7 @@ class SignUpViewController: BaseViewController {
         }
     }
     
-    func configureData() {
+    private func configureData() {
         let placeholders = [
             Constants.Text.SignUp.Placeholder.email,
             Constants.Text.SignUp.Placeholder.password,
@@ -45,11 +45,11 @@ class SignUpViewController: BaseViewController {
         signUpView.addInfoLabel.text = Constants.Text.SignUp.addInfo
     }
     
-    func configureBarBtn() {
+    private func configureBarBtn() {
         addImgBarBtn(title: nil, image: Constants.SystemImage.back, target: self, action: #selector(backBarBtnClicked), type: .left, color: Constants.Color.Primary.pink)
     }
     
-    func configureHandler() {
+    private func configureHandler() {
         // 탭 제스쳐
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         view.addGestureRecognizer(tapGesture)
@@ -59,15 +59,15 @@ class SignUpViewController: BaseViewController {
     }
     
     // MARK: 이벤트 핸들러
-    @objc func viewTapped() {
+    @objc private func viewTapped() {
         view.endEditing(true)
     }
     
-    @objc func backBarBtnClicked() {
+    @objc private func backBarBtnClicked() {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func signUpBtnClicked() {
+    @objc private func signUpBtnClicked() {
         view.endEditing(true)
         showAlert("준비 중인 기능이에요!", message: nil)
     }

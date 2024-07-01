@@ -8,19 +8,18 @@
 import UIKit
 import SideMenu
 
-class HomeViewController: BaseViewController {
+final class HomeViewController: BaseViewController {
     
-    let homeView = HomeView()
-    let menu = SideMenuNavigationController(rootViewController: SideMenuViewController())
+    private let homeView = HomeView()
+    private let menu = SideMenuNavigationController(rootViewController: SideMenuViewController())
     
-    var homeContentTitles: [String] = ["이번 주 인기영화", "이번 주 인기 시리즈", "최고 영화 베스트", "스테디 인기 시리즈"]
-    var homeContentList: [[HomePosterPaths]] = [
+    private var homeContentTitles = Constants.Text.Home.title
+    private var homeContentList: [[HomePosterPaths]] = [
         [HomePosterPaths(poster_path: "")],
         [HomePosterPaths(poster_path: "")],
         [HomePosterPaths(poster_path: "")],
         [HomePosterPaths(poster_path: "")],
     ]
-    
     
     override func loadView() {
         self.view = homeView
@@ -39,7 +38,7 @@ class HomeViewController: BaseViewController {
         homeView.tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.id)
     }
     
-    func setBarButtons() {
+    private func setBarButtons() {
         addImgBarBtn(title: nil, image: Constants.SystemImage.list, target: self, action: #selector(menuBtnClicked), type: .left, color: Constants.Color.Primary.pink)
         addImgBarBtn(title: nil, image: Constants.SystemImage.search, target: self, action: #selector(searchBtnClicked), type: .right, color: Constants.Color.Primary.pink)
     }
@@ -58,7 +57,7 @@ class HomeViewController: BaseViewController {
 
 // MARK: 익스텐션
 extension HomeViewController {
-    func callRequest() {
+    private func callRequest() {
         let group = DispatchGroup()
         
         group.enter()

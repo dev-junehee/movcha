@@ -7,21 +7,18 @@
 
 import UIKit
 
-import Kingfisher
-import SnapKit
-
-class RecommendViewController: BaseViewController {
+final class RecommendViewController: BaseViewController {
     
-    let recommendView = RecommendView()
+    private let recommendView = RecommendView()
     
     // 데이터
     var itemTitle: String = ""
     var itemType: Int = 0
     var itemId: Int = 0
     
-    var titleList = Constants.Text.Recommend.title
+    private var titleList = Constants.Text.Recommend.title
     
-    var contentsList: [[SimilarRecommendResults]] = [
+    private var contentsList: [[SimilarRecommendResults]] = [
         [SimilarRecommendResults(poster_path: "")],
         [SimilarRecommendResults(poster_path: "")]
     ]
@@ -60,7 +57,7 @@ class RecommendViewController: BaseViewController {
 // MARK: RecommendViewController 익스텐션
 // API
 extension RecommendViewController {
-    func callRequest(type: GenreType, id: Int) {
+    private func callRequest(type: GenreType, id: Int) {
         let group = DispatchGroup()
         
         group.enter()
