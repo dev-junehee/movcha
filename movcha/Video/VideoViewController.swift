@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 final class VideoViewController: BaseViewController {
     
@@ -24,6 +25,10 @@ final class VideoViewController: BaseViewController {
         super.viewDidLoad()
         setBarButtons()
         callRequest()
+    }
+    
+    override func configureHierarchy() {
+        videoView.webView.navigationDelegate = self
     }
     
     private func setBarButtons() {
@@ -66,5 +71,15 @@ extension VideoViewController {
         }
         let request = URLRequest(url: URL)
         videoView.webView.load(request)
+    }
+}
+
+extension VideoViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        videoView.isLoading = true
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        videoView.isLoading = false
     }
 }

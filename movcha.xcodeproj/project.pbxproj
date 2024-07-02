@@ -61,6 +61,7 @@
 		C47C46BB2C330C3500665A7A /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46BA2C330C3500665A7A /* VideoView.swift */; };
 		C47C46BD2C330C4B00665A7A /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46BC2C330C4B00665A7A /* VideoViewController.swift */; };
 		C47C46BF2C3315BB00665A7A /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46BE2C3315BB00665A7A /* Video.swift */; };
+		C47C46C12C337E5400665A7A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C46C02C337E5400665A7A /* LoadingView.swift */; };
 		C4A52B0A2C2981ED0013BCDF /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A52B092C2981ED0013BCDF /* RecommendViewController.swift */; };
 		C4B0B9EA2C18805B00CC5765 /* TrendingDetailCastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */; };
 		C4B0B9EC2C18922600CC5765 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */; };
@@ -121,6 +122,7 @@
 		C47C46BA2C330C3500665A7A /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		C47C46BC2C330C4B00665A7A /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		C47C46BE2C3315BB00665A7A /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		C47C46C02C337E5400665A7A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C4A52B092C2981ED0013BCDF /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		C4B0B9E92C18805B00CC5765 /* TrendingDetailCastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDetailCastCell.swift; sourceTree = "<group>"; };
 		C4B0B9EB2C18922600CC5765 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				C47C468B2C2F054800665A7A /* EmptyView.swift */,
+				C47C46C02C337E5400665A7A /* LoadingView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				C47C46862C2E9EDB00665A7A /* TrendingDetailView.swift in Sources */,
 				C46197612C11ACE1007D3B6B /* BoxOfficeViewController.swift in Sources */,
 				C47C46962C2F299900665A7A /* SideMenuTableViewCell.swift in Sources */,
+				C47C46C12C337E5400665A7A /* LoadingView.swift in Sources */,
 				C47C46842C2E863D00665A7A /* TrendingView.swift in Sources */,
 				C47C46BB2C330C3500665A7A /* VideoView.swift in Sources */,
 				C47C46642C2C010900665A7A /* TmdbAPI.swift in Sources */,
