@@ -76,7 +76,6 @@
 		C461970A2C0F2012007D3B6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C461970D2C0F2012007D3B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C461970F2C0F2012007D3B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C46197152C0F2032007D3B6B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C461971A2C0F21FB007D3B6B /* ReuseableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseableProtocol.swift; sourceTree = "<group>"; };
 		C461971C2C0F22DE007D3B6B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C461971E2C0F2352007D3B6B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -150,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				C46197622C11AF3C007D3B6B /* .gitignore */,
-				C46197152C0F2032007D3B6B /* README.md */,
 				C46197002C0F2011007D3B6B /* movcha */,
 				C46196FF2C0F2011007D3B6B /* Products */,
 			);
