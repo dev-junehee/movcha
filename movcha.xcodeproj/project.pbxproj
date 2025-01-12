@@ -168,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				C4A7769B2CD3E19500D60EEE /* Application */,
-				C4A52B072C297E330013BCDF /* API */,
 				C4A7769D2CD3E1F700D60EEE /* Resource */,
 				C46197172C0F2133007D3B6B /* Presentation */,
 			);
@@ -246,14 +245,6 @@
 				C47C469D2C3059BF00665A7A /* HomeCollectionViewCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		C46B29E22C29AF0E00F81E4B /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				C46B29E32C29AF2400F81E4B /* NetworkManager.swift */,
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		C47C46502C2B2EBF00665A7A /* Base */ = {
@@ -359,15 +350,6 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
-		C4A52B072C297E330013BCDF /* API */ = {
-			isa = PBXGroup;
-			children = (
-				C46197662C11B10B007D3B6B /* API.swift */,
-				C47C46632C2C010900665A7A /* TmdbAPI.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
 		C4A7769B2CD3E19500D60EEE /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,14 +366,24 @@
 			isa = PBXGroup;
 			children = (
 				C46197252C0F2997007D3B6B /* Constant */,
+				C4A7769E2CD3E2B100D60EEE /* Network */,
 				C46197182C0F2193007D3B6B /* Protocol */,
-				C46B29E22C29AF0E00F81E4B /* Manager */,
 				C46197162C0F212E007D3B6B /* Model */,
 				C46197192C0F2198007D3B6B /* Extension */,
 				C47C46502C2B2EBF00665A7A /* Base */,
 				C47C46892C2F052100665A7A /* Component */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		C4A7769E2CD3E2B100D60EEE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C46197662C11B10B007D3B6B /* API.swift */,
+				C46B29E32C29AF2400F81E4B /* NetworkManager.swift */,
+				C47C46632C2C010900665A7A /* TmdbAPI.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
