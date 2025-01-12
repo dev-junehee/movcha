@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import Moya
 
 enum GenreType: String {
     case movie = "movie"
@@ -19,7 +20,7 @@ enum SearchType: String {
     case person = "person"
 }
 
-enum TmdbAPI {
+enum TmdbAPI: TargetType {
     case trending
     case trendingMovie
     case trendingTV
@@ -35,52 +36,78 @@ enum TmdbAPI {
     case videos(type: GenreType, id: Int)
     case image
     
-    var headers: HTTPHeaders {
+    var baseURL: URL {
+        return URL(string: API.URL.TMDB.base)!
+    }
+    
+    var path: String {
+        switch self {
+        case .trending:
+            return API.URL.TMDB.Trending.all
+        case .trendingMovie:
+            return API.URL.TMDB.Trending.movie
+        case .trendingTV:
+            return API.URL.TMDB.Trending.tv
+        case .genre(let type):
+            return "genre/\(type.rawValue)/list"
+        case .search(let type, _):
+            return "search/\(type.rawValue)"
+        case .credits(let type, let id):
+            return "\(type.rawValue)/\(id)/credits"
+        case .similar(let type, let id):
+            return "\(type.rawValue)/\(id)/similar"
+        case .recommend(let type, let id):
+            return "\(type.rawValue)/\(id)/recommendations"
+        case .topRatedMovie:
+            return API.URL.TMDB.TopRated.movie
+        case .topRatedTV:
+            return API.URL.TMDB.TopRated.tv
+        case .popularMovie:
+            return API.URL.TMDB.Popular.movie
+        case .popularTV:
+            return API.URL.TMDB.Popular.tv
+        case .videos(let type, let  id):
+            return "\(type.rawValue)/\(id)/" + API.URL.TMDB.Videos.videos
+        case .image:
+            return API.URL.TMDB.img
+        }
+    }
+    
+    var headers: [String : String]? {
         return [
             "Authorization": API.KEY.tmdb,
             "accept": "application/json"
         ]
     }
     
-    var baseURL: String {
-        return API.URL.TMDB.base
-    }
-    
-    var endPoint: URL {
-        switch self {
-        case .trending:
-            return URL(string: baseURL + API.URL.TMDB.Trending.all)!
-        case .trendingMovie:
-            return URL(string: baseURL + API.URL.TMDB.Trending.movie)!
-        case .trendingTV:
-            return URL(string: baseURL + API.URL.TMDB.Trending.tv)!
-        case .genre(let type):
-            return URL(string: baseURL + "genre/\(type.rawValue)/list")!
-        case .search(let type, _):
-            return URL(string: baseURL + "search/\(type.rawValue)")!
-        case .credits(let type, let id):
-            return URL(string: baseURL + "\(type.rawValue)/\(id)/credits")!
-        case .similar(let type, let id):
-            return URL(string: baseURL + "\(type.rawValue)/\(id)/similar")!
-        case .recommend(let type, let id):
-            return URL(string: baseURL + "\(type.rawValue)/\(id)/recommendations")!
-        case .topRatedMovie:
-            return URL(string: baseURL + API.URL.TMDB.TopRated.movie)!
-        case .topRatedTV:
-            return URL(string: baseURL + API.URL.TMDB.TopRated.tv)!
-        case .popularMovie:
-            return URL(string: baseURL + API.URL.TMDB.Popular.movie)!
-        case .popularTV:
-            return URL(string: baseURL + API.URL.TMDB.Popular.tv)!
-        case .videos(let type, let  id):
-            return URL(string: baseURL + "\(type.rawValue)/\(id)/" + API.URL.TMDB.Videos.videos)!
-        case .image:
-            return URL(string: API.URL.TMDB.img)!
-        }
-    }
-    
-    var method: HTTPMethod {
+    var method: Moya.Method {
         return .get
+    }
+    
+    var task: Moya.Task {
+        switch self {
+        case .trending, .trendingMovie, .trendingTV, .genre, .credits, .similar, .recommend, .videos: break
+            // return ["language": "ko-KR"]
+        case .topRatedMovie, .topRatedTV, .popularMovie: break
+            // return [
+            //     "language": "ko-KR",
+            //     "page": 1,
+            //     "region": "410"
+            // ]
+        case .popularTV: break
+            // return [
+            //     "language": "ko-KR",
+            //     "page": 1,
+            // ]
+        case .search(_, let query): break
+            // return [
+            //     "language": "ko-KR",
+            //     "include_adult": false,
+            //     "query": query
+            // ]
+        case .image: break
+            // return ["": ""]
+        }
     }
     
     var params: Parameters {

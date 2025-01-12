@@ -7,11 +7,11 @@
 
 import Foundation
 import Alamofire
+import Moya
 
-class NetworkManager {
+final class NetworkManager {
     
     static let shared = NetworkManager()
-    
     private init() {}
     
     let headers: HTTPHeaders = [
